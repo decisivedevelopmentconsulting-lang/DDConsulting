@@ -237,6 +237,48 @@
             font-size: 3rem;
             font-weight: bold;
         }
+        
+        /* Founder Section */
+        .founder {
+            background-color: var(--bg-light);
+        }
+
+        .founder-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .founder-image {
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1/1;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .founder-content h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            margin-top: 0;
+        }
+
+        .founder-content p {
+            color: #555;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
 
         /* Contact Section */
         .contact {
@@ -342,6 +384,7 @@
                 <ul>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#about">About</a></li>
+                                                <li><a href="#founder">Founder</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -387,11 +430,28 @@
             <h2>About Us</h2>
             <div class="about-content">
                 <div>
-                    <h3>Founded by Muhibullah Sahibjan</h3>
-                    <p>Many staffing businesses have more than enough demand, yet growth stalls because delivery is volatile. The real opportunity lies in creating stability and predictability in how services are delivered.</p>
-                    <p>At Decisive Development Consulting, we work with organizations to implement systems that transform volatility into reliability, enabling sustainable growth and operational excellence.</p>
+                    <p>Decisive Development Consulting is a specialized consulting practice focused on recruitment delivery operations and talent systems for staffing and recruitment firms across multiple markets.</p>
+                    <p>We specialize in embedded, fractional leadership across Talent Delivery Operations—typically delivered over 60-90 day sprints. Rather than adding tools or motivational training, our work focuses on practical systems: clear roles, decision rights, metrics, feedback loops, and ways of working that hold under pressure.</p>
+                    <p>We sit between founders, sales, and recruiters to create simple, robust delivery and talent-ops systems so commercial growth is no longer constrained by fear of under-delivery.</p>
                 </div>
-                <div class="about-image">DDC</div>
+                <div class="about-image">Excellence in Operations</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder's Message Section -->
+    <section class="founder" id="founder">
+        <div class="container">
+            <h2>Founder's Message</h2>
+            <div class="founder-content">
+                <div class="founder-image">Muhibullah<br>Sahibjan</div>
+                <div>
+                    <h3>Building Predictable Delivery Systems</h3>
+                    <p><strong>As the founder of Decisive Development Consulting, I focus on a single question: Can your firm consistently deliver what you sell?</strong></p>
+                    <p>Many staffing businesses have more than enough demand, yet growth stalls because delivery is volatile, recruiter performance is unpredictable, and founders are forced into constant firefighting instead of building the business.</p>
+                    <p>The real issue is rarely effort or intent—it is the absence of a robust operating system that can carry growth. Most staffing firms do not fail because of a lack of demand. They stall because delivery becomes inconsistent, recruiter performance is unpredictable, and founders lose confidence in what the team can actually deliver.</p>
+                    <p>Through embedded, fractional leadership and targeted systems design, Decisive Development Consulting turns messy, effort-heavy delivery into a predictable engine that founders can trust—enabling sustainable growth without the cost and latency of a full-time senior hire.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -425,6 +485,7 @@
     </footer>
 </body>
 </html>
+
 
 
 
