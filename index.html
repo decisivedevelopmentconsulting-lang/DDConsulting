@@ -318,6 +318,93 @@
             color: #2ecc71;
         }
 
+        
+/* Process Flow Section */
+.process-flow {
+  background-color: var(--bg-light);
+  padding: 60px 0;
+  margin: 60px 0;
+}
+
+.process-timeline {
+  position: relative;
+  padding: 2rem 0;
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  align-items: stretch;
+  margin-top: 3rem;
+}
+
+.process-step {
+  position: relative;
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  text-align: center;
+  transition: all 0.3s ease;
+  border-left: 4px solid var(--accent-color);
+}
+
+.process-step:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-left-color: var(--secondary-color);
+}
+
+.process-step h4 {
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.process-step p {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.process-step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.process-connector {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .process-steps {
+    grid-template-columns: repeat(4, 1fr);
+    position: relative;
+  }
+  
+  .process-connector {
+    display: block;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+    z-index: -1;
+  }
+}
         /* Footer */
         footer {
             background-color: #1a1a1a;
@@ -416,6 +503,38 @@
             </div>
         </div>
     </section>
+    
+    <!-- Process Flow Section -->
+    <section class="process-flow" id="process">
+      <div class="container">
+        <h2>Our Consulting Process</h2>
+        <div class="process-timeline">
+          <div class="process-connector"></div>
+          <div class="process-steps">
+            <div class="process-step">
+              <div class="process-step-number">1</div>
+              <h4>Diagnostic & Assessment</h4>
+              <p>We conduct a thorough assessment of your current delivery operations, identifying bottlenecks, inefficiencies, and opportunities for improvement.</p>
+            </div>
+            <div class="process-step">
+              <div class="process-step-number">2</div>
+              <h4>Systems Design</h4>
+              <p>Based on findings, we design practical systems including clear roles, decision rights, metrics, and feedback loops tailored to your organization.</p>
+            </div>
+            <div class="process-step">
+              <div class="process-step-number">3</div>
+              <h4>Implementation & Coaching</h4>
+              <p>We embed ourselves in your operations, implementing systems and coaching your team through the 60-90 day sprint for sustainable adoption.</p>
+            </div>
+            <div class="process-step">
+              <div class="process-step-number">4</div>
+              <h4>Sustainment & Growth</h4>
+              <p>After the sprint, we ensure your organization can maintain and evolve systems independently, enabling predictable, scalable growth.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- About Section -->
     <section class="about" id="about">
@@ -478,6 +597,7 @@
     </footer>
 </body>
 </html>
+
 
 
 
