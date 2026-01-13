@@ -273,6 +273,47 @@
             line-height: 1.8;
         }
 
+        .founder-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.stat-card {
+    background: white;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.founder-photo {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
         /* Contact Section */
         .contact {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
@@ -565,6 +606,25 @@
             <h2>Founder's Message</h2>
             <div class="founder-content">
                 <h3 class="founder-image">Muhibullah Sahibjan</h3>
+                                    <img src="https://via.placeholder.com/250x250?text=Muhibullah+Sahibjan" alt="Muhibullah Sahibjan" class="founder-photo">
+                    <div class="founder-stats">
+                        <div class="stat-card">
+                            <div class="stat-number">15+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">100+</div>
+                            <div class="stat-label">Clients Served</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Talent Placements</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Team Members</div>
+                        </div>
+                    </div>
                 <div>
                     <h3>Building Predictable Delivery Systems</h3>
                     <p><strong>As the founder of Decisive Development Consulting, I focus on a single question: Can your firm consistently deliver what you sell?</strong></p>
@@ -639,6 +699,7 @@
 </body>
 </html>
 <!-- Deployment fix -->
+
 
 
 
