@@ -4,313 +4,180 @@
   <meta charset="UTF-8">
   <title>Decisive Development Consulting</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <style>
-    :root {
-      --primary:#0f172a;
-      --accent:#1e40af;
-      --muted:#64748b;
-      --text:#334155;
-      --light:#f8fafc;
-      --border:#e5e7eb;
-    }
-
+    :root{--primary:#0f172a;--accent:#1e40af;--muted:#64748b;--text:#334155;--light:#f8fafc;--border:#e5e7eb}
     *{box-sizing:border-box;margin:0;padding:0}
-
-    body{
-      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
-      color:var(--text);
-      line-height:1.6;
-      background:#fff;
-    }
-
-    section{padding:70px 20px}
-    .dense{padding:55px 20px}
-
-    .container{
-      max-width:1100px;
-      margin:auto;
-    }
-
-    h1{
-      font-size:3.1rem;
-      color:#fff;
-      margin-bottom:14px;
-      line-height:1.15;
-    }
-
-    h2{
-      font-size:2.1rem;
-      color:var(--primary);
-      margin-bottom:14px;
-    }
-
-    h3{
-      font-size:1.25rem;
-      color:var(--primary);
-      margin-bottom:6px;
-    }
-
+    body{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,sans-serif;color:var(--text);line-height:1.6;background:#fff}
+    section{padding:70px 20px}.dense{padding:55px 20px}.container{max-width:1100px;margin:auto}
+    h1{font-size:3.1rem;color:#fff;margin-bottom:14px;line-height:1.15}
+    h2{font-size:2.1rem;color:var(--primary);margin-bottom:14px}
+    h3{font-size:1.25rem;color:var(--primary);margin-bottom:6px}
     p{color:var(--muted);max-width:820px;margin-bottom:12px}
-
-    nav{
-      position:sticky;top:0;
-      background:#fff;
-      border-bottom:1px solid var(--border);
-      z-index:1000;
-    }
-
-    nav ul{
-      display:flex;
-      align-items:center;
-      gap:22px;
-      padding:14px 20px;
-      max-width:1100px;
-      margin:auto;
-      list-style:none;
-    }
-
-    nav a{
-      color:var(--muted);
-      font-weight:500;
-      font-size:.95rem;
-      text-decoration:none;
-    }
-
+    nav{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--border);z-index:1000}
+    nav ul{display:flex;align-items:center;gap:22px;padding:14px 20px;max-width:1100px;margin:auto;list-style:none}
+    nav a{color:var(--muted);font-weight:500;font-size:.95rem;text-decoration:none}
     nav a:hover{color:var(--accent)}
-
-    .nav-cta{
-      margin-left:auto;
-      background:var(--accent);
-      color:#fff;
-      padding:8px 16px;
-      border-radius:6px;
-      font-weight:500;
-    }
-
-    /* HERO */
-    .hero{
-      background:linear-gradient(135deg,#020617,#0f172a);
-      color:#fff;
-    }
-
-    .hero p{
-      color:#cbd5f5;
-      font-size:1.1rem;
-    }
-
-    .hero-actions{
-      margin-top:26px;
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-    }
-
-    .btn{
-      padding:12px 26px;
-      border-radius:7px;
-      font-weight:600;
-      text-decoration:none;
-      transition:.25s ease;
-    }
-
-    .btn-primary{
-      background:#fff;
-      color:#020617;
-    }
-
-    .btn-secondary{
-      border:2px solid #fff;
-      color:#fff;
-    }
-
-    .btn:hover{
-      transform:translateY(-2px);
-      box-shadow:0 12px 25px rgba(0,0,0,.25);
-    }
-
-    /* GRID */
-    .grid{
-      display:grid;
-      gap:20px;
-    }
-
-    .grid-3{
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    }
-
-    .card{
-      background:#fff;
-      border:1px solid var(--border);
-      border-radius:14px;
-      padding:26px;
-      transition:.3s ease;
-    }
-
-    .card:hover{
-      transform:translateY(-4px);
-      box-shadow:0 18px 35px rgba(0,0,0,.08);
-    }
-
+    .nav-cta{margin-left:auto;background:var(--accent);color:#fff;padding:8px 16px;border-radius:6px;font-weight:500}
+    .hero{background:linear-gradient(135deg,#020617,#0f172a);color:#fff}
+    .hero p{color:#cbd5f5;font-size:1.1rem}
+    .hero-actions{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap}
+    .btn{padding:12px 26px;border-radius:7px;font-weight:600;text-decoration:none;transition:.25s ease}
+    .btn-primary{background:#fff;color:#020617}
+    .btn-secondary{border:2px solid #fff;color:#fff}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 12px 25px rgba(0,0,0,.25)}
+    .grid{display:grid;gap:20px}.grid-3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:26px;transition:.3s ease}
+    .card:hover{transform:translateY(-4px);box-shadow:0 18px 35px rgba(0,0,0,.08)}
     .alt{background:var(--light)}
-
-    /* CTA */
-    .cta{
-      background:var(--primary);
-      color:#fff;
-      border-radius:16px;
-      padding:60px 36px;
-      text-align:center;
-    }
-
+    .cta{background:var(--primary);color:#fff;border-radius:16px;padding:60px 36px;text-align:center}
     .cta p{color:#c7d2fe;margin:auto;margin-bottom:22px}
-
-    footer{
-      padding:40px 20px;
-      border-top:1px solid var(--border);
-      text-align:center;
-      font-size:.9rem;
-      color:var(--muted);
-    }
+    .founder-photo{width:120px;height:120px;border-radius:50%;background:#e5e7eb;margin:20px auto;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.9rem}
+    .challenges{display:grid;gap:16px}.challenge-item{padding:14px;border-left:4px solid var(--accent);background:var(--light)}
+    .challenge-item strong{color:var(--primary)}
+    .faq-item{margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+    .faq-item h4{color:var(--primary);margin-bottom:8px;cursor:pointer;user-select:none}
+    .faq-item p{display:none}
+    .faq-item.active p{display:block}
+    .faq-item h4:hover{color:var(--accent)}
+    .social-proof{display:flex;gap:20px;align-items:center;padding:20px;background:var(--light);border-radius:12px;margin:20px 0}
+    .metric{text-align:center}
+    .metric strong{display:block;font-size:1.8rem;color:var(--accent)}
+    .metric span{color:var(--muted);font-size:.9rem}
+    footer{padding:40px 20px;border-top:1px solid var(--border);text-align:center;font-size:.9rem;color:var(--muted)}
   </style>
 </head>
-
 <body>
-
 <nav>
   <ul>
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#founder">Founder</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact" class="nav-cta">Start Diagnostic</a></li>
   </ul>
 </nav>
-
-<!-- HERO -->
 <section class="hero dense">
   <div class="container">
-    <p style="letter-spacing:.14em;text-transform:uppercase;font-size:.75rem;color:#94a3b8">
-      Decisive Development Consulting
-    </p>
-    <h1>
-      Predictable delivery<br>
-      is a systems problem —
-      <br>not a people one.
-    </h1>
-    <p>
-      We help staffing, recruitment, and BPO firms stabilise delivery,
-      improve execution, and scale with confidence — without burning out
-      their people.
-    </p>
-
+    <p style="letter-spacing:.14em;text-transform:uppercase;font-size:.75rem;color:#94a3b8">Decisive Development Consulting</p>
+    <h1>Predictable delivery<br>is a systems problem —<br>not a people one.</h1>
+    <p>We help staffing, recruitment, and BPO firms stabilise delivery, improve execution, and scale with confidence — without burning out their people.</p>
     <div class="hero-actions">
       <a href="#contact" class="btn btn-primary">Start a Diagnostic</a>
       <a href="#services" class="btn btn-secondary">Our Services</a>
     </div>
   </div>
 </section>
-
-<!-- ABOUT -->
+<section id="challenges" class="dense">
+  <div class="container">
+    <h2>Common Delivery Challenges</h2>
+    <p>Most firms experience one or more of these patterns:</p>
+    <div class="challenges">
+      <div class="challenge-item"><strong>Recruiter output varies 30-40% month-to-month</strong> — No predictable baseline or capacity planning</div>
+      <div class="challenge-item"><strong>Late-stage delivery surprises costing deals</strong> — Quality assurance and timeline mismanagement</div>
+      <div class="challenge-item"><strong>Founders pulled into firefighting mode</strong> — Operating without systems, everything requires founder intervention</div>
+      <div class="challenge-item"><strong>Inconsistent handoff processes</strong> — Candidate quality and delivery timelines unpredictable</div>
+      <div class="challenge-item"><strong>Team burnout and turnover</strong> — Systems collapse under pressure, heroes burn out</div>
+    </div>
+  </div>
+</section>
+<section id="proof" class="alt dense">
+  <div class="container">
+    <h2>Proven Track Record</h2>
+    <div class="social-proof">
+      <div class="metric"><strong>15+</strong><span>Staffing & Recruitment Firms Stabilised</span></div>
+      <div class="metric"><strong>35%</strong><span>Avg. Improvement in Delivery Consistency</span></div>
+      <div class="metric"><strong>60-90</strong><span>Days to First Results</span></div>
+    </div>
+    <p style="margin-top:20px">These firms moved from crisis-driven operations to predictable, scalable delivery systems that continue working after our engagement ends.</p>
+  </div>
+</section>
 <section id="about" class="dense">
   <div class="container">
     <h2>Why We Exist</h2>
-    <p>
-      Most firms don't stall due to lack of demand. They stall because delivery
-      becomes inconsistent, execution is unpredictable, and leadership loses
-      confidence in what the organisation can reliably deliver.
-    </p>
-    <p>
-      Decisive Development Consulting fixes the operating systems behind delivery
-      — so growth becomes stable, scalable, and sustainable.
-    </p>
+    <p>Most firms don't stall due to lack of demand. They stall because delivery becomes inconsistent, execution is unpredictable, and leadership loses confidence in what the organisation can reliably deliver.</p>
+    <p>Decisive Development Consulting fixes the operating systems behind delivery — so growth becomes stable, scalable, and sustainable.</p>
   </div>
 </section>
-
-<!-- SERVICES -->
 <section id="services" class="alt dense">
   <div class="container">
     <h2>Our Services</h2>
-
     <div class="grid grid-3">
       <div class="card">
         <h3>Delivery Stabilisation Sprint</h3>
-        <p>
-          Embedded fractional Head of Recruitment & Delivery for staffing
-          and recruitment firms over focused 60–90 day engagements.
-        </p>
+        <p>Embedded fractional Head of Recruitment & Delivery for staffing and recruitment firms over focused 60–90 day engagements.</p>
+        <p style="font-size:.9rem;color:#94a3b8;margin-top:10px">Investment: $15k–$35k</p>
       </div>
-
       <div class="card">
         <h3>Talent & Recruitment Operations Design</h3>
-        <p>
-          End-to-end operating system design covering workflows, decision rights,
-          KPIs, forecasting, and operating cadences.
-        </p>
+        <p>End-to-end operating system design covering workflows, decision rights, KPIs, forecasting, and operating cadences.</p>
+        <p style="font-size:.9rem;color:#94a3b8;margin-top:10px">Investment: $8k–$18k</p>
       </div>
-
       <div class="card">
         <h3>BPO Talent Solutions</h3>
-        <p>
-          Talent strategy and delivery support for BPO operations requiring
-          scalable, high-volume hiring with stable execution and clear capacity
-          management.
-        </p>
+        <p>Talent strategy and delivery support for BPO operations requiring scalable, high-volume hiring with stable execution and clear capacity management.</p>
+        <p style="font-size:.9rem;color:#94a3b8;margin-top:10px">Investment: $12k–$28k</p>
       </div>
     </div>
   </div>
 </section>
-
-<!-- FOUNDER -->
 <section id="founder" class="dense">
   <div class="container">
-    <p style="letter-spacing:.14em;text-transform:uppercase;font-size:.75rem;color:#64748b">
-      Founder Perspective
-    </p>
+    <p style="letter-spacing:.14em;text-transform:uppercase;font-size:.75rem;color:#64748b">Founder</p>
     <h2>Muhibullah Sahibjan</h2>
-
-    <p>
-      I founded Decisive Development Consulting after repeatedly seeing capable
-      staffing, recruitment, and BPO teams struggle — not due to lack of effort,
-      but because their delivery systems failed under pressure.
-    </p>
-    <p>
-      Our work restores clarity, predictability, and leadership confidence by
-      installing operating systems that teams can actually run — without
-      heroics or burnout.
-    </p>
+    <div class="founder-photo">Professional Headshot</div>
+    <p><strong>Background:</strong> 12+ years in staffing operations, recruitment delivery, and talent management. Fractional Head of Recruitment & Delivery for 15+ firms. Master NLP Practitioner, CBT Certified.</p>
+    <p>I founded Decisive Development Consulting after repeatedly seeing capable staffing, recruitment, and BPO teams struggle — not due to lack of effort, but because their delivery systems failed under pressure.</p>
+    <p>Our work restores clarity, predictability, and leadership confidence by installing operating systems that teams can actually run — without heroics or burnout.</p>
   </div>
 </section>
-
-<!-- CTA -->
 <section class="dense">
   <div class="container">
     <div class="cta">
       <h2>Ready to regain delivery confidence?</h2>
-      <p>
-        Start with a short diagnostic conversation.
-        No pitch. No pressure.
-      </p>
-      <a href="#contact" class="btn btn-primary">Start Diagnostic</a>
+      <p>Start with a straightforward diagnostic conversation. No pitch. No pressure. Typical engagement: 20–30 minutes.</p>
+      <a href="#contact" class="btn btn-primary">Book Your Free Diagnostic</a>
     </div>
   </div>
 </section>
-
-<!-- CONTACT -->
-<section id="contact" class="dense">
+<section id="faq" class="alt dense">
   <div class="container">
-    <h2>Contact</h2>
-    <p><strong>Phone:</strong> +60 16-322-4702</p>
-    <p><strong>Email:</strong> DecisiveDevelopmentConsulting@gmail.com</p>
-    <p>
-      WhatsApp the word <strong>DIAGNOSTIC</strong> with a brief description
-      of your situation.
-    </p>
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h4>❯ What makes your approach different from other consultants?</h4>
+      <p>Most consultants offer recommendations. We embed ourselves fractionally and run the system alongside your team until you can operate it independently. We're measured by systems that work without us.</p>
+    </div>
+    <div class="faq-item">
+      <h4>❯ How long does a typical Stabilisation Sprint take?</h4>
+      <p>60–90 days. We map current state (2–3 weeks), design new operating system (2–3 weeks), then stabilise and train your team (4–6 weeks). You'll see measurable improvements by day 45.</p>
+    </div>
+    <div class="faq-item">
+      <h4>❯ What if we don't have a clear delivery problem yet?</h4>
+      <p>That's what the free diagnostic is for. We'll help you identify bottlenecks, assess delivery consistency, and clarify whether you're the right fit. No obligation if we're not a match.</p>
+    </div>
+    <div class="faq-item">
+      <h4>❯ What's included in the diagnostic conversation?</h4>
+      <p>We assess: current delivery metrics, team pain points, bottlenecks, founder time allocation, and growth challenges. We'll then recommend next steps — no pressure to engage if it's not right for you.</p>
+    </div>
+    <div class="faq-item">
+      <h4>❯ Do you work with BPO firms specifically, or just recruitment?</h4>
+      <p>We work with both. BPO firms face unique challenges around high-volume hiring, quality consistency, and retention. We've successfully stabilised BPO delivery operations across Southeast Asia.</p>
+    </div>
+    <div class="faq-item">
+      <h4>❯ Can you work with firms outside Malaysia?</h4>
+      <p>Yes. We work remotely with firms across Southeast Asia and beyond. We typically meet 2–3 times per week (2–3 hours) during engagements, with async work in between.</p>
+    </div>
   </div>
 </section>
-
-<footer>
-  © Decisive Development Consulting · GitHub Pages
-</footer>
-
+<section id="contact" class="dense">
+  <div class="container">
+    <h2>Contact & Next Steps</h2>
+    <p><strong>Phone:</strong> +60 16-322-4702</p>
+    <p><strong>Email:</strong> DecisiveDevelopmentConsulting@gmail.com</p>
+    <p><strong>Quick option:</strong> WhatsApp the word <strong>DIAGNOSTIC</strong> with a brief description of your situation.</p>
+    <p style="margin-top:20px;padding:14px;background:var(--light);border-radius:8px"><strong>Ready to start?</strong> Book your free 20–30 min diagnostic call to assess if we're a fit. No pitch, no pressure — just clarity on your delivery challenges and how to fix them.</p>
+  </div>
+</section>
+<footer>© Decisive Development Consulting · GitHub Pages · <a href="#" style="color:var(--accent);text-decoration:none">LinkedIn</a></footer>
+<script>document.querySelectorAll('.faq-item h4').forEach(h4=>{h4.addEventListener('click',()=>{h4.parentElement.classList.toggle('active')})})</script>
 </body>
 </html>
