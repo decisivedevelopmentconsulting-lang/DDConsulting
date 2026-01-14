@@ -1,67 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>Decisive Development Consulting</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
     :root {
-      --bg: #ffffff;
-      --bg-alt: #f5f7fa;
+      --primary: #1e3a8a;     /* Deep blue */
+      --accent: #2563eb;      /* Brighter blue */
       --dark: #0f172a;
       --text: #334155;
       --muted: #64748b;
-      --accent: #2563eb;
-      --border: #e2e8f0;
+      --light: #f8fafc;
+      --border: #e5e7eb;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--bg);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       color: var(--text);
       line-height: 1.65;
-      scroll-behavior: smooth;
+      background: #ffffff;
     }
 
-    /* ---------- NAV ---------- */
+    a { text-decoration: none; }
+
+    section { padding: 90px 20px; }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    h1 {
+      font-size: 3.2rem;
+      color: white;
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      font-size: 2.2rem;
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+
+    p {
+      color: var(--muted);
+      max-width: 820px;
+      margin-bottom: 14px;
+    }
+
+    /* NAV */
     nav {
       position: sticky;
       top: 0;
-      z-index: 1000;
-      background: rgba(255,255,255,0.9);
-      backdrop-filter: blur(8px);
+      background: white;
       border-bottom: 1px solid var(--border);
+      z-index: 1000;
     }
 
     nav ul {
-      max-width: 1200px;
-      margin: auto;
-      padding: 14px 20px;
       display: flex;
-      gap: 24px;
-      list-style: none;
+      gap: 22px;
       align-items: center;
+      padding: 14px 20px;
+      max-width: 1100px;
+      margin: auto;
+      list-style: none;
     }
 
     nav a {
-      text-decoration: none;
       color: var(--muted);
-      font-size: 0.95rem;
       font-weight: 500;
+      font-size: 0.95rem;
     }
 
-    nav a:hover {
-      color: var(--accent);
-    }
+    nav a:hover { color: var(--accent); }
 
-    nav .cta-nav {
+    .nav-cta {
       margin-left: auto;
       background: var(--accent);
       color: white;
@@ -70,81 +95,50 @@
       font-weight: 500;
     }
 
-    /* ---------- SECTIONS ---------- */
-    section {
-      padding: 100px 20px;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    h1 {
-      font-size: 3rem;
-      color: var(--dark);
-      margin-bottom: 20px;
-      line-height: 1.15;
-    }
-
-    h2 {
-      font-size: 2.1rem;
-      color: var(--dark);
-      margin-bottom: 16px;
-    }
-
-    h3 {
-      font-size: 1.25rem;
-      color: var(--dark);
-      margin-bottom: 10px;
-    }
-
-    p {
-      max-width: 820px;
-      margin-bottom: 16px;
-      color: var(--muted);
-    }
-
+    /* HERO */
     .hero {
-      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      text-align: center;
     }
 
     .hero p {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
+      color: #e0e7ff;
+      margin: auto;
     }
 
     .hero-buttons {
       margin-top: 32px;
       display: flex;
+      justify-content: center;
       gap: 16px;
       flex-wrap: wrap;
     }
 
     .btn {
-      padding: 14px 26px;
+      padding: 14px 28px;
       border-radius: 8px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      font-weight: 600;
+      transition: all 0.25s ease;
     }
 
     .btn-primary {
-      background: var(--accent);
-      color: white;
+      background: white;
+      color: var(--primary);
     }
 
     .btn-secondary {
-      border: 1px solid var(--border);
-      color: var(--dark);
-      background: white;
+      border: 2px solid white;
+      color: white;
     }
 
     .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.25);
     }
 
-    /* ---------- CARDS ---------- */
+    /* CARDS */
     .grid {
       display: grid;
       gap: 24px;
@@ -157,54 +151,41 @@
     .card {
       background: white;
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 28px;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      border-radius: 14px;
+      padding: 30px;
+      transition: all 0.3s ease;
     }
 
     .card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+      box-shadow: 0 22px 40px rgba(0,0,0,0.1);
     }
 
-    .alt {
-      background: var(--bg-alt);
-    }
+    .alt { background: var(--light); }
 
-    /* ---------- ACCORDION ---------- */
-    .accordion-content {
-      display: none;
-      margin-top: 16px;
-    }
-
-    .accordion-toggle {
-      cursor: pointer;
-    }
-
-    /* ---------- CTA BLOCK ---------- */
-    .cta-block {
+    /* CTA */
+    .cta {
       background: var(--dark);
       color: white;
-      border-radius: 16px;
-      padding: 60px 40px;
+      border-radius: 18px;
+      padding: 70px 40px;
       text-align: center;
     }
 
-    .cta-block h2 {
-      color: white;
-    }
+    .cta h2 { color: white; }
 
-    .cta-block p {
-      color: #cbd5f5;
+    .cta p {
+      color: #c7d2fe;
       margin: auto;
-      margin-bottom: 24px;
+      margin-bottom: 26px;
     }
 
     footer {
-      padding: 60px 20px;
+      padding: 50px 20px;
       border-top: 1px solid var(--border);
       font-size: 0.9rem;
       color: var(--muted);
+      text-align: center;
     }
   </style>
 </head>
@@ -213,161 +194,122 @@
 
 <nav>
   <ul>
-    <li><a href="#problem">The Problem</a></li>
-    <li><a href="#fix">How We Fix It</a></li>
+    <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#approach">Approach</a></li>
-    <li><a class="cta-nav" href="#contact">Start a Diagnostic</a></li>
+    <li><a href="#founder">Founder</a></li>
+    <li><a class="nav-cta" href="#contact">Start a Diagnostic</a></li>
   </ul>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <div class="container">
-    <h1>Predictable Delivery.<br>Scalable Growth.<br>No Burnout.</h1>
+    <h1>Decisive Development Consulting</h1>
     <p>
-      We help staffing and recruitment firms fix inconsistent delivery by
-      installing operating systems that hold under pressure — so founders
-      can sell with confidence.
+      Helping staffing and recruitment firms build predictable delivery systems
+      that scale — without burning people out.
     </p>
+
     <div class="hero-buttons">
-      <a href="#contact" class="btn btn-primary">Start a Diagnostic</a>
-      <a href="#fix" class="btn btn-secondary">See How It Works</a>
+      <a href="#contact" class="btn btn-primary">Start a Diagnostic Conversation</a>
+      <a href="#about" class="btn btn-secondary">How We Help</a>
     </div>
   </div>
 </section>
 
-<section id="problem">
+<!-- ABOUT -->
+<section id="about">
   <div class="container">
-    <h2>If this feels familiar, you're not alone</h2>
-    <div class="grid grid-3">
-      <div class="card">Delivery becomes inconsistent as the team grows</div>
-      <div class="card">Capacity is unclear across desks and markets</div>
-      <div class="card">Recruiter performance is unpredictable</div>
-      <div class="card">Late-stage surprises increase</div>
-      <div class="card">Founders get pulled into firefighting</div>
-      <div class="card">Selling more feels risky</div>
-    </div>
-  </div>
-</section>
-
-<section class="alt">
-  <div class="container">
-    <h2>This is not a people problem</h2>
+    <h2>Why Decisive Development Consulting Exists</h2>
     <p>
-      Most delivery breakdowns are not caused by lack of effort, motivation,
-      or tools. They are caused by fragile operating systems that collapse
-      under pressure.
+      Most staffing and recruitment firms don't fail because of demand. They stall
+      because delivery becomes inconsistent, recruiter performance is unpredictable,
+      and founders lose confidence in what their teams can reliably deliver.
     </p>
     <p>
-      We focus on fixing the system — not pushing people harder.
+      We fix the operating systems behind delivery — so growth becomes predictable,
+      not stressful.
     </p>
   </div>
 </section>
 
-<section id="fix">
-  <div class="container">
-    <h2>How we fix it</h2>
-    <div class="grid grid-3">
-      <div class="card accordion-toggle" onclick="toggle(this)">
-        <h3>1. Diagnose</h3>
-        <div class="accordion-content">
-          We map how work actually flows, identify bottlenecks, and surface
-          where delivery breaks under pressure.
-        </div>
-      </div>
-      <div class="card accordion-toggle" onclick="toggle(this)">
-        <h3>2. Design</h3>
-        <div class="accordion-content">
-          We install clear roles, decision rights, KPIs, and operating
-          cadences that make delivery predictable.
-        </div>
-      </div>
-      <div class="card accordion-toggle" onclick="toggle(this)">
-        <h3>3. Stabilize</h3>
-        <div class="accordion-content">
-          We run the system alongside your team until leaders and recruiters
-          can operate it confidently without us.
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
+<!-- SERVICES -->
 <section id="services" class="alt">
   <div class="container">
-    <h2>Services</h2>
+    <h2>What We Do</h2>
     <div class="grid grid-3">
-      <div class="card accordion-toggle" onclick="toggle(this)">
-        <h3>Delivery Stabilization Sprint</h3>
-        <div class="accordion-content">
-          60–90 day embedded engagement delivering clearer capacity,
-          improved recruiter output, fewer surprises, and stable operations.
-        </div>
+      <div class="card">
+        <h3>Delivery Stabilisation Sprint</h3>
+        <p>
+          Embedded fractional leadership over 60–90 days to stabilise recruiter output,
+          capacity visibility, and delivery predictability.
+        </p>
       </div>
-      <div class="card accordion-toggle" onclick="toggle(this)">
-        <h3>Talent & Recruitment Ops Design</h3>
-        <div class="accordion-content">
-          End-to-end operating system design covering workflows, metrics,
-          decision rights, and cadences.
-        </div>
+      <div class="card">
+        <h3>Talent & Recruitment Operations Design</h3>
+        <p>
+          Clear workflows, decision rights, KPIs, and operating rhythms that scale
+          as your firm grows.
+        </p>
       </div>
-      <div class="card accordion-toggle" onclick="toggle(this)">
+      <div class="card">
         <h3>Leadership Operating Systems</h3>
-        <div class="accordion-content">
-          Performance rhythms and accountability structures that prevent
-          backslide after stabilization.
-        </div>
+        <p>
+          Performance and accountability structures that sustain results long after
+          the engagement ends.
+        </p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="approach">
+<!-- FOUNDER -->
+<section id="founder">
   <div class="container">
-    <h2>Our approach</h2>
+    <h2>Muhibullah Sahibjan — Founder</h2>
     <p>
-      We work as embedded, fractional leadership — not distant advisors.
-      The goal is to leave behind a delivery engine that continues to
-      function after the engagement ends.
+      "I founded Decisive Development Consulting after seeing too many capable
+      recruitment teams struggle — not because they lacked effort, but because
+      their delivery systems couldn't hold under pressure.
+    </p>
+    <p>
+      Our work helps founders regain confidence, clarity, and control by installing
+      operating systems that make delivery reliable — without burning out their people."
     </p>
   </div>
 </section>
 
+<!-- CTA -->
 <section>
   <div class="container">
-    <div class="cta-block">
+    <div class="cta">
       <h2>Ready to reduce chaos and sell with confidence?</h2>
       <p>
-        Start with a short diagnostic conversation. No pitch. No pressure.
+        Start with a straightforward diagnostic conversation.
+        No pitch. No pressure.
       </p>
       <a href="#contact" class="btn btn-primary">Start a Diagnostic</a>
     </div>
   </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
   <div class="container">
-    <h2>Let's work together</h2>
+    <h2>Let's Work Together</h2>
     <p><strong>Phone:</strong> +60 16-322-4702</p>
     <p><strong>Email:</strong> DecisiveDevelopmentConsulting@gmail.com</p>
     <p>
-      Send a WhatsApp message with the word <strong>DIAGNOSTIC</strong> and a
-      short description of your situation.
+      Send a WhatsApp message with the word <strong>DIAGNOSTIC</strong> and a short
+      description of your situation.
     </p>
   </div>
 </section>
 
 <footer>
-  Decisive Development Consulting • Built for GitHub Pages
+  © Decisive Development Consulting — Built for GitHub Pages
 </footer>
-
-<script>
-  function toggle(card) {
-    const content = card.querySelector('.accordion-content');
-    content.style.display =
-      content.style.display === 'block' ? 'none' : 'block';
-  }
-</script>
 
 </body>
 </html>
