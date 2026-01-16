@@ -14,6 +14,7 @@
       --bg:#ffffff;
       --bg-soft:#f8fafc;
       --border:#e5e7eb;
+      --success:#10b981;
     }
 
     *{box-sizing:border-box;margin:0;padding:0}
@@ -110,8 +111,7 @@
     }
 
     .hero h1{color:#fff;max-width:900px}
-
-    .hero p{color:#cbd5f5;font-size:1.1rem}
+    .hero p{color:#cbd5e1;font-size:1.1rem}
 
     .actions{
       margin-top:26px;
@@ -125,6 +125,7 @@
       border-radius:7px;
       font-weight:600;
       transition:.25s ease;
+      display:inline-block;
     }
 
     .btn-primary{
@@ -158,6 +159,10 @@
       grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
     }
 
+    .grid-2{
+      grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+    }
+
     .card{
       background:#fff;
       border:1px solid var(--border);
@@ -184,6 +189,208 @@
       display:block;
     }
 
+    /* SOCIAL PROOF */
+    .proof{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:28px;
+      margin-top:32px;
+    }
+
+    .proof-header{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:16px;
+    }
+
+    .proof-icon{
+      width:48px;
+      height:48px;
+      border-radius:50%;
+      background:var(--bg-soft);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:1.5rem;
+    }
+
+    .testimonial{
+      background:var(--bg-soft);
+      border-left:4px solid var(--success);
+      padding:20px;
+      border-radius:8px;
+      margin:16px 0;
+    }
+
+    .testimonial p{
+      color:var(--steel);
+      font-style:italic;
+      margin-bottom:12px;
+    }
+
+    .testimonial cite{
+      color:var(--muted);
+      font-size:.9rem;
+      font-style:normal;
+    }
+
+    /* FOUNDER SECTION */
+    .founder-card{
+      display:grid;
+      grid-template-columns:180px 1fr;
+      gap:32px;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:32px;
+      align-items:start;
+    }
+
+    .founder-photo{
+      width:180px;
+      height:180px;
+      border-radius:12px;
+      background:var(--bg-soft);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:4rem;
+      color:var(--accent);
+      border:2px solid var(--border);
+    }
+
+    .founder-content h3{
+      margin-bottom:8px;
+    }
+
+    .founder-content h4{
+      color:var(--muted);
+      font-weight:500;
+      font-size:1rem;
+      margin-bottom:16px;
+    }
+
+    .founder-links{
+      margin-top:20px;
+      display:flex;
+      gap:12px;
+    }
+
+    .social-link{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:8px 16px;
+      background:var(--accent);
+      color:#fff;
+      border-radius:6px;
+      font-size:.9rem;
+      font-weight:500;
+      transition:.25s ease;
+    }
+
+    .social-link:hover{
+      background:var(--ink);
+      transform:translateY(-2px);
+    }
+
+    /* CHALLENGES SECTION */
+    .challenge{
+      display:flex;
+      align-items:start;
+      gap:16px;
+      padding:20px;
+      background:var(--bg-soft);
+      border-radius:10px;
+      border:1px solid var(--border);
+    }
+
+    .challenge-icon{
+      width:48px;
+      height:48px;
+      min-width:48px;
+      border-radius:50%;
+      background:var(--accent);
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:1.3rem;
+    }
+
+    .challenge-content h3{
+      font-size:1.1rem;
+      margin-bottom:6px;
+    }
+
+    .challenge-content p{
+      font-size:.95rem;
+      max-width:100%;
+    }
+
+    /* FAQ */
+    .faq-item{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:10px;
+      padding:24px;
+      margin-bottom:16px;
+    }
+
+    .faq-question{
+      font-size:1.1rem;
+      color:var(--ink);
+      font-weight:600;
+      margin-bottom:10px;
+    }
+
+    .faq-answer{
+      color:var(--steel);
+      line-height:1.6;
+    }
+
+    /* PROCESS */
+    .process-steps{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:24px;
+      margin-top:32px;
+    }
+
+    .step{
+      position:relative;
+      background:#fff;
+      border:2px solid var(--border);
+      border-radius:14px;
+      padding:28px;
+      text-align:center;
+    }
+
+    .step-number{
+      width:56px;
+      height:56px;
+      border-radius:50%;
+      background:var(--accent);
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:1.5rem;
+      font-weight:700;
+      margin:0 auto 16px;
+    }
+
+    .step h3{
+      margin-bottom:10px;
+    }
+
+    .step p{
+      margin:0 auto;
+      font-size:.95rem;
+    }
+
     /* CTA */
     .cta{
       background:var(--ink);
@@ -194,7 +401,6 @@
     }
 
     .cta h2{color:#fff}
-
     .cta p{
       color:#c7d2fe;
       margin:auto;
@@ -208,162 +414,302 @@
       font-size:.9rem;
       color:var(--muted);
     }
+
+    @media(max-width:768px){
+      h1{font-size:2.2rem}
+      h2{font-size:1.6rem}
+      .founder-card{
+        grid-template-columns:1fr;
+        text-align:center;
+      }
+      .founder-photo{
+        margin:0 auto;
+      }
+      .founder-links{
+        justify-content:center;
+      }
+    }
   </style>
 </head>
-
 <body>
 
+<!-- NAVIGATION -->
 <nav>
   <ul>
     <li><a href="#about">About</a></li>
+    <li><a href="#challenges">Challenges</a></li>
     <li><a href="#process">How We Work</a></li>
-    <li><a href="#bpo">BPO Talent Solutions</a></li>
+    <li><a href="#bpo">BPO Solutions</a></li>
     <li><a href="#founder">Founder</a></li>
-    <li><a href="#contact" class="nav-cta">Start Diagnostic</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact" class="nav-cta">Book Free Diagnostic</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
-<section class="hero tight">
+<section class="hero">
   <div class="container">
-    <small>Decisive Development Consulting</small>
+    <small>DECISIVE DEVELOPMENT CONSULTING</small>
     <h1>When delivery becomes unpredictable,<br>growth becomes dangerous.</h1>
-    <p>
-      We help staffing, recruitment, and BPO firms install operating systems
-      that make delivery reliable, capacity visible, and growth sustainable —
-      without burnout.
-    </p>
+    <p>We help staffing, recruitment, and BPO firms install operating systems that make delivery reliable, capacity visible, and growth sustainable — without burnout.</p>
     <div class="actions">
-      <a href="#contact" class="btn btn-primary">Start a Diagnostic</a>
-      <a href="#about" class="btn btn-secondary">About the Firm</a>
+      <a href="#contact" class="btn btn-primary">Book Free 20-Min Diagnostic</a>
+      <a href="#about" class="btn btn-secondary">Learn More</a>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF / METRICS -->
+<section id="proof">
+  <div class="container">
+    <h2>Proven Results with 15+ Firms</h2>
+    <p>We've helped recruitment and BPO firms transform volatile operations into predictable, scalable systems.</p>
+    
+    <div class="metrics">
+      <div class="metric">
+        <strong>25-30%</strong>
+        <p>Average reduction in time-to-fill</p>
+      </div>
+      <div class="metric">
+        <strong>40%+</strong>
+        <p>Improvement in delivery consistency</p>
+      </div>
+      <div class="metric">
+        <strong>15+</strong>
+        <p>Staffing firms stabilized</p>
+      </div>
+    </div>
+
+    <div class="testimonial">
+      <p>"Our recruitment output was all over the place — some months great, others a disaster. After working with Decisive Development, we finally have a system that works consistently. No more firefighting."</p>
+      <cite>— Operations Director, Mid-Sized Recruitment Firm</cite>
+    </div>
+
+    <div class="testimonial">
+      <p>"We were drowning in bulk hiring demands. The stabilization sprint gave us breathing room, and now we're hitting targets without burning out the team."</p>
+      <cite>— Head of Delivery, BPO Provider</cite>
     </div>
   </div>
 </section>
 
 <!-- ABOUT -->
-<section id="about">
+<section id="about" class="soft">
   <div class="container">
     <h2>About Decisive Development Consulting</h2>
-    <p>
-      Decisive Development Consulting is a specialist advisory and embedded
-      leadership firm focused on fixing delivery breakdowns in staffing,
-      recruitment, and BPO organisations.
-    </p>
-    <p>
-      We work with founders and leadership teams where demand exists,
-      but execution has become volatile, unpredictable, or overly dependent
-      on heroics.
-    </p>
-    <p>
-      Our engagements are time-bound, systems-led, and designed to leave
-      behind operating capability — not dependency.
-    </p>
+    <p>Decisive Development Consulting is a specialist advisory and embedded leadership firm focused on fixing delivery breakdowns in staffing, recruitment, and BPO organisations.</p>
+    <p>We work with founders and leadership teams where demand exists, but execution has become volatile, unpredictable, or overly dependent on heroics.</p>
+    <p>Our engagements are time-bound, systems-led, and designed to leave behind operating capability — not dependency.</p>
   </div>
 </section>
 
-<!-- PROCESS -->
-<section id="process" class="soft">
+<!-- COMMON CHALLENGES -->
+<section id="challenges">
   <div class="container">
-    <h2>How We Work</h2>
-    <div class="grid grid-3">
-      <div class="card">
-        <h3>🌯 DELIVERY STABILIZATION SPRINT (60-90 Days)</h3>
-        <p>
-          For organizations that need immediate relief and rapid improvement. A diagnostic and intensive stabilization engagement that fixes your recruitment system in 60-90 days. This is not consulting—it's embedded operational repair, and eliminate late-stage surprises in your delivery pipeline.
-        </p>
+    <h2>Common Challenges We Fix</h2>
+    <p>Does this sound familiar? These are the pain points we specialize in solving.</p>
+    
+    <div class="grid grid-2" style="margin-top:32px;">
+      <div class="challenge">
+        <div class="challenge-icon">📊</div>
+        <div class="challenge-content">
+          <h3>Inconsistent Recruiter Output</h3>
+          <p>Recruiter output varies 40% month-to-month with no clear reason why.</p>
+        </div>
       </div>
-      <div class="card">
-        <h3>👥 END-TO-END SYSTEMS ARCHITECTURE (Strategic)</h3>
-        <p>
-          For organizations that need foundational redesign, not just stabilization. A deeper engagement that examines your entire recruitment infrastructure—systems, tools, workflows, decision rights, and talent attraction strategy—and rebuilds them as an integrated operating system. We address bottlenecks and streamline talent acquisition processes.
-        </p>
+      
+      <div class="challenge">
+        <div class="challenge-icon">🚨</div>
+        <div class="challenge-content">
+          <h3>Late-Stage Delivery Surprises</h3>
+          <p>Last-minute cancellations and deal failures that shouldn't have happened.</p>
+        </div>
       </div>
-      <div class="card">
-        <h3>🔧 LEADERSHIP OPERATING SYSTEM</h3>
-        <p>
-          For organizations that need continuous improvement and sustainable scaling. An ongoing partnership that embeds leadership systems and coaching to ensure your recruitment organization scales without founder dependency. This creates a self-managing, adaptive recruitment operation, ensuring long-term organizational excellence and strategic alignment.
-        </p>
+      
+      <div class="challenge">
+        <div class="challenge-icon">🔥</div>
+        <div class="challenge-content">
+          <h3>Founder Firefighting Mode</h3>
+          <p>Founders pulled into daily operations instead of leading strategic growth.</p>
+        </div>
+      </div>
+      
+      <div class="challenge">
+        <div class="challenge-icon">😓</div>
+        <div class="challenge-content">
+          <h3>Team Burnout & Turnover</h3>
+          <p>High-pressure environment leading to exhaustion and constant rehiring.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- BPO -->
+<!-- HOW WE WORK -->
+<section id="process" class="soft">
+  <div class="container">
+    <h2>How We Fix It: Our 3-Step Approach</h2>
+    <p>We don't just consult — we embed as operational partners to rebuild your delivery system.</p>
+    
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Map Current State</h3>
+        <p>Diagnostic assessment of your recruitment system, identifying bottlenecks and failure points.</p>
+      </div>
+      
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Design Operating System</h3>
+        <p>Build workflows, decision rights, and processes that work under pressure.</p>
+      </div>
+      
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Stabilize & Train</h3>
+        <p>Embed systems, train leadership, and hand off self-managing operations.</p>
+      </div>
+    </div>
+
+    <div class="grid grid-3" style="margin-top:48px;">
+      <div class="card">
+        <h3>🌯 DELIVERY STABILIZATION SPRINT</h3>
+        <p style="margin-top:12px;"><strong>60-90 Days</strong></p>
+        <p>For organizations that need immediate relief and rapid improvement. A diagnostic and intensive stabilization engagement that fixes your recruitment system in 60-90 days.</p>
+      </div>
+      
+      <div class="card">
+        <h3>👥 END-TO-END SYSTEMS ARCHITECTURE</h3>
+        <p style="margin-top:12px;"><strong>Strategic</strong></p>
+        <p>For organizations that need foundational redesign. We examine your entire recruitment infrastructure and rebuild it as an integrated operating system.</p>
+      </div>
+      
+      <div class="card">
+        <h3>🔧 LEADERSHIP OPERATING SYSTEM</h3>
+        <p style="margin-top:12px;"><strong>Ongoing Partnership</strong></p>
+        <p>For continuous improvement and sustainable scaling. Embeds leadership systems and coaching to ensure recruitment scales without founder dependency.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BPO TALENT SOLUTIONS -->
 <section id="bpo">
   <div class="container">
     <h2>BPO Talent Solutions</h2>
-    <p>
-      Designed for Business Process Outsourcing organizations managing high-volume hiring
-      and talent delivery. We specialize in solving the recruitment challenges specific to BPOs:
-      maintaining quality during rapid scaling, managing throughput consistency,
-      reducing time-to-fill for bulk positions, and preventing turnover in high-pressure
-      delivery environments.
-    </p>
-    <h3 style="margin-top:28px;margin-bottom:16px">Common BPO Recruitment Challenges</h3>
-    <div class="grid grid-3" style="margin-bottom:28px">
+    <p>Designed for Business Process Outsourcing organizations managing high-volume hiring and talent delivery. We specialize in solving recruitment challenges specific to BPOs.</p>
+    
+    <div class="grid grid-2" style="margin-top:32px;">
       <div class="card">
         <h3>High-Volume Bulk Hiring Pressure</h3>
         <p>Managing quality standards while hiring 100+ people per month.</p>
       </div>
+      
       <div class="card">
         <h3>Quality Control at Scale</h3>
         <p>Ensuring consistency in candidate vetting and delivery when processing large pipelines.</p>
       </div>
+      
       <div class="card">
         <h3>Timeline Compliance</h3>
         <p>Meeting strict client deadlines for project staffing without quality shortcuts.</p>
       </div>
+      
       <div class="card">
         <h3>Team Stability Under Pressure</h3>
         <p>Preventing recruitment team burnout in high-transaction environments.</p>
       </div>
     </div>
-    <h3>Our BPO Approach</h3>
-    <p>
-      We embed as your Fractional Head of Recruitment, stabilizing your bulk hiring operations,
-      implementing scalable workflows, and training your leadership to maintain consistency and quality
-      even during peak hiring cycles. For BPOs, we've helped reduce time-to-fill by 25-30% while
-      improving candidate retention.
-    </p>
-    <a href="#contact" class="btn btn-primary" style="margin-top:20px;">Book Your BPO Diagnostic</a>
+    
+    <div class="proof" style="margin-top:32px;">
+      <h3>Our BPO Approach</h3>
+      <p>We embed as your Fractional Head of Recruitment, stabilizing your bulk hiring operations, implementing scalable workflows, and training your leadership to maintain consistency and quality even during peak hiring cycles.</p>
+      <p><strong>For BPOs, we've helped reduce time-to-fill by 25-30% while improving candidate retention.</strong></p>
+      <div style="margin-top:20px;">
+        <a href="#contact" class="btn btn-primary">Book Your BPO Diagnostic</a>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- FOUNDER -->
-<section id="founder" style="background:linear-gradient(135deg,#f8fafc,#e5e7eb);padding:80px 20px;">
+<!-- FOUNDER SECTION -->
+<section id="founder" class="soft">
   <div class="container">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;">
-      <div>
-        <img src="https://via.placeholder.com/400x500?text=Muhibullah+Sahibjan" alt="Muhibullah Sahibjan" style="width:100%;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,0.1);">
+    <h2 style="margin-bottom:32px;">Meet the Founder</h2>
+    
+    <div class="founder-card">
+      <div class="founder-photo">
+        MS
       </div>
-      <div>
-        <h2 style="font-size:2.5rem;margin-bottom:20px;">Muhibullah Sahibjan</h2>
-        <p style="font-size:1.2rem;color:var(--accent);font-weight:600;margin-bottom:24px;">Founder & Principal Consultant</p>
-        <p style="margin-bottom:16px;line-height:1.8;">
-          Muhibullah founded Decisive Development Consulting after years of seeing capable, hardworking recruitment and BPO teams struggle not because of effort, but because their systems failed under pressure.
-        </p>
-        <p style="margin-bottom:16px;line-height:1.8;">
-          His approach: fix the system, not the people. Through embedded operational leadership and systems design, he helps firms move from volatile delivery to predictable, sustainable growth.
-        </p>
-        <p style="margin-bottom:16px;line-height:1.8;color:#64748b;">
-          <strong>Background:</strong> Master NLP Practitioner | CBT Certified | 15+ years in recruitment operations | Specialist in high-pressure scaling
-        </p>
-        <p style="margin-bottom:20px;line-height:1.8;">
-          When systems fail, people burn out. Muhibullah's work restores clarity, predictability, and leadership confidence through operating systems teams can actually run.
-        </p>
-        <a href="#contact" class="btn btn-primary" style="display:inline-block;">Start a Conversation</a>
+      
+      <div class="founder-content">
+        <h3>Muhibullah Sahibjan</h3>
+        <h4>Founder & Principal Consultant</h4>
+        
+        <p>Muhibullah founded Decisive Development Consulting after years of seeing capable, hardworking recruitment and BPO teams struggle not because of effort, but because their systems failed under pressure.</p>
+        
+        <p>His approach: fix the system, not the people. Through embedded operational leadership and systems design, he helps firms move from volatile delivery to predictable, sustainable growth.</p>
+        
+        <p><strong>Background:</strong> Master NLP Practitioner | CBT Certified | 15+ years in recruitment operations | Specialist in high-pressure scaling</p>
+        
+        <p style="font-style:italic;color:var(--accent);margin-top:16px;">"When systems fail, people burn out. My work restores clarity, predictability, and leadership confidence through operating systems teams can actually run."</p>
+        
+        <div class="founder-links">
+          <a href="https://www.linkedin.com/in/muhibullah-sahibjan/" target="_blank" class="social-link">
+            <span>🔗</span> Connect on LinkedIn
+          </a>
+          <a href="#contact" class="social-link">
+            <span>💬</span> Start a Conversation
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </section>
-<!-- CTA -->
-<section class="tight">
+
+<!-- FAQ SECTION -->
+<section id="faq">
   <div class="container">
-    <div class="cta">
-      <h2>Ready to restore delivery confidence?</h2>
-      <p>No pitch. No pressure. Just a diagnostic conversation.</p>
-      <a href="#contact" class="btn btn-primary">Start Diagnostic</a>
+    <h2>Frequently Asked Questions</h2>
+    <p style="margin-bottom:32px;">Common questions about our approach and engagements.</p>
+    
+    <div class="faq-item">
+      <div class="faq-question">What makes your approach different from traditional consulting?</div>
+      <div class="faq-answer">We don't just advise — we embed as operational partners. We work inside your recruitment operations, fixing systems hands-on rather than delivering PowerPoint decks. Our engagements are time-bound and designed to leave behind capability, not dependency.</div>
     </div>
+    
+    <div class="faq-item">
+      <div class="faq-question">How long does stabilization take?</div>
+      <div class="faq-answer">Our Delivery Stabilization Sprint typically runs 60-90 days for immediate operational relief. Strategic system redesigns take 3-6 months depending on complexity. We provide clear timelines and milestones during the diagnostic phase.</div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question">What if we don't have a clear delivery problem?</div>
+      <div class="faq-answer">If you're experiencing inconsistent output, last-minute surprises, founder involvement in daily operations, or team burnout — you have a systemic delivery problem. The diagnostic call will help identify whether we're the right fit.</div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question">What's included in the free diagnostic?</div>
+      <div class="faq-answer">A 20-minute structured conversation where we map your current delivery challenges, identify root causes, and determine if our approach is a good fit. No pitch, no pressure — just clarity on whether we can help.</div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question">Do you work with small firms or only large organizations?</div>
+      <div class="faq-answer">We work with staffing, recruitment, and BPO firms at various stages — from growing teams experiencing first scaling pains to established operations needing systemic overhaul. The key is that demand exists, but delivery has become unpredictable.</div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question">What results can we expect?</div>
+      <div class="faq-answer">Typical outcomes include 25-30% reduction in time-to-fill, 40%+ improvement in delivery consistency, elimination of late-stage surprises, and leadership freed from firefighting mode. Exact results depend on your starting point and engagement scope.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta">
+  <div class="container">
+    <h2>Ready to restore delivery confidence?</h2>
+    <p>No pitch. No pressure. Just a diagnostic conversation.</p>
+    <a href="#contact" class="btn btn-primary">Book Free Diagnostic</a>
   </div>
 </section>
 
@@ -373,10 +719,7 @@
     <h2>Contact</h2>
     <p><strong>Phone:</strong> +60 16-322-4702</p>
     <p><strong>Email:</strong> DecisiveDevelopmentConsulting@gmail.com</p>
-    <p>
-      WhatsApp the word <strong>DIAGNOSTIC</strong> with a brief description
-      of your situation.
-    </p>
+    <p>WhatsApp the word <strong>DIAGNOSTIC</strong> with a brief description of your situation.</p>
   </div>
 </section>
 
@@ -386,4 +729,3 @@
 
 </body>
 </html>
-
