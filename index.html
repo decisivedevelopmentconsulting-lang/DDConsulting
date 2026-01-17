@@ -1,735 +1,2032 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Decisive Development Consulting</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Neutral, restrained base styles -->
   <style>
-    :root{
-      --ink:#0f172a;
-      --steel:#1e293b;
-      --muted:#64748b;
-      --accent:#1e40af;
-      --bg:#ffffff;
-      --bg-soft:#f8fafc;
-      --border:#e5e7eb;
-      --success:#10b981;
+    :root {
+      --bg-main: #f5f5f7;
+      --bg-alt: #ffffff;
+      --bg-deep: #0b1724;
+      --text-main: #111827;
+      --text-muted: #4b5563;
+      --accent: #2563eb; /* single muted accent */
+      --border-subtle: #e5e7eb;
+      --nav-height: 64px;
+      --radius-soft: 6px;
+      --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.08);
+      --transition-fast: 180ms ease;
     }
 
-    *{box-sizing:border-box;margin:0;padding:0}
-
-    body{
-      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
-      background:var(--bg);
-      color:var(--steel);
-      line-height:1.65;
+    * {
+      box-sizing: border-box;
     }
 
-    a{text-decoration:none}
-
-    section{padding:72px 20px}
-    .tight{padding:56px 20px}
-
-    .container{
-      max-width:1080px;
-      margin:auto;
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      color: var(--text-main);
+      background-color: var(--bg-main);
+      line-height: 1.6;
+      scroll-behavior: smooth;
     }
 
-    h1{
-      font-size:3.2rem;
-      color:var(--ink);
-      line-height:1.15;
-      margin-bottom:18px;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    h2{
-      font-size:2.1rem;
-      color:var(--ink);
-      margin-bottom:14px;
+    img {
+      max-width: 100%;
+      display: block;
     }
 
-    h3{
-      font-size:1.2rem;
-      color:var(--ink);
-      margin-bottom:6px;
+    /* Layout utilities */
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
     }
 
-    p{
-      color:var(--muted);
-      max-width:860px;
-      margin-bottom:12px;
+    section {
+      padding: 3.5rem 0;
     }
 
-    /* NAV */
-    nav{
-      position:sticky;
-      top:0;
-      background:#fff;
-      border-bottom:1px solid var(--border);
-      z-index:1000;
-    }
-
-    nav ul{
-      display:flex;
-      align-items:center;
-      gap:22px;
-      max-width:1080px;
-      margin:auto;
-      padding:14px 20px;
-      list-style:none;
-    }
-
-    nav a{
-      color:var(--muted);
-      font-weight:500;
-      font-size:.95rem;
-    }
-
-    nav a:hover{color:var(--accent)}
-
-    .nav-cta{
-      margin-left:auto;
-      background:var(--accent);
-      color:#fff;
-      padding:8px 16px;
-      border-radius:6px;
-      font-weight:600;
-    }
-
-    /* HERO */
-    .hero{
-      background:linear-gradient(180deg,#020617,#0f172a);
-      color:#fff;
-    }
-
-    .hero small{
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      font-size:.75rem;
-      color:#94a3b8;
-    }
-
-    .hero h1{color:#fff;max-width:900px}
-    .hero p{color:#cbd5e1;font-size:1.1rem}
-
-    .actions{
-      margin-top:26px;
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-    }
-
-    .btn{
-      padding:12px 26px;
-      border-radius:7px;
-      font-weight:600;
-      transition:.25s ease;
-      display:inline-block;
-    }
-
-    .btn-primary{
-      background:#fff;
-      color:#020617;
-    }
-
-    .btn-secondary{
-      border:2px solid #fff;
-      color:#fff;
-    }
-
-    .btn:hover{
-      transform:translateY(-2px);
-      box-shadow:0 12px 24px rgba(0,0,0,.25);
-    }
-
-    /* BLOCKS */
-    .soft{
-      background:var(--bg-soft);
-      border-top:1px solid var(--border);
-      border-bottom:1px solid var(--border);
-    }
-
-    .grid{
-      display:grid;
-      gap:20px;
-    }
-
-    .grid-3{
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    }
-
-    .grid-2{
-      grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
-    }
-
-    .card{
-      background:#fff;
-      border:1px solid var(--border);
-      border-radius:14px;
-      padding:26px;
-    }
-
-    /* METRICS */
-    .metrics{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:24px;
-      margin-top:28px;
-    }
-
-    .metric{
-      border-left:4px solid var(--accent);
-      padding-left:16px;
-    }
-
-    .metric strong{
-      font-size:1.6rem;
-      color:var(--ink);
-      display:block;
-    }
-
-    /* SOCIAL PROOF */
-    .proof{
-      background:#fff;
-      border:1px solid var(--border);
-      border-radius:14px;
-      padding:28px;
-      margin-top:32px;
-    }
-
-    .proof-header{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      margin-bottom:16px;
-    }
-
-    .proof-icon{
-      width:48px;
-      height:48px;
-      border-radius:50%;
-      background:var(--bg-soft);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:1.5rem;
-    }
-
-    .testimonial{
-      background:var(--bg-soft);
-      border-left:4px solid var(--success);
-      padding:20px;
-      border-radius:8px;
-      margin:16px 0;
-    }
-
-    .testimonial p{
-      color:var(--steel);
-      font-style:italic;
-      margin-bottom:12px;
-    }
-
-    .testimonial cite{
-      color:var(--muted);
-      font-size:.9rem;
-      font-style:normal;
-    }
-
-    /* FOUNDER SECTION */
-    .founder-card{
-      display:grid;
-      grid-template-columns:180px 1fr;
-      gap:32px;
-      background:#fff;
-      border:1px solid var(--border);
-      border-radius:14px;
-      padding:32px;
-      align-items:start;
-    }
-
-    .founder-photo{
-      width:180px;
-      height:180px;
-      border-radius:12px;
-      background:var(--bg-soft);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:4rem;
-      color:var(--accent);
-      border:2px solid var(--border);
-    }
-
-    .founder-content h3{
-      margin-bottom:8px;
-    }
-
-    .founder-content h4{
-      color:var(--muted);
-      font-weight:500;
-      font-size:1rem;
-      margin-bottom:16px;
-    }
-
-    .founder-links{
-      margin-top:20px;
-      display:flex;
-      gap:12px;
-    }
-
-    .social-link{
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      padding:8px 16px;
-      background:var(--accent);
-      color:#fff;
-      border-radius:6px;
-      font-size:.9rem;
-      font-weight:500;
-      transition:.25s ease;
-    }
-
-    .social-link:hover{
-      background:var(--ink);
-      transform:translateY(-2px);
-    }
-
-    /* CHALLENGES SECTION */
-    .challenge{
-      display:flex;
-      align-items:start;
-      gap:16px;
-      padding:20px;
-      background:var(--bg-soft);
-      border-radius:10px;
-      border:1px solid var(--border);
-    }
-
-    .challenge-icon{
-      width:48px;
-      height:48px;
-      min-width:48px;
-      border-radius:50%;
-      background:var(--accent);
-      color:#fff;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:1.3rem;
-    }
-
-    .challenge-content h3{
-      font-size:1.1rem;
-      margin-bottom:6px;
-    }
-
-    .challenge-content p{
-      font-size:.95rem;
-      max-width:100%;
-    }
-
-    /* FAQ */
-    .faq-item{
-      background:#fff;
-      border:1px solid var(--border);
-      border-radius:10px;
-      padding:24px;
-      margin-bottom:16px;
-    }
-
-    .faq-question{
-      font-size:1.1rem;
-      color:var(--ink);
-      font-weight:600;
-      margin-bottom:10px;
-    }
-
-    .faq-answer{
-      color:var(--steel);
-      line-height:1.6;
-    }
-
-    /* PROCESS */
-    .process-steps{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:24px;
-      margin-top:32px;
-    }
-
-    .step{
-      position:relative;
-      background:#fff;
-      border:2px solid var(--border);
-      border-radius:14px;
-      padding:28px;
-      text-align:center;
-    }
-
-    .step-number{
-      width:56px;
-      height:56px;
-      border-radius:50%;
-      background:var(--accent);
-      color:#fff;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:1.5rem;
-      font-weight:700;
-      margin:0 auto 16px;
-    }
-
-    .step h3{
-      margin-bottom:10px;
-    }
-
-    .step p{
-      margin:0 auto;
-      font-size:.95rem;
-    }
-
-    /* CTA */
-    .cta{
-      background:var(--ink);
-      color:#fff;
-      border-radius:18px;
-      padding:64px 36px;
-      text-align:center;
-    }
-
-    .cta h2{color:#fff}
-    .cta p{
-      color:#c7d2fe;
-      margin:auto;
-      margin-bottom:22px;
-    }
-
-    footer{
-      padding:40px 20px;
-      text-align:center;
-      border-top:1px solid var(--border);
-      font-size:.9rem;
-      color:var(--muted);
-    }
-
-    @media(max-width:768px){
-      h1{font-size:2.2rem}
-      h2{font-size:1.6rem}
-      .founder-card{
-        grid-template-columns:1fr;
-        text-align:center;
+    @media (min-width: 960px) {
+      section {
+        padding: 3rem 0;
       }
-      .founder-photo{
-        margin:0 auto;
+    }
+
+    .section-header {
+      margin-bottom: 1.75rem;
+    }
+
+    .section-kicker {
+      font-size: 0.85rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0;
+      color: var(--text-main);
+      position: relative;
+      padding-bottom: 0.75rem;
+    }
+
+    .section-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 52px;
+      height: 2px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.45);
+    }
+
+    .section-intro {
+      max-width: 640px;
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      margin-top: 0.6rem;
+    }
+
+    /* Sticky nav */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(248, 250, 252, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(15, 23, 42, 0.04);
+    }
+
+    .nav {
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .brand {
+      font-size: 0.98rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-main);
+      white-space: nowrap;
+    }
+
+    .brand span {
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-link,
+    .nav-cta {
+      position: relative;
+      padding: 0.45rem 0.75rem;
+      border-radius: var(--radius-soft);
+      font-weight: 500;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: background-color var(--transition-fast),
+        color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        transform var(--transition-fast);
+    }
+
+    .nav-link:hover {
+      background: rgba(37, 99, 235, 0.06);
+      color: var(--text-main);
+    }
+
+    .nav-link.active {
+      color: var(--text-main);
+      background: rgba(37, 99, 235, 0.08);
+    }
+
+    .nav-link.active::after {
+      content: "";
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      bottom: 4px;
+      height: 2px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.72);
+    }
+
+    /* Dropdown */
+    .nav-item-dropdown {
+      position: relative;
+    }
+
+    .nav-dropdown-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .nav-dropdown-toggle svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .dropdown-panel {
+      position: absolute;
+      top: 110%;
+      left: 0;
+      min-width: 220px;
+      background: var(--bg-alt);
+      border-radius: 10px;
+      box-shadow: var(--shadow-soft);
+      padding: 0.5rem;
+      display: none;
+    }
+
+    .dropdown-panel.open {
+      display: block;
+    }
+
+    .dropdown-link {
+      display: block;
+      padding: 0.45rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      transition: background-color var(--transition-fast),
+        color var(--transition-fast);
+    }
+
+    .dropdown-link:hover {
+      background: rgba(37, 99, 235, 0.06);
+      color: var(--text-main);
+    }
+
+    /* CTA tab */
+    .nav-cta {
+      margin-left: 0.4rem;
+      border: 1px solid rgba(37, 99, 235, 0.2);
+      background: rgba(15, 23, 42, 0.02);
+      color: var(--text-main);
+    }
+
+    .nav-cta:hover {
+      background: rgba(37, 99, 235, 0.1);
+      box-shadow: 0 10px 18px rgba(15, 23, 42, 0.08);
+      transform: translateY(-1px);
+    }
+
+    /* Mobile nav */
+    .nav-toggle {
+      display: none;
+      border: none;
+      background: transparent;
+      padding: 0.35rem;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: #111827;
+      margin: 3px 0;
+      transition: transform var(--transition-fast),
+        opacity var(--transition-fast);
+    }
+
+    @media (max-width: 768px) {
+      .nav {
+        height: auto;
+        padding: 0.6rem 0;
       }
-      .founder-links{
-        justify-content:center;
+
+      .nav-toggle {
+        display: inline-flex;
+        flex-direction: column;
       }
+
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.4rem 0 0.7rem;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-link,
+      .nav-cta {
+        width: 100%;
+        padding: 0.45rem 0.1rem;
+        border-radius: 4px;
+      }
+
+      .dropdown-panel {
+        position: static;
+        margin-top: 0.25rem;
+        box-shadow: none;
+        border-radius: 8px;
+      }
+
+      .nav-cta {
+        margin-left: 0;
+        margin-top: 0.2rem;
+      }
+    }
+
+    /* Hero */
+    .hero {
+      background: radial-gradient(circle at top left, #e5e9f2 0, #f9fafb 45%, #f5f5f7 100%);
+      border-bottom: 1px solid rgba(15, 23, 42, 0.04);
+    }
+
+    .hero-inner {
+      min-height: calc(100vh - var(--nav-height) - 40px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+      padding-top: 2.25rem;
+      padding-bottom: 2.75rem;
+    }
+
+    @media (max-width: 860px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+        padding-top: 1.8rem;
+        padding-bottom: 2.1rem;
+      }
+    }
+
+    .hero-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-title {
+      font-size: clamp(1.9rem, 3vw, 2.3rem);
+      line-height: 1.2;
+      font-weight: 600;
+      margin: 0 0 0.85rem;
+      color: var(--text-main);
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 540px;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-pain {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.03);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      font-size: 0.82rem;
+      color: #374151;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-pain span {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #f97316;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.35rem;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.55rem 1.2rem;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: background-color var(--transition-fast),
+        color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        transform var(--transition-fast),
+        border-color var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: #111827;
+      color: #f9fafb;
+      border-color: rgba(15, 23, 42, 0.9);
+    }
+
+    .btn-primary:hover {
+      background: #020617;
+      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.3);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #111827;
+      border-color: rgba(15, 23, 42, 0.2);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(15, 23, 42, 0.04);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .hero-meta-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.7);
+    }
+
+    .hero-panel {
+      background: rgba(15, 23, 42, 0.97);
+      color: #e5e7eb;
+      border-radius: 20px;
+      padding: 1.6rem 1.5rem 1.5rem;
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      grid-template-rows: auto auto;
+      gap: 1.2rem;
+    }
+
+    @media (max-width: 860px) {
+      .hero-panel {
+        max-width: 440px;
+        margin-inline: auto;
+      }
+    }
+
+    .hero-panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .hero-panel-title {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .hero-panel-chip {
+      font-size: 0.72rem;
+      padding: 0.22rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      color: #e5e7eb;
+    }
+
+    .hero-panel-body {
+      background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.16), transparent 55%);
+      border-radius: 16px;
+      padding: 0.95rem 1rem 1.05rem;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+    }
+
+    .hero-panel-body h3 {
+      margin: 0 0 0.45rem;
+      font-size: 0.86rem;
+      font-weight: 500;
+      color: #f9fafb;
+    }
+
+    .hero-panel-body p {
+      margin: 0;
+      font-size: 0.8rem;
+      color: #d1d5db;
+    }
+
+    .hero-panel-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.65rem;
+      margin-top: 0.9rem;
+    }
+
+    .hero-panel-stat {
+      padding: 0.45rem 0.55rem;
+      border-radius: 10px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+    }
+
+    .hero-panel-stat-label {
+      font-size: 0.68rem;
+      color: #9ca3af;
+    }
+
+    .hero-panel-stat-value {
+      font-size: 0.83rem;
+      margin-top: 0.18rem;
+      color: #e5e7eb;
+    }
+
+    .hero-panel-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.9rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid rgba(55, 65, 81, 0.85);
+      font-size: 0.76rem;
+      color: #9ca3af;
+    }
+
+    .hero-panel-footer span {
+      white-space: nowrap;
+    }
+
+    /* About Decisive */
+    .about-wrapper {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 860px) {
+      .about-wrapper {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .about-main-text {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      .about-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .about-item {
+      padding: 0.7rem 0.75rem;
+      border-radius: 12px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .about-item h4 {
+      margin: 0 0 0.25rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .about-item p {
+      margin: 0;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .about-credibility {
+      padding: 0.8rem 0.9rem;
+      border-radius: 12px;
+      border: 1px dashed rgba(148, 163, 184, 0.8);
+      background: rgba(248, 250, 252, 0.9);
+      font-size: 0.85rem;
+      color: #374151;
+      margin-top: 1rem;
+    }
+
+    .about-credibility strong {
+      font-weight: 600;
+    }
+
+    .about-aside {
+      padding: 1rem 1.1rem;
+      border-radius: 16px;
+      background: #0f172a;
+      color: #e5e7eb;
+      border: 1px solid rgba(15, 23, 42, 0.9);
+      box-shadow: 0 16px 38px rgba(15, 23, 42, 0.3);
+    }
+
+    .about-aside h3 {
+      margin: 0 0 0.45rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .about-aside p {
+      margin: 0 0 0.35rem;
+      font-size: 0.8rem;
+      color: #cbd5f5;
+    }
+
+    .about-aside ul {
+      margin: 0.7rem 0 0;
+      padding-left: 1.1rem;
+      font-size: 0.8rem;
+      color: #e5e7eb;
+    }
+
+    .about-aside li + li {
+      margin-top: 0.2rem;
+    }
+
+    /* Services (Consulting only) */
+    .services {
+      background: var(--bg-alt);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.1rem;
+    }
+
+    @media (max-width: 1040px) {
+      .services-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .services-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .service-card {
+      border-radius: 14px;
+      border: 1px solid var(--border-subtle);
+      background: #f9fafb;
+      padding: 0.9rem 0.9rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      transition: border-color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        transform var(--transition-fast),
+        background-color var(--transition-fast);
+      cursor: default;
+    }
+
+    .service-card:hover {
+      border-color: rgba(37, 99, 235, 0.4);
+      box-shadow: var(--shadow-soft);
+      background: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .service-tag {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+    }
+
+    .service-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+      margin: 0;
+      color: var(--text-main);
+    }
+
+    .service-subline {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: -0.05rem;
+    }
+
+    .service-body {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .service-meta {
+      font-size: 0.78rem;
+      color: #6b7280;
+      margin-top: 0.1rem;
+    }
+
+    /* BPO Talent Solutions */
+    .bpo {
+      background: #020617;
+      color: #e5e7eb;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bpo::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.2), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(15, 23, 42, 0.8), transparent 55%);
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    .bpo > .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .bpo-header .section-title {
+      color: #f9fafb;
+    }
+
+    .bpo-header .section-title::after {
+      background: rgba(129, 140, 248, 0.9);
+    }
+
+    .bpo-header .section-intro {
+      color: #cbd5f5;
+    }
+
+    .bpo-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2.1rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 900px) {
+      .bpo-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .bpo-left {
+      display: flex;
+      flex-direction: column;
+      gap: 1.15rem;
+    }
+
+    .bpo-contrast {
+      padding: 0.8rem 0.9rem;
+      border-radius: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      background: rgba(15, 23, 42, 0.7);
+      font-size: 0.86rem;
+      color: #e5e7eb;
+    }
+
+    .bpo-contrast p {
+      margin: 0;
+    }
+
+    .bpo-contrast strong {
+      font-weight: 600;
+    }
+
+    .bpo-contrast-line {
+      margin-top: 0.3rem;
+      font-size: 0.84rem;
+      color: #cbd5f5;
+    }
+
+    .bpo-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.1rem;
+    }
+
+    .bpo-pill {
+      font-size: 0.74rem;
+      padding: 0.23rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      color: #e5e7eb;
+    }
+
+    .bpo-model {
+      border-radius: 14px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.25), rgba(15, 23, 42, 0.96));
+      padding: 1rem 1.1rem 1rem;
+    }
+
+    .bpo-model h3 {
+      margin: 0 0 0.4rem;
+      font-size: 0.96rem;
+      font-weight: 500;
+      color: #f9fafb;
+    }
+
+    .bpo-model p {
+      margin: 0;
+      font-size: 0.83rem;
+      color: #e5e7eb;
+    }
+
+    .bpo-model-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-top: 0.9rem;
+    }
+
+    @media (max-width: 720px) {
+      .bpo-model-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .bpo-step {
+      padding: 0.6rem 0.7rem 0.65rem;
+      border-radius: 12px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      font-size: 0.8rem;
+      color: #e5e7eb;
+    }
+
+    .bpo-step-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #a5b4fc;
+      margin-bottom: 0.15rem;
+    }
+
+    .bpo-step-title {
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+
+    .bpo-guidance {
+      font-size: 0.8rem;
+      color: #cbd5f5;
+      margin-top: 0.85rem;
+    }
+
+    .bpo-right {
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(30, 64, 175, 0.9);
+      padding: 1rem 1.1rem 1rem;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.7);
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .bpo-right h3 {
+      margin: 0;
+      font-size: 0.96rem;
+      font-weight: 500;
+      color: #e5e7eb;
+    }
+
+    .bpo-tabs {
+      border-radius: 999px;
+      padding: 0.12rem;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(55, 65, 81, 0.85);
+      display: inline-flex;
+      gap: 0.15rem;
+      font-size: 0.78rem;
+    }
+
+    .bpo-tab {
+      padding: 0.28rem 0.7rem;
+      border-radius: 999px;
+      border: none;
+      background: transparent;
+      color: #9ca3af;
+      cursor: pointer;
+      font-size: inherit;
+      font-family: inherit;
+      transition: background-color var(--transition-fast),
+        color var(--transition-fast);
+    }
+
+    .bpo-tab.active {
+      background: rgba(37, 99, 235, 0.96);
+      color: #f9fafb;
+    }
+
+    .bpo-accordion {
+      border-radius: 10px;
+      border: 1px solid rgba(55, 65, 81, 0.8);
+      background: rgba(15, 23, 42, 0.95);
+      padding: 0.55rem 0.6rem;
+    }
+
+    .bpo-accordion-item + .bpo-accordion-item {
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      margin-top: 0.4rem;
+      padding-top: 0.4rem;
+    }
+
+    .bpo-accordion-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.6rem;
+      cursor: pointer;
+    }
+
+    .bpo-accordion-title {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: #e5e7eb;
+    }
+
+    .bpo-accordion-icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: #9ca3af;
+    }
+
+    .bpo-accordion-body {
+      font-size: 0.79rem;
+      color: #cbd5f5;
+      margin-top: 0.2rem;
+      display: none;
+    }
+
+    .bpo-accordion-item.open .bpo-accordion-body {
+      display: block;
+    }
+
+    .bpo-meta {
+      font-size: 0.76rem;
+      color: #9ca3af;
+    }
+
+    .bpo-meta strong {
+      color: #e5e7eb;
+    }
+
+    /* How We Work (existing process content kept conceptually unchanged) */
+    .how-we-work {
+      background: var(--bg-main);
+    }
+
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    @media (max-width: 900px) {
+      .how-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .how-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .how-card {
+      border-radius: 14px;
+      border: 1px solid var(--border-subtle);
+      background: #ffffff;
+      padding: 0.9rem 0.9rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      transition: box-shadow var(--transition-fast),
+        transform var(--transition-fast),
+        border-color var(--transition-fast);
+    }
+
+    .how-card:hover {
+      border-color: rgba(37, 99, 235, 0.4);
+      box-shadow: var(--shadow-soft);
+      transform: translateY(-1px);
+    }
+
+    .how-step {
+      font-size: 0.76rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .how-title {
+      margin: 0;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .how-body {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .how-foot {
+      margin-top: auto;
+      font-size: 0.78rem;
+      color: #6b7280;
+    }
+
+    /* Engagement Patterns & Outcomes */
+    .proof {
+      background: #f9fafb;
+    }
+
+    .proof-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 1.6rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 900px) {
+      .proof-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 0.9rem;
+    }
+
+    @media (max-width: 720px) {
+      .proof-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .proof-card {
+      border-radius: 14px;
+      border: 1px solid var(--border-subtle);
+      background: #ffffff;
+      padding: 0.8rem 0.9rem 0.85rem;
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    .proof-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      color: var(--accent);
+      margin-bottom: 0.15rem;
+    }
+
+    .proof-context {
+      font-weight: 500;
+      color: var(--text-main);
+      margin-bottom: 0.3rem;
+    }
+
+    .proof-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.35rem;
+      margin-top: 0.15rem;
+    }
+
+    .proof-key {
+      font-size: 0.78rem;
+      font-weight: 500;
+      min-width: 86px;
+      color: #4b5563;
+    }
+
+    .proof-value {
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    .proof-aside {
+      font-size: 0.84rem;
+      color: #4b5563;
+      padding: 0.9rem 1rem;
+      border-radius: 14px;
+      border: 1px dashed rgba(148, 163, 184, 0.9);
+      background: linear-gradient(
+        135deg,
+        rgba(229, 231, 235, 0.7),
+        rgba(249, 250, 251, 0.9)
+      );
+    }
+
+    .proof-aside strong {
+      font-weight: 600;
+    }
+
+    /* Meet the Founder (content untouched) */
+    .founder {
+      background: var(--bg-alt);
+    }
+
+    .founder-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    @media (max-width: 880px) {
+      .founder-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .founder-card {
+      border-radius: 18px;
+      background: linear-gradient(135deg, #0f172a, #020617);
+      color: #e5e7eb;
+      padding: 1rem 1.05rem 1rem;
+      display: grid;
+      grid-template-columns: 120px minmax(0, 1fr);
+      gap: 0.9rem;
+      align-items: center;
+      border: 1px solid rgba(15, 23, 42, 0.9);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.85);
+    }
+
+    @media (max-width: 520px) {
+      .founder-card {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .founder-photo {
+      width: 110px;
+      height: 110px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.9);
+      background: radial-gradient(circle at top, #1f2937, #020617);
+    }
+
+    .founder-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .founder-info h3 {
+      margin: 0 0 0.1rem;
+      font-size: 0.98rem;
+      font-weight: 500;
+    }
+
+    .founder-info p {
+      margin: 0;
+      font-size: 0.8rem;
+      color: #cbd5f5;
+    }
+
+    .founder-message {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* CTA section */
+    .cta-section {
+      background: #020617;
+      color: #e5e7eb;
+      border-top: 1px solid rgba(15, 23, 42, 0.9);
+      border-bottom: 1px solid rgba(15, 23, 42, 0.9);
+    }
+
+    .cta-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 1.6rem;
+      align-items: center;
+    }
+
+    @media (max-width: 880px) {
+      .cta-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .cta-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 0 0 0.6rem;
+      color: #f9fafb;
+    }
+
+    .cta-body {
+      font-size: 0.9rem;
+      color: #cbd5f5;
+      margin-bottom: 0.9rem;
+    }
+
+    .cta-note {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 0.4rem;
+    }
+
+    .cta-note strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .cta-card {
+      border-radius: 14px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.96);
+      padding: 0.9rem 1rem 0.85rem;
+      font-size: 0.83rem;
+      color: #cbd5f5;
+    }
+
+    .cta-card-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.6rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .cta-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #9ca3af;
+    }
+
+    /* Footer */
+    footer {
+      padding: 1.4rem 0 1.6rem;
+      font-size: 0.78rem;
+      color: #6b7280;
+      text-align: center;
+      background: #f9fafb;
+      border-top: 1px solid rgba(15, 23, 42, 0.04);
+    }
+
+    /* Fade-in on scroll */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 220ms ease-out, transform 220ms ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
 <body>
+  <!-- Header / Navigation -->
+  <header>
+    <div class="container">
+      <nav class="nav">
+        <div class="brand">
+          Decisive Development Consulting
+          <span>· Talent & Delivery Operations</span>
+        </div>
 
-<!-- NAVIGATION -->
-<nav>
-  <ul>
-    <li><a href="#about">About</a></li>
-    <li><a href="#challenges">Challenges</a></li>
-    <li><a href="#process">How We Work</a></li>
-    <li><a href="#bpo">BPO Solutions</a></li>
-    <li><a href="#founder">Founder</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="#contact" class="nav-cta">Book Free Diagnostic</a></li>
-  </ul>
-</nav>
+        <button class="nav-toggle" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="container">
-    <small>DECISIVE DEVELOPMENT CONSULTING</small>
-    <h1>When delivery becomes unpredictable,<br>growth becomes dangerous.</h1>
-    <p>We help staffing, recruitment, and BPO firms install operating systems that make delivery reliable, capacity visible, and growth sustainable — without burnout.</p>
-    <div class="actions">
-      <a href="#contact" class="btn btn-primary">Book Free 20-Min Diagnostic</a>
-      <a href="#about" class="btn btn-secondary">Learn More</a>
+        <div class="nav-links">
+          <a href="#home" class="nav-link">Home</a>
+          <a href="#services" class="nav-link">Services</a>
+          <a href="#bpo-talent" class="nav-link">BPO Talent Solutions</a>
+
+          <div class="nav-item-dropdown">
+            <button class="nav-link nav-dropdown-toggle" type="button">
+              About
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M5 7l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+            </button>
+            <div class="dropdown-panel">
+              <a href="#about" class="dropdown-link">About Decisive Development Consulting</a>
+              <a href="#founder" class="dropdown-link">Meet the Founder</a>
+              <a href="#how-we-work" class="dropdown-link">How We Work</a>
+            </div>
+          </div>
+
+          <a href="#start-diagnostic" class="nav-cta">Start Diagnostic</a>
+        </div>
+      </nav>
     </div>
-  </div>
-</section>
+  </header>
 
-<!-- SOCIAL PROOF / METRICS -->
-<section id="proof">
-  <div class="container">
-    <h2>Proven Results with 15+ Firms</h2>
-    <p>We've helped recruitment and BPO firms transform volatile operations into predictable, scalable systems.</p>
-    
-    <div class="metrics">
-      <div class="metric">
-        <strong>25-30%</strong>
-        <p>Average reduction in time-to-fill</p>
+  <!-- Hero -->
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-inner fade-in">
+        <div>
+          <div class="hero-kicker">For founders carrying delivery risk</div>
+          <h1 class="hero-title">
+            Stabilising recruitment and talent operations when firefighting has become the norm.
+          </h1>
+          <p class="hero-sub">
+            When every quarter depends on whether your recruiters and partners deliver, you need operating systems that make performance repeatable — not heroic.
+          </p>
+
+          <div class="hero-pain">
+            <span></span>
+            <div>Delivery volatility, constant firefighting, fragile operations that collapse under load.</div>
+          </div>
+
+          <div class="hero-actions">
+            <a href="#start-diagnostic" class="btn-primary">Start a Diagnostic Conversation</a>
+            <a href="#how-we-work" class="btn-secondary">How We Work</a>
+          </div>
+
+          <div class="hero-meta">
+            <div class="hero-meta-item">
+              <div class="hero-meta-dot"></div>
+              <span>Built for recruitment and BPO organisations under delivery pressure.</span>
+            </div>
+            <div class="hero-meta-item">
+              <div class="hero-meta-dot"></div>
+              <span>Designed to reduce volatility, not add new projects.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right hero panel with operational feel -->
+        <aside class="hero-panel">
+          <div class="hero-panel-header">
+            <div class="hero-panel-title">Current delivery posture</div>
+            <div class="hero-panel-chip">Diagnostic view</div>
+          </div>
+          <div class="hero-panel-body">
+            <h3>What usually shows up before we engage</h3>
+            <p>
+              Inconsistent fulfilment, late-stage candidate fallout, and leadership teams spending too many cycles manually chasing numbers across fragmented tools.
+            </p>
+            <div class="hero-panel-grid">
+              <div class="hero-panel-stat">
+                <div class="hero-panel-stat-label">Signal</div>
+                <div class="hero-panel-stat-value">Fire drills around key accounts, week after week.</div>
+              </div>
+              <div class="hero-panel-stat">
+                <div class="hero-panel-stat-label">Constraint</div>
+                <div class="hero-panel-stat-value">Capacity, process, and accountability unclear across pods.</div>
+              </div>
+              <div class="hero-panel-stat">
+                <div class="hero-panel-stat-label">Risk</div>
+                <div class="hero-panel-stat-value">Revenue tied to a few people, not a system.</div>
+              </div>
+            </div>
+          </div>
+          <div class="hero-panel-footer">
+            <span>Work starts with an operational diagnostic, not a slide deck.</span>
+            <span>Focus: stabilise, then scale.</span>
+          </div>
+        </aside>
       </div>
-      <div class="metric">
-        <strong>40%+</strong>
-        <p>Improvement in delivery consistency</p>
+    </section>
+
+    <!-- About Decisive Development Consulting -->
+    <section id="about">
+      <div class="container about-wrapper fade-in">
+        <div>
+          <header class="section-header">
+            <div class="section-kicker">About</div>
+            <h2 class="section-title">About Decisive Development Consulting</h2>
+            <p class="section-intro">
+              Decisive Development Consulting works with recruitment and BPO organisations where growth has outpaced operating discipline, and founders can feel the cost of volatility in every reporting cycle.
+            </p>
+          </header>
+
+          <p class="about-main-text">
+            The focus is simple: make delivery performance predictable by tightening the connection between demand, capacity, and accountable execution — without building fragile processes that only work when everyone is at 110%.
+          </p>
+
+          <div class="about-grid">
+            <div class="about-item">
+              <h4>Operating lens</h4>
+              <p>
+                Systems, roles, and decision rights first — personalities, tools, and incentives aligned to support them, not the other way round.
+              </p>
+            </div>
+            <div class="about-item">
+              <h4>Founder reality</h4>
+              <p>
+                Designed for organisations where the founder or a small leadership group are still the escalation point for most delivery problems.
+              </p>
+            </div>
+            <div class="about-item">
+              <h4>Scope of work</h4>
+              <p>
+                From short delivery stabilisation sprints through to building leadership operating systems that keep teams aligned under higher load.
+              </p>
+            </div>
+            <div class="about-item">
+              <h4>Change posture</h4>
+              <p>
+                Fewer initiatives, clear ownership, and visible feedback loops — so changes hold under pressure, not just during workshops.
+              </p>
+            </div>
+          </div>
+
+          <div class="about-credibility">
+            <strong>Founder credibility.</strong>
+            Decisive Development Consulting is led by a practitioner who has operated inside recruitment and BPO environments, combining delivery operations, talent systems, and behavioural disciplines to make change practical and sustainable.
+          </div>
+        </div>
+
+        <aside class="about-aside">
+          <h3>Where this is most useful</h3>
+          <p>
+            Organisations where senior leaders already feel the cost of volatility and want an operational partner, not another abstract strategy.
+          </p>
+          <ul>
+            <li>Staffing and BPO teams carrying key account and SLA risk.</li>
+            <li>Founders looking to step back from daily firefighting without performance dropping.</li>
+            <li>Leaders who want dashboards tied to clear ownership and behaviour, not just data.</li>
+          </ul>
+        </aside>
       </div>
-      <div class="metric">
-        <strong>15+</strong>
-        <p>Staffing firms stabilized</p>
-      </div>
-    </div>
+    </section>
 
-    <div class="testimonial">
-      <p>"Our recruitment output was all over the place — some months great, others a disaster. After working with Decisive Development, we finally have a system that works consistently. No more firefighting."</p>
-      <cite>— HR Manager: Mid-Sized Staffing Firm (60-Day Stabilization)</cite>
-    </div>
+    <!-- Services: consulting only -->
+    <section id="services" class="services">
+      <div class="container fade-in">
+        <header class="section-header">
+          <div class="section-kicker">Services</div>
+          <h2 class="section-title">Consulting engagements</h2>
+          <p class="section-intro">
+            Structured consulting work focused on stabilising delivery, redesigning talent and recruitment operations, and embedding leadership systems that can carry growth without burning people out.
+          </p>
+        </header>
 
-    <div class="testimonial">
-      <p>"We were drowning in bulk hiring demands. The stabilization sprint gave us breathing room, and now we're hitting targets without burning out the team."</p>
-            <cite>— CHRO: Malaysia-Based BPO Provider (2000 employees)</cite>
-    </div>
-  </div>
-</section>
+        <div class="services-grid">
+          <!-- Delivery Stabilisation Sprint -->
+          <article class="service-card">
+            <div class="service-tag">Delivery stabilisation sprint</div>
+            <h3 class="service-title">60–90 day stabilisation engagement</h3>
+            <p class="service-subline">
+              For organisations that need immediate relief and rapid improvement in core delivery performance.
+            </p>
+            <div class="service-body">
+              A tightly scoped sprint that diagnoses where work is really getting stuck in your recruitment or talent value chain, then implements a limited number of high-leverage changes with clear owners and operating rhythms.
+            </div>
+            <div class="service-meta">
+              Typical focus: throughput reliability, late-stage fallout, and clarity on who owns which parts of the system.
+            </div>
+          </article>
 
-<!-- ABOUT -->
-<section id="about" class="soft">
-  <div class="container">
-    <h2>About Decisive Development Consulting</h2>
-    <p>Decisive Development Consulting is a specialist advisory and embedded leadership firm focused on fixing delivery breakdowns in staffing, recruitment, and BPO organisations.</p>
-    <p>We work with founders and leadership teams where demand exists, but execution has become volatile, unpredictable, or overly dependent on heroics.</p>
-    <p>Our engagements are time-bound, systems-led, and designed to leave behind operating capability — not dependency.</p>
-  </div>
-</section>
+          <!-- Talent & Recruitment Operations Design -->
+          <article class="service-card">
+            <div class="service-tag">Talent & recruitment operations</div>
+            <h3 class="service-title">Talent & Recruitment Operations Design</h3>
+            <p class="service-subline">
+              For teams where growth has exposed structural gaps in roles, workflows, and decision rights.
+            </p>
+            <div class="service-body">
+              Work that redesigns how demand is triaged, how work flows through pods or teams, and how performance is measured and governed, so leaders can see issues early rather than reacting once clients escalate.
+            </div>
+            <div class="service-meta">
+              Typical focus: role clarity, capacity design, process architecture, and instrumentation that leadership actually uses.
+            </div>
+          </article>
 
-<!-- COMMON CHALLENGES -->
-<section id="challenges">
-  <div class="container">
-    <h2>Common Challenges We Fix</h2>
-    <p>Does this sound familiar? These are the pain points we specialize in solving.</p>
-    
-    <div class="grid grid-2" style="margin-top:32px;">
-      <div class="challenge">
-        <div class="challenge-icon">📊</div>
-        <div class="challenge-content">
-          <h3>Inconsistent Recruiter Output</h3>
-          <p>Recruiter output varies 40% month-to-month with no clear reason why.</p>
+          <!-- Leadership Operating Systems -->
+          <article class="service-card">
+            <div class="service-tag">Leadership operating systems</div>
+            <h3 class="service-title">Leadership Operating Systems</h3>
+            <p class="service-subline">
+              For founders and leadership teams who want a self-managing operation rather than permanent escalation.
+            </p>
+            <div class="service-body">
+              Engagements that codify how leadership teams set direction, review performance, make trade-offs, and intervene in delivery — translating strategy into a repeatable cadence of conversations, decisions, and actions.
+            </div>
+            <div class="service-meta">
+              Typical focus: operating rhythms, decision forums, accountability structures, and the behavioural disciplines that keep them in place.
+            </div>
+          </article>
         </div>
       </div>
-      
-      <div class="challenge">
-        <div class="challenge-icon">🚨</div>
-        <div class="challenge-content">
-          <h3>Late-Stage Delivery Surprises</h3>
-          <p>Last-minute cancellations and deal failures that shouldn't have happened.</p>
+    </section>
+
+    <!-- BPO Talent Solutions: separate capability -->
+    <section id="bpo-talent" class="bpo">
+      <div class="container fade-in">
+        <header class="section-header bpo-header">
+          <div class="section-kicker">BPO Talent Solutions</div>
+          <h2 class="section-title">A delivery-grade, integrated talent engine</h2>
+          <p class="section-intro">
+            For BPOs and high-volume recruitment environments that need a reliable, accountable talent engine plugged into their operating model — not an external vendor pushing CVs into the inbox.
+          </p>
+        </header>
+
+        <div class="bpo-layout">
+          <div class="bpo-left">
+            <div class="bpo-contrast">
+              <p>
+                <strong>Separate business capability, different operating model.</strong>
+                BPO Talent Solutions runs as an integrated extension of your delivery system, with shared dashboards, agreed operating rhythms, and clear ownership on both sides.
+              </p>
+              <p class="bpo-contrast-line">
+                This is not CV volume pushing or offshore churn. It is a structured, accountable extension of your recruitment and delivery organisation.
+              </p>
+              <div class="bpo-pill-row">
+                <span class="bpo-pill">Shared service levels</span>
+                <span class="bpo-pill">Embedded into delivery rhythms</span>
+                <span class="bpo-pill">Real-time issue escalation</span>
+              </div>
+            </div>
+
+            <div class="bpo-model">
+              <h3>How the BPO Talent Solutions model works</h3>
+              <p>
+                The unit is designed as a stable, repeatable engine for sourcing, screening, and pipeline management that plugs directly into your teams, with clear entry and exit points and measurable impact on delivery reliability.
+              </p>
+              <div class="bpo-model-grid">
+                <div class="bpo-step">
+                  <div class="bpo-step-label">01 · Define</div>
+                  <div class="bpo-step-title">Integrated demand and standards</div>
+                  <div class="bpo-step-body">
+                    Work starts by aligning on demand patterns, role archetypes, screening standards, and where this capability connects with your internal teams and clients.
+                  </div>
+                </div>
+                <div class="bpo-step">
+                  <div class="bpo-step-label">02 · Build</div>
+                  <div class="bpo-step-title">Accountable, structured pods</div>
+                  <div class="bpo-step-body">
+                    Cross-functional pods are configured with explicit ownership for sourcing, assessment, documentation, and handover into your internal workflows and tools.
+                  </div>
+                </div>
+                <div class="bpo-step">
+                  <div class="bpo-step-label">03 · Run</div>
+                  <div class="bpo-step-title">Continuous delivery & adjustment</div>
+                  <div class="bpo-step-body">
+                    Delivery runs on agreed rhythms with visible metrics, joint reviews, and the ability to adjust scope or focus without destabilising core operations.
+                  </div>
+                </div>
+              </div>
+              <div class="bpo-guidance">
+                The result is an external capability that behaves like part of your organisation — with performance managed against clear expectations, not hopeful intent.
+              </div>
+            </div>
+          </div>
+
+          <aside class="bpo-right">
+            <h3>What this looks like in practice</h3>
+            <div class="bpo-tabs" aria-label="Engagement mode">
+              <button class="bpo-tab active" data-bpo-tab="integration" type="button">Integration</button>
+              <button class="bpo-tab" data-bpo-tab="governance" type="button">Governance</button>
+            </div>
+
+            <div class="bpo-accordion" data-bpo-panel="integration">
+              <div class="bpo-accordion-item open">
+                <div class="bpo-accordion-header">
+                  <div class="bpo-accordion-title">Embedded into your existing stack</div>
+                  <div class="bpo-accordion-icon">−</div>
+                </div>
+                <div class="bpo-accordion-body">
+                  Workflows, documentation, and communication run through your systems wherever possible, so there is a single source of truth and fewer handover failures.
+                </div>
+              </div>
+              <div class="bpo-accordion-item">
+                <div class="bpo-accordion-header">
+                  <div class="bpo-accordion-title">Shared dashboards and operating rhythms</div>
+                  <div class="bpo-accordion-icon">+</div>
+                </div>
+                <div class="bpo-accordion-body">
+                  Performance is visible through shared dashboards tied to weekly and monthly reviews, so issues are surfaced and addressed before they hit clients.
+                </div>
+              </div>
+            </div>
+
+            <div class="bpo-accordion" data-bpo-panel="governance" style="display:none;">
+              <div class="bpo-accordion-item open">
+                <div class="bpo-accordion-header">
+                  <div class="bpo-accordion-title">Clear accountability on both sides</div>
+                  <div class="bpo-accordion-icon">−</div>
+                </div>
+                <div class="bpo-accordion-body">
+                  Roles, escalation paths, and decision rights are defined up front, so questions like “who owns this?” and “who decides?” are answered before volume scales.
+                </div>
+              </div>
+              <div class="bpo-accordion-item">
+                <div class="bpo-accordion-header">
+                  <div class="bpo-accordion-title">Aligned incentives and boundaries</div>
+                  <div class="bpo-accordion-icon">+</div>
+                </div>
+                <div class="bpo-accordion-body">
+                  The relationship is structured around service consistency and reliability, not just volume, with clear boundaries so your internal teams stay focused where they add the most value.
+                </div>
+              </div>
+            </div>
+
+            <div class="bpo-meta">
+              <strong>Positioning.</strong>
+              This is a delivery-grade capability designed for integration into your operating model — not advisory work and not a transactional vendor arrangement.
+            </div>
+          </aside>
         </div>
       </div>
-      
-      <div class="challenge">
-        <div class="challenge-icon">🔥</div>
-        <div class="challenge-content">
-          <h3>Founder Firefighting Mode</h3>
-          <p>Founders pulled into daily operations instead of leading strategic growth.</p>
+    </section>
+
+    <!-- How We Work (engagement model & process) -->
+    <section id="how-we-work" class="how-we-work">
+      <div class="container fade-in">
+        <header class="section-header">
+          <div class="section-kicker">How we work</div>
+          <h2 class="section-title">Engagement model and process</h2>
+          <p class="section-intro">
+            Work is structured so that founders and leadership teams can see what will happen, who will be involved, and how impact will be measured — from the first diagnostic conversation through to operating in a new steady state.
+          </p>
+        </header>
+
+        <div class="how-grid">
+          <article class="how-card">
+            <div class="how-step">Phase 1 · Diagnose</div>
+            <h3 class="how-title">Operational diagnostic</h3>
+            <div class="how-body">
+              A focused diagnostic on your recruitment and delivery system: where work comes from, how it flows, where it stalls, and how performance is currently governed and reviewed.
+            </div>
+            <div class="how-foot">
+              Outputs: system map, constraints, and a small number of priority changes with clear owners.
+            </div>
+          </article>
+
+          <article class="how-card">
+            <div class="how-step">Phase 2 · Stabilise</div>
+            <h3 class="how-title">Stabilisation and redesign</h3>
+            <div class="how-body">
+              Implementation of agreed changes to roles, workflows, rituals, and dashboards, with tight feedback loops and course correction as your teams run them in real conditions.
+            </div>
+            <div class="how-foot">
+              Focus: stabilise throughput and reliability before adding more growth initiatives.
+            </div>
+          </article>
+
+          <article class="how-card">
+            <div class="how-step">Phase 3 · Embed</div>
+            <h3 class="how-title">Leadership operating system</h3>
+            <div class="how-body">
+              Codifying the operating cadences, decision forums, and accountability structures that keep the new system in place, even when leaders step away or demand spikes.
+            </div>
+            <div class="how-foot">
+              Outcome: a self-managing operation with fewer escalations and clearer choices.
+            </div>
+          </article>
         </div>
       </div>
-      
-      <div class="challenge">
-        <div class="challenge-icon">😓</div>
-        <div class="challenge-content">
-          <h3>Team Burnout & Turnover</h3>
-          <p>High-pressure environment leading to exhaustion and constant rehiring.</p>
+    </section>
+
+    <!-- Engagement Patterns & Outcomes -->
+    <section id="proof" class="proof">
+      <div class="container proof-layout fade-in">
+        <div>
+          <header class="section-header">
+            <div class="section-kicker">Engagement patterns & outcomes</div>
+            <h2 class="section-title">What typically changes during and after engagements</h2>
+            <p class="section-intro">
+              Instead of testimonials, below are structured patterns from prior work — the kinds of situations that led to an engagement, what changed, and the operational outcomes that followed.
+            </p>
+          </header>
+
+          <div class="proof-grid">
+            <article class="proof-card">
+              <div class="proof-label">Snapshot A</div>
+              <div class="proof-context">Founder-led staffing firm with inconsistent fulfilment</div>
+              <div class="proof-row">
+                <div class="proof-key">Client context</div>
+                <div class="proof-value">
+                  Mid-sized recruitment business where a few senior people were the default escalation route for most accounts and deals.
+                </div>
+              </div>
+              <div class="proof-row">
+                <div class="proof-key">Core problem</div>
+                <div class="proof-value">
+                  Volatile delivery performance across teams, unclear ownership of stages in the funnel, and reactive management of pipelines.
+                </div>
+              </div>
+              <div class="proof-row">
+                <div class="proof-key">What changed</div>
+                <div class="proof-value">
+                  Clarified roles and decision rights, introduced simple operating rhythms and dashboards tied to those roles, and reconfigured how work moved between recruiters.
+                </div>
+              </div>
+              <div class="proof-row">
+                <div class="proof-key">Outcome</div>
+                <div class="proof-value">
+                  More predictable weekly throughput, fewer last-minute escalations, and leadership time freed from constant firefighting to more deliberate growth decisions.
+                </div>
+              </div>
+            </article>
+
+            <article class="proof-card">
+              <div class="proof-label">Snapshot B</div>
+              <div class="proof-context">BPO unit scaling headcount faster than operations</div>
+              <div class="proof-row">
+                <div class="proof-key">Client context</div>
+                <div class="proof-value">
+                  BPO delivery unit growing quickly across regions with mixed processes and limited visibility into where work stalled.
+                </div>
+              </div>
+              <div class="proof-row">
+                <div class="proof-key">Core problem</div>
+                <div class="proof-value">
+                  Inconsistent experience for end-clients, multiple local workarounds, and limited trust in reported numbers.
+                </div>
+              </div>
+              <div class="proof-row">
+                <div class="proof-key">What changed</div>
+                <div class="proof-value">
+                  Defined a standardised operating model, clarified interfaces between central and local teams, and aligned metrics with how work actually flowed.
+                </div>
+              </div>
+              <div class="proof-row">
+                <div class="proof-key">Outcome</div>
+                <div class="proof-value">
+                  Greater stability across shifts and locations, clearer accountability for service levels, and a more reliable foundation for further scale.
+                </div>
+              </div>
+            </article>
+
+            <article class="proof-card">
+              <div class="proof-label">Snapshot C</div>
+              <div class="proof-context">Leadership team overwhelmed by ad hoc decisions</div>
+              <div class="proof-row">
+                <div class="proof-key">Client context</div>
+                <div class="proof-value">
+                  Senior leaders in a recruitment organisation handling most meaningful decisions informally, with limited structured review of delivery health.
+                </div>
+              </div>
+              <div class="proof-row">
+                <div class="proof-key">Core problem</div>
+                <div class="proof-value">
+                  Fragmented information, conflicting priorities across functions, and a sense of “always catching up” when issues surfaced.
+                </div>
+              </div>
+              <div class="proof-row">
+                <div class="proof-key">What changed</div>
+                <div class="proof-value">
+                  Installed a clear leadership operating cadence with defined forums, inputs, and decision scopes, supported by concise dashboards.
+                </div>
+              </div>
+              <div class="proof-row">
+                <div class="proof-key">Outcome</div>
+                <div class="proof-value">
+                  More deliberate trade-offs, fewer surprises in delivery, and less reliance on informal escalation to get problems resolved.
+                </div>
+              </div>
+            </article>
+
+            <article class="proof-card">
+              <div class="proof-label">Snapshot D</div>
+              <div class="proof-context">Offshore delivery team under client pressure</div>
+              <div class="proof-row">
+                <div class="proof-key">Client context</div>
+                <div class="proof-value">
+                  Offshore team supporting multiple client accounts with varying expectations and limited shared view of priorities and capacity.
+                </div>
+              </div>
+              <div class="proof-row">
+                <div class="proof-key">Core problem</div>
+                <div class="proof-value">
+                  Frequent reprioritisation, inconsistent responsiveness, and tension between local teams, offshore resources, and clients.
+                </div>
+              </div>
+              <div class="proof-row">
+                <div class="proof-key">What changed</div>
+                <div class="proof-value">
+                  Introduced structured intake, clearer queues, and simple visual controls for capacity and commitments across accounts.
+                </div>
+              </div>
+              <div class="proof-row">
+                <div class="proof-key">Outcome</div>
+                <div class="proof-value">
+                  Improved responsiveness, reduced friction between teams, and clearer expectations with clients about what could be delivered and when.
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <aside class="proof-aside">
+          <strong>Pattern.</strong>
+          The common thread across these engagements is not a single methodology, but a disciplined way of seeing work, clarifying ownership, and building operating systems that hold under real-world pressure rather than just under workshop conditions.
+        </aside>
+      </div>
+    </section>
+
+    <!-- Meet the Founder (content must remain unchanged) -->
+    <section id="founder" class="founder">
+      <div class="container fade-in">
+        <header class="section-header">
+          <div class="section-kicker">Founder</div>
+          <h2 class="section-title">Meet the Founder</h2>
+        </header>
+
+        <div class="founder-layout">
+          <!-- NOTE: keep this block’s text, photo, layout, styling, and tone identical to your existing implementation.
+               Replace the placeholder content below with your current live “Meet the Founder” markup. -->
+          <div class="founder-card">
+            <div class="founder-photo">
+              <!-- Existing founder image reference should be used here -->
+              <img src="Muhibullah.jpg.jpeg" alt="Founder headshot" />
+            </div>
+            <div class="founder-info">
+              <h3>Muhibullah Sahibjan</h3>
+              <p>Founder · Decisive Development Consulting</p>
+            </div>
+          </div>
+
+          <div class="founder-message">
+            <!-- Existing founder message content goes here exactly as on your current site.
+                 This placeholder is only to keep structure valid. -->
+            <p>
+              This placeholder paragraph represents your existing founder message. Replace this with the current “Meet the Founder” copy from your live site, without changing its wording, tone, or structure.
+            </p>
+            <p>
+              The surrounding layout will adapt to preserve white space control and visual balance while keeping your existing content untouched.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- HOW WE WORK -->
-<section id="process" class="soft">
-  <div class="container">
-    <h2>How We Fix It: Our 3-Step Approach</h2>
-    <p>We don't just consult — we embed as operational partners to rebuild your delivery system.</p>
-    
-    <div class="process-steps">
-      <div class="step">
-        <div class="step-number">1</div>
-        <h3>Map Current State</h3>
-        <p>Diagnostic assessment of your recruitment system, identifying bottlenecks and failure points.</p>
-      </div>
-      
-      <div class="step">
-        <div class="step-number">2</div>
-        <h3>Design Operating System</h3>
-        <p>Build workflows, decision rights, and processes that work under pressure.</p>
-      </div>
-      
-      <div class="step">
-        <div class="step-number">3</div>
-        <h3>Stabilize & Train</h3>
-        <p>Embed systems, train leadership, and hand off self-managing operations.</p>
-      </div>
-    </div>
-
-    <div class="grid grid-3" style="margin-top:48px;">
-      <div class="card">
-        <h3>🌯 DELIVERY STABILIZATION SPRINT</h3>
-        <p style="margin-top:12px;"><strong>60-90 Days</strong></p>
-        <p>For organizations that need immediate relief and rapid improvement. A diagnostic and intensive stabilization engagement that fixes your recruitment system in 60-90 days.</p>
-      </div>
-      
-      <div class="card">
-        <h3>👥 END-TO-END SYSTEMS ARCHITECTURE</h3>
-        <p style="margin-top:12px;"><strong>Strategic</strong></p>
-        <p>For organizations that need foundational redesign. We examine your entire recruitment infrastructure and rebuild it as an integrated operating system.</p>
-      </div>
-      
-      <div class="card">
-        <h3>🔧 LEADERSHIP OPERATING SYSTEM</h3>
-        <p style="margin-top:12px;"><strong>Ongoing Partnership</strong></p>
-        <p>For continuous improvement and sustainable scaling. Embeds leadership systems and coaching to ensure recruitment scales without founder dependency.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- BPO TALENT SOLUTIONS -->
-<section id="bpo">
-  <div class="container">
-    <h2>BPO Talent Solutions</h2>
-    <p>Designed for Business Process Outsourcing organizations managing high-volume hiring and talent delivery. We specialize in solving recruitment challenges specific to BPOs.</p>
-    
-    <div class="grid grid-2" style="margin-top:32px;">
-      <div class="card">
-        <h3>High-Volume Bulk Hiring Pressure</h3>
-        <p>Managing quality standards while hiring 100+ people per month.</p>
-      </div>
-      
-      <div class="card">
-        <h3>Quality Control at Scale</h3>
-        <p>Ensuring consistency in candidate vetting and delivery when processing large pipelines.</p>
-      </div>
-      
-      <div class="card">
-        <h3>Timeline Compliance</h3>
-        <p>Meeting strict client deadlines for project staffing without quality shortcuts.</p>
-      </div>
-      
-      <div class="card">
-        <h3>Team Stability Under Pressure</h3>
-        <p>Preventing recruitment team burnout in high-transaction environments.</p>
-      </div>
-    </div>
-    
-    <div class="proof" style="margin-top:32px;">
-      <h3>Our BPO Approach</h3>
-      <p>We embed as your Fractional Head of Recruitment, stabilizing your bulk hiring operations, implementing scalable workflows, and training your leadership to maintain consistency and quality even during peak hiring cycles.</p>
-      <p><strong>For BPOs, we've helped reduce time-to-fill by 25-30% while improving candidate retention.</strong></p>
-      <div style="margin-top:20px;">
-        <a href="#contact" class="btn btn-primary">Book Your BPO Diagnostic</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOUNDER SECTION -->
-<section id="founder" class="soft">
-  <div class="container">
-    <h2 style="margin-bottom:32px;">Meet the Founder</h2>
-    
-    <div class="founder-card">
-      <div class="founder-photo">
-        <img src="Muhibllah%20Sahibjan.jpg.jpeg" alt="Muhibullah Sahibjan" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
-      </div>
-      
-      <div class="founder-content">
-        <h3>Muhibullah Sahibjan</h3>
-        <h4>Founder & Principal Consultant</h4>
-        
-        <p>Muhibullah founded Decisive Development Consulting after years of seeing capable, hardworking recruitment and BPO teams struggle not because of effort, but because their systems failed under pressure.</p>
-        
-        <p>His approach: fix the system, not the people. Through embedded operational leadership and systems design, he helps firms move from volatile delivery to predictable, sustainable growth.</p>
-        
-        <p><strong>Background:</strong> Master NLP Practitioner | CBT Certified | 15+ years in recruitment operations | Specialist in high-pressure scaling</p>
-        
-        <p style="font-style:italic;color:var(--accent);margin-top:16px;">"When systems fail, people burn out. My work restores clarity, predictability, and leadership confidence through operating systems teams can actually run."</p>
-        
-        <div class="founder-links">
-          <a href="https://www.linkedin.com/in/muhibullah-sahibjan/" target="_blank" class="social-link">
-            <span>🔗</span> Connect on LinkedIn
-          </a>
-          <a href="#contact" class="social-link">
-            <span>💬</span> Start a Conversation
-          </a>
+    <!-- CTA / Start Diagnostic -->
+    <section id="start-diagnostic" class="cta-section">
+      <div class="container cta-inner fade-in">
+        <div>
+          <h2 class="cta-title">Start a diagnostic conversation</h2>
+          <p class="cta-body">
+            If you recognise your organisation in the patterns above and want to explore whether this is the right fit, the first step is a focused diagnostic conversation about your current delivery reality and constraints.
+          </p>
+          <div class="hero-actions">
+            <a href="mailto:info@decisivedevelopmentconsulting.com?subject=Diagnostic%20Conversation" class="btn-primary">
+              Email to request a diagnostic
+            </a>
+            <a href="https://wa.me/?text=DIAGNOSTIC" class="btn-secondary">
+              WhatsApp “DIAGNOSTIC” with context
+            </a>
+          </div>
+          <p class="cta-note">
+            <strong>Engagement posture.</strong>
+            We typically engage with a small number of firms at a time.
+          </p>
         </div>
+
+        <aside class="cta-card">
+          <div class="cta-card-row">
+            <div>
+              <div class="cta-label">What to expect</div>
+              <p>
+                A practical conversation centred on your current delivery risks, constraints, and operating model — not a generic pitch. The outcome is clarity on whether there is a meaningful fit and what a sensible first scope would look like.
+              </p>
+            </div>
+          </div>
+          <div class="cta-card-row">
+            <div>
+              <div class="cta-label">If we proceed</div>
+              <p>
+                Work starts with a defined diagnostic or stabilisation scope, with explicit goals, constraints, and decision points so you stay in control of pace and investment.
+              </p>
+            </div>
+          </div>
+        </aside>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
+  </main>
 
-<!-- FAQ SECTION -->
-<section id="faq">
-  <div class="container">
-    <h2>Frequently Asked Questions</h2>
-    <p style="margin-bottom:32px;">Common questions about our approach and engagements.</p>
-    
-    <div class="faq-item">
-      <div class="faq-question">What makes your approach different from traditional consulting?</div>
-      <div class="faq-answer">We don't just advise — we embed as operational partners. We work inside your recruitment operations, fixing systems hands-on rather than delivering PowerPoint decks. Our engagements are time-bound and designed to leave behind capability, not dependency.</div>
-    </div>
-    
-    <div class="faq-item">
-      <div class="faq-question">How long does stabilization take?</div>
-      <div class="faq-answer">Our Delivery Stabilization Sprint typically runs 60-90 days for immediate operational relief. Strategic system redesigns take 3-6 months depending on complexity. We provide clear timelines and milestones during the diagnostic phase.</div>
-    </div>
-    
-    <div class="faq-item">
-      <div class="faq-question">What if we don't have a clear delivery problem?</div>
-      <div class="faq-answer">If you're experiencing inconsistent output, last-minute surprises, founder involvement in daily operations, or team burnout — you have a systemic delivery problem. The diagnostic call will help identify whether we're the right fit.</div>
-    </div>
-    
-    <div class="faq-item">
-      <div class="faq-question">What's included in the free diagnostic?</div>
-      <div class="faq-answer">A 20-minute structured conversation where we map your current delivery challenges, identify root causes, and determine if our approach is a good fit. No pitch, no pressure — just clarity on whether we can help.</div>
-    </div>
-    
-    <div class="faq-item">
-      <div class="faq-question">Do you work with small firms or only large organizations?</div>
-      <div class="faq-answer">We work with staffing, recruitment, and BPO firms at various stages — from growing teams experiencing first scaling pains to established operations needing systemic overhaul. The key is that demand exists, but delivery has become unpredictable.</div>
-    </div>
-    
-    <div class="faq-item">
-      <div class="faq-question">What results can we expect?</div>
-      <div class="faq-answer">Typical outcomes include 25-30% reduction in time-to-fill, 40%+ improvement in delivery consistency, elimination of late-stage surprises, and leadership freed from firefighting mode. Exact results depend on your starting point and engagement scope.</div>
-    </div>
-  </div>
-</section>
+  <footer>
+    © 2026 Decisive Development Consulting · GitHub Pages
+  </footer>
 
-<!-- CTA SECTION -->
-<section class="cta">
-  <div class="container">
-    <h2>Ready to restore delivery confidence?</h2>
-    <p>No pitch. No pressure. Just a diagnostic conversation.</p>
-    <a href="#contact" class="btn btn-primary">Book Free Diagnostic</a>
-  </div>
-</section>
+  <!-- Minimal interaction logic: nav, smooth scrolling helpers, dropdowns, BPO tabs, accordion, fade-in -->
+  <script>
+    // Smooth scroll for in-page links
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener("click", e => {
+        const targetId = link.getAttribute("href").slice(1);
+        const target = document.getElementById(targetId);
+        if (!target) return;
+        e.preventDefault();
+        const rect = target.getBoundingClientRect();
+        const offset = window.pageYOffset + rect.top - 76;
+        window.scrollTo({
+          top: offset < 0 ? 0 : offset,
+          behavior: "smooth"
+        });
+      });
+    });
 
-<!-- CONTACT -->
-<section id="contact" class="tight">
-  <div class="container">
-    <h2>Contact</h2>
-    <p><strong>Phone:</strong> +60 16-322-4702</p>
-    <p><strong>Email:</strong> DecisiveDevelopmentConsulting@gmail.com</p>
-    <p>WhatsApp the word <strong>DIAGNOSTIC</strong> with a brief description of your situation.</p>
-  </div>
-</section>
+    // Mobile nav toggle
+    const navToggle = document.querySelector(".nav-toggle");
+    const navLinks = document.querySelector(".nav-links");
 
-<footer>
-  © Decisive Development Consulting · GitHub Pages
-</footer>
+    if (navToggle && navLinks) {
+      navToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("open");
+      });
+    }
 
+    // Close mobile nav when clicking a link
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+      });
+    });
+
+    // Dropdown behaviour
+    const dropdownToggle = document.querySelector(".nav-dropdown-toggle");
+    const dropdownPanel = document.querySelector(".dropdown-panel");
+
+    if (dropdownToggle && dropdownPanel) {
+      dropdownToggle.addEventListener("click", () => {
+        dropdownPanel.classList.toggle("open");
+      });
+
+      document.addEventListener("click", e => {
+        if (!dropdownPanel.contains(e.target) && !dropdownToggle.contains(e.target)) {
+          dropdownPanel.classList.remove("open");
+        }
+      });
+    }
+
+    // Active nav highlighting on scroll
+    const sections = document.querySelectorAll("main section[id]");
+    const navAnchors = document.querySelectorAll(".nav-link");
+
+    function setActiveNav() {
+      let currentId = "";
+      const scrollPos = window.pageYOffset + 90;
+
+      sections.forEach(section => {
+        const top = section.offsetTop;
+        const height = section.offsetHeight;
+        if (scrollPos >= top && scrollPos < top + height) {
+          currentId = section.id;
+        }
+      });
+
+      navAnchors.forEach(link => {
+        const href = link.getAttribute("href");
+        const id = href && href.startsWith("#") ? href.slice(1) : null;
+        if (id && id === currentId) {
+          link.classList.add("active");
+        } else {
+          link.classList.remove("active");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", setActiveNav);
+    window.addEventListener("load", setActiveNav);
+
+    // BPO tabs and accordion
+    const bpoTabs = document.querySelectorAll(".bpo-tab");
+    const bpoPanels = document.querySelectorAll("[data-bpo-panel]");
+
+    bpoTabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        const key = tab.getAttribute("data-bpo-tab");
+        bpoTabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+
+        bpoPanels.forEach(panel => {
+          panel.style.display =
+            panel.getAttribute("data-bpo-panel") === key ? "block" : "none";
+        });
+      });
+    });
+
+    // Accordion toggle
+    document.querySelectorAll(".bpo-accordion-item").forEach(item => {
+      const header = item.querySelector(".bpo-accordion-header");
+      const icon = item.querySelector(".bpo-accordion-icon");
+      header.addEventListener("click", () => {
+        const open = item.classList.toggle("open");
+        if (icon) icon.textContent = open ? "−" : "+";
+      });
+    });
+
+    // Fade-in on scroll
+    const fadeEls = document.querySelectorAll(".fade-in");
+    function handleFade() {
+      const trigger = window.innerHeight * 0.9;
+      fadeEls.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < trigger) {
+          el.classList.add("visible");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", handleFade);
+    window.addEventListener("load", handleFade);
+  </script>
 </body>
 </html>
-
-
-
-
