@@ -1,227 +1,474 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Decisive Development Consulting</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Decisive Development Consulting</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<style>
+/* --------------------
+   GLOBAL STYLES
+--------------------- */
+:root {
+  --bg-white: #ffffff;
+  --bg-light: #f5f6f7;
+  --text-dark: #1f2933;
+  --text-muted: #5f6c72;
+  --accent: #1f3a5f; /* muted deep blue */
+}
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      color: #1f2933;
-      background: #ffffff;
-      line-height: 1.6;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Arial, sans-serif;
+  color: var(--text-dark);
+  background: var(--bg-white);
+  line-height: 1.55;
+}
 
-    header {
-      border-bottom: 1px solid #e5e7eb;
-      padding: 16px 0;
-    }
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
+section {
+  padding: 72px 20px;
+}
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
 
-    .logo {
-      font-weight: 600;
-      font-size: 18px;
-    }
+/* --------------------
+   NAVIGATION
+--------------------- */
+header {
+  position: sticky;
+  top: 0;
+  background: var(--bg-white);
+  border-bottom: 1px solid #e5e7eb;
+  z-index: 1000;
+}
 
-    .nav-links {
-      display: flex;
-      gap: 20px;
-      font-size: 14px;
-    }
+.nav {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-    .cta {
-      border: 1px solid #1f2933;
-      padding: 6px 12px;
-      border-radius: 4px;
-      font-weight: 500;
-    }
+.nav-left {
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
 
-    section {
-      padding: 60px 0;
-    }
+.nav-right {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
 
-    h1 {
-      font-size: 34px;
-      line-height: 1.2;
-      margin-bottom: 20px;
-    }
+.nav-item {
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 14px;
+  transition: background 180ms ease;
+}
 
-    h2 {
-      font-size: 26px;
-      margin-bottom: 16px;
-    }
+.nav-item:hover {
+  background: rgba(31,58,95,0.06);
+}
 
-    p {
-      max-width: 720px;
-      margin-bottom: 14px;
-      font-size: 16px;
-    }
+.nav-cta {
+  padding: 8px 14px;
+  border-radius: 5px;
+  border: 1px solid rgba(31,58,95,0.25);
+  font-weight: 600;
+}
 
-    .hero {
-      padding: 80px 0;
-    }
+.nav-cta:hover {
+  background: rgba(31,58,95,0.08);
+}
 
-    .hero p {
-      font-size: 18px;
-      color: #374151;
-    }
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
 
-    .hero-buttons {
-      margin-top: 30px;
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
+.dropdown-menu {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  padding: 8px 0;
+  display: none;
+  min-width: 220px;
+}
 
-    .button {
-      padding: 10px 18px;
-      border-radius: 4px;
-      font-weight: 500;
-      border: 1px solid #1f2933;
-    }
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
 
-    .button.primary {
-      background: #1f2933;
-      color: #ffffff;
-    }
+.dropdown-menu a {
+  display: block;
+  padding: 10px 16px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
 
-    footer {
-      border-top: 1px solid #e5e7eb;
-      padding: 40px 0;
-      font-size: 14px;
-      color: #4b5563;
-    }
+.dropdown-menu a:hover {
+  background: var(--bg-light);
+  color: var(--text-dark);
+}
 
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 28px;
-      }
+/* --------------------
+   HERO
+--------------------- */
+.hero {
+  padding: 96px 20px 88px;
+}
 
-      h2 {
-        font-size: 22px;
-      }
+.hero h1 {
+  font-size: 40px;
+  max-width: 720px;
+  margin-bottom: 18px;
+}
 
-      nav {
-        gap: 12px;
-      }
+.hero p {
+  max-width: 640px;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+}
 
-      .nav-links {
-        flex-wrap: wrap;
-        gap: 12px;
-      }
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
 
-      section {
-        padding: 40px 0;
-      }
-    }
-  </style>
+.primary-btn,
+.secondary-btn {
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background 180ms ease;
+}
+
+.primary-btn {
+  background: var(--accent);
+  color: #fff;
+}
+
+.primary-btn:hover {
+  background: #182f4f;
+}
+
+.secondary-btn {
+  border: 1px solid #d1d5db;
+}
+
+/* --------------------
+   SECTION HEADERS
+--------------------- */
+.section-title {
+  font-size: 28px;
+  margin-bottom: 14px;
+}
+
+.section-divider {
+  width: 48px;
+  height: 3px;
+  background: var(--accent);
+  margin-bottom: 26px;
+}
+
+/* --------------------
+   ABOUT
+--------------------- */
+.about {
+  background: var(--bg-light);
+}
+
+.about p {
+  max-width: 780px;
+  color: var(--text-muted);
+}
+
+/* --------------------
+   SERVICES
+--------------------- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+  gap: 24px;
+}
+
+.card {
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 24px;
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+/* --------------------
+   BPO
+--------------------- */
+.bpo {
+  background: var(--bg-light);
+}
+
+.bpo p {
+  max-width: 820px;
+  color: var(--text-muted);
+}
+
+/* --------------------
+   HOW WE WORK
+--------------------- */
+.how ul {
+  max-width: 720px;
+  padding-left: 20px;
+  color: var(--text-muted);
+}
+
+/* --------------------
+   FOUNDER
+--------------------- */
+.founder {
+  background: var(--bg-white);
+}
+
+.founder-wrapper {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.founder img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+/* --------------------
+   RESULTS
+--------------------- */
+.results {
+  background: var(--bg-light);
+}
+
+.snapshot {
+  border-left: 3px solid var(--accent);
+  padding-left: 18px;
+  margin-bottom: 26px;
+}
+
+.snapshot p {
+  color: var(--text-muted);
+}
+
+/* --------------------
+   CTA
+--------------------- */
+.cta {
+  text-align: center;
+}
+
+.cta p {
+  color: var(--text-muted);
+}
+
+/* --------------------
+   FOOTER
+--------------------- */
+footer {
+  padding: 28px 20px;
+  border-top: 1px solid #e5e7eb;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* --------------------
+   MOBILE
+--------------------- */
+@media(max-width: 768px) {
+  .nav-right {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .founder-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <div class="container">
-    <nav>
-      <div class="logo">Decisive Development Consulting</div>
-      <div class="nav-links">
-        <a href="#services">Services</a>
-        <a href="#bpo">BPO Talent Solutions</a>
-        <a href="#about">About</a>
-        <a href="#contact" class="cta">Start Diagnostic</a>
+  <nav class="nav">
+    <div class="nav-left">Decisive Development Consulting</div>
+    <div class="nav-right">
+      <a href="#home" class="nav-item">Home</a>
+      <a href="#services" class="nav-item">Services</a>
+      <a href="#bpo" class="nav-item">BPO Talent Solutions</a>
+
+      <div class="dropdown">
+        <span class="nav-item">About ▾</span>
+        <div class="dropdown-menu">
+          <a href="#about">About DDC</a>
+          <a href="#founder">Meet the Founder</a>
+          <a href="#how">How We Work</a>
+        </div>
       </div>
-    </nav>
-  </div>
+
+      <a href="#cta" class="nav-item nav-cta">Start Diagnostic</a>
+    </div>
+  </nav>
 </header>
 
-<section class="hero">
+<section class="hero" id="home">
   <div class="container">
-    <h1>Helping staffing and recruitment firms build delivery systems they can trust.</h1>
-    <p>
-      Decisive Development Consulting works with founders and operators to stabilise recruitment delivery,
-      improve predictability, and remove the constant firefighting that stalls growth.
-    </p>
-
-    <div class="hero-buttons">
-      <a href="#contact" class="button primary">Start a Diagnostic Conversation</a>
-      <a href="#about" class="button">How We Work</a>
+    <h1>Helping staffing and recruitment firms build predictable delivery systems that scale — without burning people out.</h1>
+    <p>When delivery becomes volatile, founders firefight, recruiters struggle to stay consistent, and growth becomes fragile.</p>
+    <div class="hero-actions">
+      <a href="#cta" class="primary-btn">Start a Diagnostic Conversation</a>
+      <a href="#how" class="secondary-btn">How We Work</a>
     </div>
   </div>
 </section>
 
-<section id="services">
+<section class="about" id="about">
   <div class="container">
-    <h2>What We Do</h2>
+    <div class="section-title">About Decisive Development Consulting</div>
+    <div class="section-divider"></div>
     <p>
-      We operate as embedded, fractional leadership across recruitment delivery and talent operations.
-      Our focus is not motivation or tools, but clear roles, accountability, operating rhythms,
-      and systems that hold under pressure.
+      Decisive Development Consulting helps staffing and recruitment firms stabilise delivery, improve recruiter productivity,
+      and build operating systems that scale without burning people out.
+    </p>
+    <p>
+      Our work sits between founders, sales, and recruiters — removing operational fragility so growth is no longer constrained
+      by fear of under-delivery.
     </p>
   </div>
 </section>
 
-<section id="bpo">
+<section class="services" id="services">
   <div class="container">
-    <h2>BPO Talent Solutions</h2>
+    <div class="section-title">Consulting Services</div>
+    <div class="section-divider"></div>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Delivery Stabilisation Sprint</h3>
+        <p>Embedded fractional leadership to stabilise recruiter output, capacity visibility, and delivery confidence.</p>
+      </div>
+      <div class="card">
+        <h3>Talent & Recruitment Operations Design</h3>
+        <p>Clear roles, decision rights, workflows, and forecasting systems that hold under pressure.</p>
+      </div>
+      <div class="card">
+        <h3>Leadership Operating Systems</h3>
+        <p>Performance rhythms, accountability structures, and behavioural anchors that sustain results.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bpo" id="bpo">
+  <div class="container">
+    <div class="section-title">BPO Talent Solutions</div>
+    <div class="section-divider"></div>
     <p>
-      Our BPO Talent Solutions business supports organisations that require structured,
-      accountable recruitment delivery at scale. This is a distinct operating model,
-      built for reliability and integration — not CV volume or offshore churn.
+      Our BPO Talent Solutions operate as a distinct delivery business, not an advisory service.
+      We provide structured, accountable recruitment capability integrated into client operations.
+    </p>
+    <p>
+      This is not CV volume pushing or offshore churn.
+      It is delivery-grade recruitment with ownership, governance, and operational standards.
     </p>
   </div>
 </section>
 
-<section id="about">
+<section class="how" id="how">
   <div class="container">
-    <h2>About Decisive Development Consulting</h2>
-    <p>
-      Decisive Development Consulting is a specialised practice focused on recruitment delivery systems
-      for staffing and talent-led organisations. We work between founders, sales, and delivery teams
-      to ensure growth is supported by execution — not constrained by it.
-    </p>
+    <div class="section-title">How We Work</div>
+    <div class="section-divider"></div>
+    <ul>
+      <li>Embedded, fractional leadership (60–90 days)</li>
+      <li>Diagnosis → system design → stabilisation</li>
+      <li>Clear KPIs, dashboards, and operating rhythms</li>
+      <li>Teams leave able to run independently</li>
+    </ul>
   </div>
 </section>
 
-<section id="contact">
+<section class="founder" id="founder">
   <div class="container">
-    <h2>Let’s Talk</h2>
-    <p>
-      If this resonates, the next step is a straightforward conversation.
-    </p>
-    <p>
-      <strong>Email:</strong> DecisiveDevelopmentConsulting@gmail.com<br />
-      <strong>Phone:</strong> +60 16-322-4702
-    </p>
+    <div class="section-title">Meet the Founder</div>
+    <div class="section-divider"></div>
+
+    <div class="founder-wrapper">
+      <!-- KEEP IMAGE & CONTENT IDENTICAL TO CURRENT SITE -->
+      <img src="founder.jpg" alt="Founder photo" />
+      <div>
+        <p><strong>Muhibullah Sahibjan</strong></p>
+        <p>
+          “The core question is simple: can your firm consistently deliver what you sell?
+          Most firms don’t fail from lack of demand — they stall because delivery systems cannot carry growth.”
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="results">
+  <div class="container">
+    <div class="section-title">Engagement Patterns & Outcomes</div>
+    <div class="section-divider"></div>
+
+    <div class="snapshot">
+      <p><strong>Context:</strong> Multi-desk recruitment firm scaling across markets</p>
+      <p><strong>Problem:</strong> Volatile delivery, inconsistent recruiter output</p>
+      <p><strong>Outcome:</strong> Predictable capacity planning and stabilised delivery rhythm</p>
+    </div>
+
+    <div class="snapshot">
+      <p><strong>Context:</strong> Founder-led staffing firm</p>
+      <p><strong>Problem:</strong> Constant firefighting and late-stage surprises</p>
+      <p><strong>Outcome:</strong> Clear accountability and reduced founder dependency</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="cta">
+  <div class="container">
+    <h2>Let’s Work Together</h2>
+    <p>We typically engage with a small number of firms at a time.</p>
+    <p>📞 +60 16-322-4702<br/>✉️ DecisiveDevelopmentConsulting@gmail.com</p>
   </div>
 </section>
 
 <footer>
-  <div class="container">
-    © Decisive Development Consulting
-  </div>
+  © Decisive Development Consulting
 </footer>
 
 </body>
