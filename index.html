@@ -2,29 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Decisive Development Consulting</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
-    /* =========
-       BASE RESET
-       ========= */
-    *, *::before, *::after {
+    * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.5;
-      color: #222;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #1f2933;
       background: #ffffff;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
+      line-height: 1.6;
     }
 
     a {
@@ -32,1083 +24,205 @@
       text-decoration: none;
     }
 
-    /* =====================
-       LAYOUT & CONTAINERS
-       ===================== */
-
-    .page {
-      max-width: 1040px;
-      margin: 0 auto;
-      padding: 0 16px;
-    }
-
-    main {
-      padding-bottom: 48px;
-    }
-
-    section {
-      padding: 40px 0;
-      border-bottom: 1px solid #eee;
-    }
-
-    section:last-of-type {
-      border-bottom: none;
-    }
-
-    /* ===========
-       TYPOGRAPHY
-       =========== */
-
-    h1, h2, h3 {
-      margin: 0 0 12px;
-      font-weight: 600;
-      line-height: 1.2;
-    }
-
-    h1 {
-      font-size: 1.9rem;
-    }
-
-    h2 {
-      font-size: 1.4rem;
-      margin-bottom: 8px;
-    }
-
-    h3 {
-      font-size: 1.1rem;
-      margin-top: 16px;
-    }
-
-    p {
-      margin: 0 0 10px;
-      font-size: 0.95rem;
-      color: #444;
-    }
-
-    .section-intro {
-      max-width: 640px;
-      font-size: 0.98rem;
-      color: #333;
-    }
-
-    /* ==================
-       GLOBAL UTILITIES
-       ================== */
-
-    .text-muted {
-      color: #666;
-    }
-
-    .pill {
-      display: inline-block;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid #ddd;
-      margin-bottom: 8px;
-    }
-
-    .stack-sm > * + * {
-      margin-top: 6px;
-    }
-
-    .stack-md > * + * {
-      margin-top: 10px;
-    }
-
-    .stack-lg > * + * {
-      margin-top: 16px;
-    }
-
-    .grid {
-      display: grid;
-      gap: 16px;
-    }
-
-    @media (min-width: 768px) {
-      .grid-2 {
-        grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-        align-items: start;
-      }
-    }
-
-    /* ================
-       NAV & TOP BAR
-       ================ */
-
     header {
-      border-bottom: 1px solid #eee;
-      margin-bottom: 8px;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 16px 0;
     }
 
-    .top-bar {
-      position: sticky; /* keeps nav present but calm */
-      top: 0;
-      z-index: 40;
-      background: #ffffff;
-      border-bottom: 1px solid #eee;
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
 
-    .nav {
+    nav {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      padding: 10px 0;
+      align-items: center;
+      flex-wrap: wrap;
     }
 
     .logo {
       font-weight: 600;
-      letter-spacing: 0.08em;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      white-space: nowrap;
+      font-size: 18px;
     }
 
-    /* desktop nav layout (hidden on mobile initially) */
-    .nav-main {
+    .nav-links {
       display: flex;
-      align-items: center;
-      gap: 20px; /* more breathing room between items */
-      font-size: 0.88rem;
+      gap: 20px;
+      font-size: 14px;
     }
 
-    .nav-list {
-      display: flex;
-      gap: 18px;
-      align-items: center;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .nav-link a {
-      font-weight: 400; /* visual de-emphasis for non-CTA items */
-      color: #444;
-      padding: 4px 0;
-    }
-
-    .nav-link a:hover,
-    .nav-link a:focus {
-      color: #111;
-    }
-
-    /* CTA: single visually dominant item */
-    .nav-cta a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 6px 14px;
-      border-radius: 999px;
-      border: 1px solid #222;
-      font-size: 0.85rem;
+    .cta {
+      border: 1px solid #1f2933;
+      padding: 6px 12px;
+      border-radius: 4px;
       font-weight: 500;
-      background: #111;
-      color: #fff;
-      white-space: nowrap;
     }
 
-    .nav-cta a:hover,
-    .nav-cta a:focus {
-      background: #222;
+    section {
+      padding: 60px 0;
     }
 
-    /* Dropdown (About) – subordinate to top level */
-    .nav-item-has-dropdown {
-      position: relative;
+    h1 {
+      font-size: 34px;
+      line-height: 1.2;
+      margin-bottom: 20px;
     }
 
-    .nav-dropdown-toggle {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-weight: 400;
-      color: #444;
-      padding: 4px 0;
+    h2 {
+      font-size: 26px;
+      margin-bottom: 16px;
     }
 
-    .nav-dropdown-caret {
-      font-size: 0.7rem;
-      opacity: 0.5;
+    p {
+      max-width: 720px;
+      margin-bottom: 14px;
+      font-size: 16px;
     }
 
-    .nav-dropdown {
-      position: absolute;
-      top: 115%;
-      left: 0;
-      min-width: 180px;
-      background: #ffffff;
-      border-radius: 6px;
-      border: 1px solid #e5e5e5;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-      padding: 8px 0;
-      display: none; /* shown on hover/focus */
-      z-index: 50;
+    .hero {
+      padding: 80px 0;
     }
 
-    .nav-dropdown ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
+    .hero p {
+      font-size: 18px;
+      color: #374151;
     }
 
-    .nav-dropdown li + li {
-      margin-top: 2px;
-    }
-
-    .nav-dropdown a {
-      display: block;
-      padding: 6px 14px;
-      font-size: 0.84rem;
-      font-weight: 400;
-      color: #444;
-      white-space: nowrap;
-    }
-
-    .nav-dropdown a:hover,
-    .nav-dropdown a:focus {
-      background: #f5f5f5;
-      color: #111;
-    }
-
-    /* dropdown discipline: only on hover/focus */
-    .nav-item-has-dropdown:hover .nav-dropdown,
-    .nav-item-has-dropdown:focus-within .nav-dropdown {
-      display: block;
-    }
-
-    /* ==========
-       HAMBURGER
-       ========== */
-
-    .nav-toggle {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 36px;
-      height: 36px;
-      border-radius: 999px;
-      border: 1px solid #ddd;
-      background: #fff;
-      cursor: pointer;
-      padding: 0;
-    }
-
-    .nav-toggle-box {
-      position: relative;
-      width: 18px;
-      height: 14px;
-    }
-
-    .nav-toggle-line {
-      position: absolute;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: #222;
-      border-radius: 1px;
-      transition: transform 0.18s ease, top 0.18s ease, opacity 0.18s ease;
-    }
-
-    .nav-toggle-line:nth-child(1) {
-      top: 0;
-    }
-
-    .nav-toggle-line:nth-child(2) {
-      top: 6px;
-    }
-
-    .nav-toggle-line:nth-child(3) {
-      top: 12px;
-    }
-
-    /* mobile nav panel */
-    .nav-panel {
-      position: fixed;
-      top: 56px; /* approximate header height */
-      right: 0;
-      left: 0;
-      background: #ffffff;
-      border-top: 1px solid #eee;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.04);
-      padding: 10px 16px 16px;
-      display: none;
-      z-index: 35;
-    }
-
-    .nav-panel-inner {
-      max-width: 1040px;
-      margin: 0 auto;
-    }
-
-    .nav-panel-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
+    .hero-buttons {
+      margin-top: 30px;
       display: flex;
-      flex-direction: column;
-      gap: 10px;
+      gap: 16px;
+      flex-wrap: wrap;
     }
 
-    .nav-panel-link a {
-      display: block;
-      padding: 6px 4px;
-      font-size: 0.95rem;
-      color: #333;
-      font-weight: 400;
-    }
-
-    /* Mobile About dropdown inside panel */
-    .nav-panel-item-has-sub {
-      border-radius: 6px;
-      border: 1px solid #eee;
-      padding: 6px 8px;
-    }
-
-    .nav-panel-subheader {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      cursor: pointer;
-      font-size: 0.95rem;
-      font-weight: 400;
-    }
-
-    .nav-panel-subcaret {
-      font-size: 0.8rem;
-      opacity: 0.7;
-    }
-
-    .nav-panel-sublist {
-      list-style: none;
-      margin: 6px 0 0;
-      padding: 0;
-      display: none; /* opened only when tapped */
-    }
-
-    .nav-panel-sublist li + li {
-      margin-top: 4px;
-    }
-
-    .nav-panel-sublist a {
-      display: block;
-      padding: 4px 2px;
-      font-size: 0.9rem;
-      color: #444;
-    }
-
-    /* mobile CTA in panel */
-    .nav-panel-cta a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: 1px solid #222;
-      font-size: 0.88rem;
+    .button {
+      padding: 10px 18px;
+      border-radius: 4px;
       font-weight: 500;
-      background: #111;
-      color: #fff;
-      margin-top: 10px;
+      border: 1px solid #1f2933;
     }
 
-    /* desktop vs mobile visibility */
-    .nav-toggle {
-      display: none;
+    .button.primary {
+      background: #1f2933;
+      color: #ffffff;
     }
 
-    .nav-panel {
-      display: none;
+    footer {
+      border-top: 1px solid #e5e7eb;
+      padding: 40px 0;
+      font-size: 14px;
+      color: #4b5563;
     }
 
     @media (max-width: 768px) {
-      .nav-main {
-        display: none; /* collapse into hamburger on mobile */
-      }
-
-      .nav-toggle {
-        display: inline-flex;
-      }
-    }
-
-    /* when JS toggles the nav-open class on body */
-    body.nav-open .nav-panel {
-      display: block;
-    }
-
-    body.nav-open .nav-toggle-line:nth-child(1) {
-      top: 6px;
-      transform: rotate(45deg);
-    }
-
-    body.nav-open .nav-toggle-line:nth-child(2) {
-      opacity: 0;
-    }
-
-    body.nav-open .nav-toggle-line:nth-child(3) {
-      top: 6px;
-      transform: rotate(-45deg);
-    }
-
-    /* =============
-       HERO SECTION
-       ============= */
-
-    .hero {
-      padding: 32px 0 32px;
-    }
-
-    .hero-title {
-      margin-bottom: 10px;
-    }
-
-    .hero-subtitle {
-      font-size: 1rem;
-      max-width: 540px;
-    }
-
-    .hero-meta {
-      margin-top: 12px;
-      font-size: 0.85rem;
-      color: #555;
-    }
-
-    /* ====================
-       ACCORDION / TOGGLES
-       ==================== */
-
-    details {
-      border-radius: 6px;
-      border: 1px solid #e3e3e3;
-      background: #fafafa;
-      padding: 8px 10px;
-      margin-top: 10px;
-    }
-
-    details[open] {
-      background: #f5f5f5;
-    }
-
-    summary {
-      list-style: none;
-      cursor: pointer;
-      font-size: 0.9rem;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .summary-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .caret {
-      font-size: 0.75rem;
-      opacity: 0.7;
-    }
-
-    .accordion-body {
-      margin-top: 8px;
-      padding-top: 6px;
-      border-top: 1px dashed #ddd;
-      font-size: 0.9rem;
-      color: #444;
-    }
-
-    @media (max-width: 640px) {
-      details {
-        padding: 10px 12px;
-      }
-
-      summary {
-        font-size: 0.95rem;
-      }
-    }
-
-    /* ====================
-       SECTION-SPECIFIC UI
-       ==================== */
-
-    .list-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 6px;
-    }
-
-    .list-chips span {
-      border-radius: 999px;
-      border: 1px solid #e1e1e1;
-      padding: 3px 8px;
-      font-size: 0.78rem;
-      background: #fafafa;
-    }
-
-    .section-block {
-      margin-top: 16px;
-    }
-
-    ul {
-      margin: 0;
-      padding-left: 18px;
-      font-size: 0.9rem;
-      color: #444;
-    }
-
-    li + li {
-      margin-top: 4px;
-    }
-
-    /* =================
-       FOOTER
-       ================= */
-
-    footer {
-      border-top: 1px solid #eee;
-      padding: 20px 0 28px;
-      font-size: 0.85rem;
-      color: #777;
-    }
-
-    footer .footer-inner {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    /* =================
-       DESKTOP TUNING
-       ================= */
-
-    @media (min-width: 1024px) {
       h1 {
-        font-size: 2.1rem;
+        font-size: 28px;
       }
 
       h2 {
-        font-size: 1.5rem;
+        font-size: 22px;
       }
 
-      p {
-        font-size: 1rem;
+      nav {
+        gap: 12px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 12px;
       }
 
       section {
-        padding: 52px 0;
-      }
-
-      .hero {
-        padding: 40px 0 40px;
+        padding: 40px 0;
       }
     }
   </style>
 </head>
 
 <body>
-  <!--
-    Top navigation bar with:
-    - Single strong CTA (“Start Diagnostic”)
-    - De-emphasised neutral links
-    - Hover/tap dropdown for About
-    - Mobile hamburger that collapses into a clean panel
-  -->
-  <header>
-    <div class="top-bar">
-      <div class="page nav">
-        <div class="logo">
-          Decisive Development Consulting
-        </div>
 
-        <!-- Desktop navigation -->
-        <div class="nav-main" aria-label="Primary navigation">
-          <ul class="nav-list">
-            <!-- About with dropdown -->
-            <li class="nav-link nav-item-has-dropdown">
-              <button class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-                <span>About</span>
-                <span class="nav-dropdown-caret">▾</span>
-              </button>
-              <div class="nav-dropdown">
-                <ul>
-                  <!-- Map these to existing anchors / content sections as needed -->
-                  <li><a href="#about">About the practice</a></li>
-                  <li><a href="#services">Consulting & coaching</a></li>
-                </ul>
-              </div>
-            </li>
-
-            <li class="nav-link"><a href="#services">Services</a></li>
-            <li class="nav-link"><a href="#bpo-talent">BPO Talent</a></li>
-            <li class="nav-link"><a href="#process">Process</a></li>
-            <li class="nav-link"><a href="#contact">Contact</a></li>
-          </ul>
-
-          <!-- Single visually dominant CTA -->
-          <div class="nav-cta">
-            <!-- Replace href with your existing diagnostic / Calendly link -->
-            <a href="#contact">Start Diagnostic</a>
-          </div>
-        </div>
-
-        <!-- Mobile hamburger -->
-        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-          <span class="nav-toggle-box" aria-hidden="true">
-            <span class="nav-toggle-line"></span>
-            <span class="nav-toggle-line"></span>
-            <span class="nav-toggle-line"></span>
-          </span>
-        </button>
+<header>
+  <div class="container">
+    <nav>
+      <div class="logo">Decisive Development Consulting</div>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#bpo">BPO Talent Solutions</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="cta">Start Diagnostic</a>
       </div>
+    </nav>
+  </div>
+</header>
 
-      <!-- Mobile nav panel (shown when hamburger tapped) -->
-      <nav class="nav-panel" aria-label="Mobile navigation">
-        <div class="nav-panel-inner">
-          <ul class="nav-panel-list">
-            <!-- About with expandable sub-items -->
-            <li class="nav-panel-item-has-sub">
-              <div class="nav-panel-subheader" data-subtoggle>
-                <span>About</span>
-                <span class="nav-panel-subcaret">▾</span>
-              </div>
-              <ul class="nav-panel-sublist">
-                <li><a href="#about">About the practice</a></li>
-                <li><a href="#services">Consulting & coaching</a></li>
-              </ul>
-            </li>
+<section class="hero">
+  <div class="container">
+    <h1>Helping staffing and recruitment firms build delivery systems they can trust.</h1>
+    <p>
+      Decisive Development Consulting works with founders and operators to stabilise recruitment delivery,
+      improve predictability, and remove the constant firefighting that stalls growth.
+    </p>
 
-            <li class="nav-panel-link"><a href="#services">Services</a></li>
-            <li class="nav-panel-link"><a href="#bpo-talent">BPO Talent</a></li>
-            <li class="nav-panel-link"><a href="#process">Process</a></li>
-            <li class="nav-panel-link"><a href="#contact">Contact</a></li>
-          </ul>
-
-          <!-- CTA inside mobile panel -->
-          <div class="nav-panel-cta">
-            <a href="#contact">Start Diagnostic</a>
-          </div>
-        </div>
-      </nav>
+    <div class="hero-buttons">
+      <a href="#contact" class="button primary">Start a Diagnostic Conversation</a>
+      <a href="#about" class="button">How We Work</a>
     </div>
+  </div>
+</section>
 
-    <!-- HERO -->
-    <div class="page hero">
-      <div class="stack-md">
-        <h1 class="hero-title">
-          A calm, decisive partner in talent and operating systems
-        </h1>
-        <p class="hero-subtitle text-muted">
-          Helping founders and leaders build clear roles, accountable teams, and sustainable performance.
-        </p>
+<section id="services">
+  <div class="container">
+    <h2>What We Do</h2>
+    <p>
+      We operate as embedded, fractional leadership across recruitment delivery and talent operations.
+      Our focus is not motivation or tools, but clear roles, accountability, operating rhythms,
+      and systems that hold under pressure.
+    </p>
+  </div>
+</section>
 
-        <details>
-          <summary>
-            <span class="summary-label">
-              <span>Read more about our focus</span>
-            </span>
-            <span class="caret">▼</span>
-          </summary>
-          <div class="accordion-body">
-            <!-- Place your remaining hero / intro copy here -->
-            <p>
-              We work at the intersection of individual psychology, leadership behaviour, and organisational systems, with a focus on clarity, accountability, and performance over time.
-            </p>
-            <p>
-              All extended hero content explaining who you serve and how you work should stay inside this block to keep the first screen calm.
-            </p>
-          </div>
-        </details>
+<section id="bpo">
+  <div class="container">
+    <h2>BPO Talent Solutions</h2>
+    <p>
+      Our BPO Talent Solutions business supports organisations that require structured,
+      accountable recruitment delivery at scale. This is a distinct operating model,
+      built for reliability and integration — not CV volume or offshore churn.
+    </p>
+  </div>
+</section>
 
-        <div class="hero-meta">
-          Based in Selangor, working with founders, executives, and senior talent leaders across APAC.
-        </div>
-      </div>
-    </div>
-  </header>
+<section id="about">
+  <div class="container">
+    <h2>About Decisive Development Consulting</h2>
+    <p>
+      Decisive Development Consulting is a specialised practice focused on recruitment delivery systems
+      for staffing and talent-led organisations. We work between founders, sales, and delivery teams
+      to ensure growth is supported by execution — not constrained by it.
+    </p>
+  </div>
+</section>
 
-  <main class="page">
-    <!-- ABOUT -->
-    <section id="about">
-      <div class="stack-md">
-        <span class="pill">About</span>
-        <h2>Decisive Development Consulting</h2>
-        <p class="section-intro">
-          A practice built around evidence-informed coaching and pragmatic operating design for high-functioning professionals and teams.
-        </p>
+<section id="contact">
+  <div class="container">
+    <h2>Let’s Talk</h2>
+    <p>
+      If this resonates, the next step is a straightforward conversation.
+    </p>
+    <p>
+      <strong>Email:</strong> DecisiveDevelopmentConsulting@gmail.com<br />
+      <strong>Phone:</strong> +60 16-322-4702
+    </p>
+  </div>
+</section>
 
-        <details>
-          <summary>
-            <span class="summary-label">
-              <span>Read more about the practice</span>
-            </span>
-            <span class="caret">▼</span>
-          </summary>
-          <div class="accordion-body stack-md">
-            <!-- Insert your full existing About copy here -->
-            <p>
-              This is where detailed narrative about your background, philosophy, methodology, and story should live. All existing paragraphs can be inserted as-is.
-            </p>
-            <p>
-              Maintain all content on certifications (NLP, CBT, REBT, ACT), coaching experience, and organisational consulting track record inside this area.
-            </p>
-            <p>
-              If there are bullet lists on how you work or what you believe, place them here as well to keep the main view light.
-            </p>
-          </div>
-        </details>
-      </div>
-    </section>
+<footer>
+  <div class="container">
+    © Decisive Development Consulting
+  </div>
+</footer>
 
-    <!-- SERVICES -->
-    <section id="services">
-      <div class="stack-md">
-        <span class="pill">Services</span>
-        <h2>Consulting and Coaching</h2>
-        <p class="section-intro">
-          Work on role clarity, decision rights, accountability, and behavioural change for founders, leaders, and teams.
-        </p>
-
-        <div class="list-chips">
-          <span>Fractional Talent Operations</span>
-          <span>Leadership & Founder Coaching</span>
-          <span>Operating Model & Org Design</span>
-          <span>Recruitment Systems & Workflows</span>
-        </div>
-
-        <div class="section-block grid grid-2">
-          <div class="stack-md">
-            <h3>Fractional Talent Operations</h3>
-            <p>
-              Partner with founders to stabilise hiring, performance, and people systems without adding a full-time executive.
-            </p>
-            <details>
-              <summary>
-                <span class="summary-label">
-                  <span>Read more</span>
-                </span>
-                <span class="caret">▼</span>
-              </summary>
-              <div class="accordion-body stack-sm">
-                <!-- Insert full existing description for this service -->
-                <p>
-                  Insert the longer explanation of how you design hiring workflows, performance metrics, and talent operations for growth-stage companies.
-                </p>
-                <ul>
-                  <li>Existing bullet points on workflows, metrics, and systems.</li>
-                  <li>Any detailed examples or scenarios already present on the page.</li>
-                </ul>
-              </div>
-            </details>
-          </div>
-
-          <div class="stack-md">
-            <h3>Leadership & Founder Coaching</h3>
-            <p>
-              1:1 work focused on stress, decision-making, communication, and sustainable leadership behaviour.
-            </p>
-            <details>
-              <summary>
-                <span class="summary-label">
-                  <span>Read more</span>
-                </span>
-                <span class="caret">▼</span>
-              </summary>
-              <div class="accordion-body stack-sm">
-                <!-- Insert full existing coaching descriptions here -->
-                <p>
-                  This block holds current content on frameworks used (CBT, NLP, REBT, ACT), typical issues, and coaching structure.
-                </p>
-                <ul>
-                  <li>All current bullet points on outcomes, focus areas, or session formats.</li>
-                  <li>Any explanatory paragraphs about mindset, stress, or behavioural change.</li>
-                </ul>
-              </div>
-            </details>
-          </div>
-        </div>
-
-        <div class="section-block grid grid-2">
-          <div class="stack-md">
-            <h3>Operating Model & Org Design</h3>
-            <p>
-              Clarify roles, decision rights, and interfaces so teams know who owns what and how work moves.
-            </p>
-            <details>
-              <summary>
-                <span class="summary-label">
-                  <span>Read more</span>
-                </span>
-                <span class="caret">▼</span>
-              </summary>
-              <div class="accordion-body stack-sm">
-                <!-- Insert full existing org design / systems text here -->
-                <p>
-                  Place detailed explanations about operating rhythms, decision matrices, and cross-functional alignment here.
-                </p>
-              </div>
-            </details>
-          </div>
-
-          <div class="stack-md">
-            <h3>Recruitment Systems & Workflows</h3>
-            <p>
-              Build structured hiring pipelines, scorecards, and delivery processes that scale beyond heroics.
-            </p>
-            <details>
-              <summary>
-                <span class="summary-label">
-                  <span>Read more</span>
-                </span>
-                <span class="caret">▼</span>
-              </summary>
-              <div class="accordion-body stack-sm">
-                <!-- Insert existing recruitment and delivery content -->
-                <p>
-                  Bring in your current text on sourcing strategies, candidate experience, and delivery operations.
-                </p>
-              </div>
-            </details>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- BPO TALENT -->
-    <section id="bpo-talent">
-      <div class="stack-md">
-        <span class="pill">BPO Talent Solutions</span>
-        <h2>BPO and Talent Delivery</h2>
-        <p class="section-intro">
-          Support for BPO, ITO, and facility management organisations in designing roles, teams, and recruitment systems.
-        </p>
-
-        <div class="section-block">
-          <details>
-            <summary>
-              <span class="summary-label">
-                <span>View BPO Talent Solutions details</span>
-              </span>
-              <span class="caret">▼</span>
-            </summary>
-            <div class="accordion-body stack-md">
-              <!-- Insert your full BPO Talent Solutions content here -->
-              <p>
-                Insert all existing BPO / ITO service descriptions, including client types, functions covered, and delivery models.
-              </p>
-              <ul>
-                <li>All current bullet lists describing functions (e.g., customer service, back office, technical support).</li>
-                <li>Any process or engagement model explanations for BPO clients.</li>
-              </ul>
-              <p>
-                This keeps the homepage calm while still making every detail available on tap.
-              </p>
-            </div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROCESS -->
-    <section id="process">
-      <div class="stack-md">
-        <span class="pill">Process</span>
-        <h2>How We Work Together</h2>
-        <p class="section-intro">
-          A structured but human process that balances clarity, experimentation, and realistic change.
-        </p>
-
-        <div class="section-block stack-lg">
-          <div>
-            <h3>1. Initial Conversation</h3>
-            <p>
-              A focused discussion to clarify context, constraints, and what “better” needs to look like.
-            </p>
-            <details>
-              <summary>
-                <span class="summary-label">
-                  <span>Read more about this step</span>
-                </span>
-                <span class="caret">▼</span>
-              </summary>
-              <div class="accordion-body">
-                <!-- Insert existing discovery / chemistry call copy -->
-                <p>
-                  Include all text you currently use to describe questions asked, decisions made, and what you cover before starting work.
-                </p>
-              </div>
-            </details>
-          </div>
-
-          <div>
-            <h3>2. Diagnostic and Design</h3>
-            <p>
-              Review current systems and behaviours, then simplify into a clear problem statement and direction.
-            </p>
-            <details>
-              <summary>
-                <span class="summary-label">
-                  <span>Read more about this step</span>
-                </span>
-                <span class="caret">▼</span>
-              </summary>
-              <div class="accordion-body">
-                <!-- Insert detailed process explanation -->
-                <p>
-                  All current process diagrams, descriptions, or lists of artefacts can live here without overwhelming the main view.
-                </p>
-              </div>
-            </details>
-          </div>
-
-          <div>
-            <h3>3. Implementation and Iteration</h3>
-            <p>
-              Work alongside you to test changes, refine practices, and embed new ways of working.
-            </p>
-            <details>
-              <summary>
-                <span class="summary-label">
-                  <span>Read more about this step</span>
-                </span>
-                <span class="caret">▼</span>
-              </summary>
-              <div class="accordion-body">
-                <!-- Insert full content for this part of your process -->
-                <p>
-                  Add all existing text about cadence, reviews, metrics, and how you make adjustments over time.
-                </p>
-              </div>
-            </details>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <div class="stack-md">
-        <span class="pill">Contact</span>
-        <h2>Start a Conversation</h2>
-        <p class="section-intro">
-          If you are exploring support with talent operations, leadership, or organisational clarity, you can reach out directly.
-        </p>
-
-        <div class="section-block stack-sm">
-          <!-- Replace placeholders with your actual contact details -->
-          <p>
-            Email: <a href="mailto:hello@example.com">hello@example.com</a>
-          </p>
-          <p>
-            LinkedIn: <a href="https://www.linkedin.com" target="_blank" rel="noopener">View profile</a>
-          </p>
-        </div>
-
-        <details>
-          <summary>
-            <span class="summary-label">
-              <span>View full contact and engagement details</span>
-            </span>
-            <span class="caret">▼</span>
-          </summary>
-          <div class="accordion-body stack-sm">
-            <!-- Add existing contact instructions and logistics here -->
-            <p>
-              Insert your current text about response times, what to share in your initial message, and any scheduling links.
-            </p>
-            <p>
-              If you outline engagement models or pricing notes on the homepage, place that content inside this block.
-            </p>
-          </div>
-        </details>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="page footer-inner">
-      <span>&copy; 2026 Decisive Development Consulting</span>
-      <span>Selangor, Malaysia</span>
-    </div>
-  </footer>
-
-  <script>
-    // Mobile hamburger toggle: opens/closes the nav panel and animates icon
-    const body = document.body;
-    const navToggle = document.querySelector('.nav-toggle');
-    const navPanel = document.querySelector('.nav-panel');
-
-    if (navToggle && navPanel) {
-      navToggle.addEventListener('click', function () {
-        const isOpen = body.classList.toggle('nav-open');
-        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      });
-
-      // Close panel when clicking a link (single layer open at a time)
-      navPanel.addEventListener('click', function (event) {
-        const target = event.target;
-        if (target.tagName === 'A') {
-          body.classList.remove('nav-open');
-          navToggle.setAttribute('aria-expanded', 'false');
-        }
-      });
-    }
-
-    // Mobile About sub-items: open only one layer on tap
-    const subHeader = document.querySelector('[data-subtoggle]');
-    const subList = document.querySelector('.nav-panel-sublist');
-    const subCaret = document.querySelector('.nav-panel-subcaret');
-
-    if (subHeader && subList && subCaret) {
-      subHeader.addEventListener('click', function () {
-        const isOpen = subList.style.display === 'block';
-        subList.style.display = isOpen ? 'none' : 'block';
-        subCaret.textContent = isOpen ? '▾' : '▴';
-      });
-    }
-
-    // Optional: update caret for desktop About dropdown when open via keyboard
-    const desktopAbout = document.querySelector('.nav-item-has-dropdown');
-    if (desktopAbout) {
-      const desktopButton = desktopAbout.querySelector('.nav-dropdown-toggle');
-      const desktopCaret = desktopAbout.querySelector('.nav-dropdown-caret');
-      const desktopMenu = desktopAbout.querySelector('.nav-dropdown');
-
-      if (desktopButton && desktopCaret && desktopMenu) {
-        desktopButton.addEventListener('click', function (e) {
-          // prevent jump – we use button + JS, CSS still handles hover
-          e.preventDefault();
-          const isVisible = desktopMenu.style.display === 'block';
-          desktopMenu.style.display = isVisible ? 'none' : 'block';
-          desktopButton.setAttribute('aria-expanded', isVisible ? 'false' : 'true');
-          desktopCaret.textContent = isVisible ? '▾' : '▴';
-        });
-
-        // simple blur handler to hide when focus moves away
-        desktopMenu.addEventListener('mouseleave', function () {
-          desktopMenu.style.display = 'none';
-          desktopButton.setAttribute('aria-expanded', 'false');
-          desktopCaret.textContent = '▾';
-        });
-      }
-    }
-
-    // Optional: rotate accordions carets
-    document.querySelectorAll('details').forEach(function (details) {
-      details.addEventListener('toggle', function () {
-        var caret = details.querySelector('.caret');
-        if (!caret) return;
-        caret.textContent = details.open ? '▲' : '▼';
-      });
-    });
-  </script>
 </body>
 </html>
