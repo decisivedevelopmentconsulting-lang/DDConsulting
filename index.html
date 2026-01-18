@@ -133,6 +133,39 @@
       h1 { font-size: 36px; }
       .nav-links { display: none; }
     }
+    /* Responsive Grid System */
+    .responsive-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* 2 columns on desktop */
+      gap: 60px;
+      align-items: center;
+    }
+
+    .three-col-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop */
+      gap: 30px;
+    }
+
+    /* Tablet & Mobile Overrides */
+    @media (max-width: 992px) {
+      .responsive-grid, 
+      .three-col-grid, 
+      .founder-wrap {
+        grid-template-columns: 1fr !important; /* Forces 1 column */
+        text-align: center;
+        gap: 40px;
+      }
+      
+      .brand { justify-content: center; width: 100%; }
+      .nav { flex-direction: column; gap: 15px; }
+      
+      /* Fix image squashing */
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
   </style>
 </head>
 
