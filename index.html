@@ -38,14 +38,28 @@
     .nav-link:hover{ background: var(--bg-soft); color: var(--accent); }
     
     .dropdown{ position:relative; display: inline-block; }
-    .dropdown-menu{
-      position:absolute; top:100%; right:0; background:#fff; border: 1px solid var(--border);
-      border-radius:8px; box-shadow:0 10px 25px rgba(0,0,0,0.1);
-      min-width:180px; display:none; z-index:1000; padding: 10px 0;
+    .dropdown-menu {
+      position: absolute; 
+      top: 100%; 
+      right: 0; 
+      background: #ffffff; /* Solid White */
+      border: 1px solid var(--border);
+      border-radius: 8px; 
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      min-width: 200px; 
+      display: none; 
+      z-index: 1000; 
+      padding: 10px 0;
     }
-    .dropdown:hover .dropdown-menu{ display:block; }
-    .dropdown-menu a{ display:block; padding:10px 20px; font-size:14px; color:var(--text-muted); }
-    .dropdown-menu a:hover{ background: var(--bg-soft); color: var(--accent); }
+    .dropdown-menu a { 
+      display: block; 
+      padding: 12px 20px; 
+      font-size: 14px; 
+      color: #0f172a !important; /* Force Dark Text so it's visible */
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .dropdown-menu a:last-child { border-bottom: none; }
+    .dropdown-menu a:hover { background: var(--bg-soft); color: var(--accent) !important; }
 
     .nav-cta{ background: #1e3a8a; color: white !important; padding: 10px 20px; border-radius: 6px; font-weight: 600; margin-left: 10px; }
 
@@ -96,12 +110,11 @@
       <a class="nav-link" href="#home">Home</a>
       <a class="nav-link" href="#about">About</a>
       <div class="dropdown">
-        <a class="nav-link" href="#services">Services ▾</a>
+        <a class="nav-link" href="#services" style="color: var(--accent); font-weight: 700;">Services ▾</a>
         <div class="dropdown-menu">
           <a href="#services">1. Stabilization Sprint</a>
           <a href="#services">2. Systems Architecture</a>
           <a href="#services">3. Leadership OS</a>
-          <div style="border-top: 1px solid var(--border); margin: 5px 0;"></div>
           <a href="#outcomes">Expected Outcomes</a>
         </div>
       </div>
