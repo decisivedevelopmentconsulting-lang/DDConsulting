@@ -63,16 +63,21 @@
     .card { background: #f8fafc; padding: 35px; border-radius: 12px; border: 1px solid #eef2f6; transition: 0.3s; }
     .card:hover { border-color: var(--accent); transform: translateY(-3px); }
 
-    /* BPO SPECIFIC */
-    .bpo-band { background: #eff6ff; border-left: 5px solid var(--accent); padding: 40px; border-radius: 0 15px 15px 0; }
-
-    /* FOUNDER */
-    .founder-wrap{ display:grid; grid-template-columns: 300px 1fr; gap:60px; align-items: center; }
-    .founder-wrap img{ width:100%; border-radius:20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+    /* FOUNDER IMAGE CROP */
+    .founder-wrap{ display:grid; grid-template-columns: 350px 1fr; gap:60px; align-items: center; }
+    .founder-wrap img{ 
+      width:350px; 
+      height:350px; 
+      object-fit: cover; 
+      object-position: top; 
+      border-radius:20px; 
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+    }
 
     /* MOBILE */
     @media(max-width:900px){
       .grid-2, .grid-3, .founder-wrap { grid-template-columns: 1fr !important; }
+      .founder-wrap img { width: 100%; height: auto; }
       h1 { font-size: 36px; }
       .nav-links { display: none; }
     }
@@ -89,10 +94,10 @@
     </div>
     <nav class="nav-links">
       <a class="nav-link" href="#home">Home</a>
-      <a class="nav-link" href="#challenges">Challenges</a>
+      <a class="nav-link" href="#about">About</a>
       <a class="nav-link" href="#bpo">BPO Solutions</a>
       <div class="dropdown">
-        <a class="nav-link" href="javascript:void(0)">About ▾</a>
+        <a class="nav-link" href="#about">Company ▾</a>
         <div class="dropdown-menu">
           <a href="#how">How We Work</a>
           <a href="#founder">The Founder</a>
@@ -116,21 +121,19 @@
 <section id="about" style="padding: 100px 0; background: #ffffff;">
   <div class="container">
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;">
-      
       <div>
         <h4 style="color: var(--accent); text-transform: uppercase; letter-spacing: 2px; font-size: 13px; font-weight: 800; margin-bottom: 15px;">About Decisive Development</h4>
         <h2 style="font-size: 38px; color: #0f172a; line-height: 1.2; margin-bottom: 25px;">We don't sell recruitment services. We fix recruitment systems.</h2>
         <p style="font-size: 17px; color: #475569; line-height: 1.8; margin-bottom: 20px;">
-          Decisive Development Consulting was founded to solve a specific crisis in labor-intensive organizations: <strong>the failure of mass recruitment systems under pressure</strong>. For BPOs, ITOs, and facility management firms, recruitment isn't a back-office HR function—it is the operational heartbeat of the business.
+          Decisive Development Consulting was founded to solve a specific crisis in labor-intensive organizations: <strong>the failure of mass recruitment systems under pressure</strong>. For BPOs, ITOs, and facility management firms, recruitment is the operational heartbeat of the business.
         </p>
         <p style="font-size: 17px; color: #475569; line-height: 1.8;">
-          We are specialists in <strong>mass recruitment repair</strong>. Unlike generic consultants, we embed within your operations to dismantle bottlenecks, clarify decision rights, and architect scalable operating systems that turn hiring from a liability into a predictable engine for growth.
+          We are specialists in <strong>mass recruitment repair</strong>. We embed within your operations to dismantle bottlenecks and architect scalable operating systems that turn hiring into a predictable engine for growth.
         </p>
       </div>
 
       <div style="background: #f8fafc; padding: 45px; border-radius: 24px; border: 1px solid var(--border);">
         <h3 style="font-size: 22px; margin-bottom: 30px; color: #0f172a;">What defines our approach:</h3>
-        
         <div style="margin-bottom: 25px; display: flex; gap: 15px;">
           <span style="color: var(--accent); font-weight: 800;">✓</span>
           <div>
@@ -138,7 +141,6 @@
             <p style="font-size: 14px; color: #64748b;">We work exclusively with high-volume, high-turnover industries where delivery depends on hiring reliability.</p>
           </div>
         </div>
-
         <div style="margin-bottom: 25px; display: flex; gap: 15px;">
           <span style="color: var(--accent); font-weight: 800;">✓</span>
           <div>
@@ -146,7 +148,6 @@
             <p style="font-size: 14px; color: #64748b;">We don't deliver reports; we deliver shoulder-to-shoulder operational repair in real-time.</p>
           </div>
         </div>
-
         <div style="display: flex; gap: 15px;">
           <span style="color: var(--accent); font-weight: 800;">✓</span>
           <div>
@@ -155,7 +156,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -172,61 +172,37 @@
 
 <section id="bpo" style="background: #f1f5f9; padding: 100px 0; border-top: 1px solid var(--border);">
   <div class="container">
-    
     <div style="margin-bottom: 60px; border-left: 4px solid var(--accent); padding-left: 25px;">
       <h4 style="color: var(--accent); text-transform: uppercase; letter-spacing: 2px; font-size: 13px; font-weight: 800; margin-bottom: 10px;">BPO Talent Solutions</h4>
       <h2 style="font-size: 38px; color: #0f172a; line-height: 1.2; margin-bottom: 20px;">A delivery-grade, integrated talent engine.</h2>
       <p style="font-size: 19px; color: #475569; max-width: 850px; line-height: 1.6;">
-        For BPOs and high-volume recruitment environments that need a reliable, accountable talent engine plugged into their operating model — not an external vendor pushing CVs into the inbox.
+        For BPOs and high-volume recruitment environments that need a reliable, accountable talent engine plugged into their operating model.
       </p>
     </div>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 60px;">
-      
       <div style="background: #0f172a; color: white; padding: 40px; border-radius: 16px;">
         <span style="color: #60a5fa; font-weight: 800; font-size: 14px;">01 · DEFINE</span>
         <h3 style="margin: 15px 0; color: white;">Demand & Standards</h3>
-        <p style="font-size: 15px; color: #94a3b8; margin-bottom: 20px;">Aligning on demand patterns, role archetypes, and screening standards where this capability connects with internal teams.</p>
+        <p style="font-size: 15px; color: #94a3b8; margin-bottom: 20px;">Aligning on demand patterns, role archetypes, and screening standards where capability connects with internal teams.</p>
         <div style="height: 1px; background: #334155; margin-bottom: 15px;"></div>
         <p style="font-size: 13px; color: #cbd5e1;">Result: Integrated demand and standards.</p>
       </div>
-
       <div style="background: white; padding: 40px; border-radius: 16px; border: 1px solid var(--border);">
         <span style="color: var(--accent); font-weight: 800; font-size: 14px;">02 · BUILD</span>
         <h3 style="margin: 15px 0;">Structured Pods</h3>
-        <p style="font-size: 15px; color: #475569; margin-bottom: 20px;">Cross-functional pods configured with explicit ownership for sourcing, assessment, and handover into your internal tools.</p>
+        <p style="font-size: 15px; color: #475569; margin-bottom: 20px;">Cross-functional pods configured with explicit ownership for sourcing, assessment, and handover.</p>
         <div style="height: 1px; background: var(--border); margin-bottom: 15px;"></div>
         <p style="font-size: 13px; color: #64748b;">Result: Accountable, structured delivery.</p>
       </div>
-
       <div style="background: white; padding: 40px; border-radius: 16px; border: 1px solid var(--border);">
         <span style="color: var(--accent); font-weight: 800; font-size: 14px;">03 · RUN</span>
         <h3 style="margin: 15px 0;">Continuous Delivery</h3>
-        <p style="font-size: 15px; color: #475569; margin-bottom: 20px;">Delivery runs on agreed rhythms with visible metrics, joint reviews, and the ability to adjust focus without destabilising operations.</p>
+        <p style="font-size: 15px; color: #475569; margin-bottom: 20px;">Delivery runs on agreed rhythms with visible metrics and joint reviews.</p>
         <div style="height: 1px; background: var(--border); margin-bottom: 15px;"></div>
         <p style="font-size: 13px; color: #64748b;">Result: Measurable impact on reliability.</p>
       </div>
-
     </div>
-
-    <div style="background: #1e293b; color: white; padding: 50px; border-radius: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
-      <div>
-        <h3 style="color: white; font-size: 24px; margin-bottom: 15px;">What this looks like in practice</h3>
-        <p style="color: #94a3b8; margin-bottom: 25px;">This is a delivery-grade capability designed for integration into your operating model — not advisory work and not a transactional vendor arrangement.</p>
-        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-          <span style="border: 1px solid #475569; padding: 6px 15px; border-radius: 20px; font-size: 13px; color: #cbd5e1;">Shared service levels</span>
-          <span style="border: 1px solid #475569; padding: 6px 15px; border-radius: 20px; font-size: 13px; color: #cbd5e1;">Embedded into delivery rhythms</span>
-          <span style="border: 1px solid #475569; padding: 6px 15px; border-radius: 20px; font-size: 13px; color: #cbd5e1;">Real-time issue escalation</span>
-        </div>
-      </div>
-      <div style="background: rgba(255,255,255,0.05); padding: 30px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
-        <h4 style="color: #60a5fa; margin-bottom: 10px;">Integration Rhythms</h4>
-        <p style="font-size: 14px; line-height: 1.7; color: #cbd5e1;">
-          Workflows, documentation, and communication run through <strong>your systems</strong> wherever possible, ensuring a single source of truth and fewer handover failures.
-        </p>
-      </div>
-    </div>
-
   </div>
 </section>
 
