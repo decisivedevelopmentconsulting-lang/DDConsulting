@@ -144,34 +144,44 @@
       <img src="logo.jpg" alt="DDC Logo">
       <span>Decisive Development</span>
     </div>
-    <nav class="nav-links">
-      <a class="nav-link" href="#home">Home</a>
+    
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+    <nav class="nav-links" id="navLinks">
+      <a class="nav-link" href="#home" onclick="toggleMenu()">Home</a>
       
       <div class="dropdown">
         <a class="nav-link" href="#about">Company ▾</a>
         <div class="dropdown-menu">
-          <a href="#about">About DDC</a>
-          <a href="#founder">Meet The Founder</a>
-          <a href="#how">How We Work</a>
+          <a href="#about" onclick="toggleMenu()">About DDC</a>
+          <a href="#founder" onclick="toggleMenu()">Meet The Founder</a>
+          <a href="#how" onclick="toggleMenu()">How We Work</a>
         </div>
       </div>
 
-      <a class="nav-link" href="#bpo" style="color: var(--accent); font-weight: 700;">BPO Solutions</a>
+      <a class="nav-link" href="#bpo" onclick="toggleMenu()" style="color: var(--accent); font-weight: 700;">BPO Solutions</a>
 
       <div class="dropdown">
         <a class="nav-link" href="#services">Services ▾</a>
         <div class="dropdown-menu">
-          <a href="#services">1. Stabilization Sprint</a>
-          <a href="#services">2. Systems Architecture</a>
-          <a href="#services">3. Leadership OS</a>
-          <a href="#outcomes">Expected Outcomes</a>
+          <a href="#services" onclick="toggleMenu()">Stabilization Sprint</a>
+          <a href="#services" onclick="toggleMenu()">Systems Architecture</a>
+          <a href="#services" onclick="toggleMenu()">Leadership OS</a>
+          <a href="#outcomes" onclick="toggleMenu()">Expected Outcomes</a>
         </div>
       </div>
 
-      <a class="nav-link nav-cta" href="#cta">Free Diagnostic</a>
+      <a class="nav-link nav-cta" href="#cta" onclick="toggleMenu()">Free Diagnostic</a>
     </nav>
   </div>
 </header>
+
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById('navLinks');
+    nav.classList.toggle('active');
+  }
+</script>
 
 <section id="home" class="hero">
   <div class="container">
