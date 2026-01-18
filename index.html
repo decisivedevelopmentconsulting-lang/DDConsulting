@@ -148,22 +148,24 @@
     }
 
     /* Tablet & Mobile Overrides */
-    @media (max-width: 992px) {
-      .responsive-grid, 
-      .three-col-grid, 
-      .founder-wrap {
-        grid-template-columns: 1fr !important; /* Forces 1 column */
-        text-align: center;
-        gap: 40px;
+   @media (max-width: 992px) {
+      /* Force everything with 'grid' to stack */
+      [style*="display: grid"] {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
       }
       
-      .brand { justify-content: center; width: 100%; }
-      .nav { flex-direction: column; gap: 15px; }
+      .nav { flex-direction: row; justify-content: space-between; }
+      .nav-links { width: 100%; }
       
-      /* Fix image squashing */
-      img {
-        max-width: 100%;
-        height: auto;
+      /* Fix the 'Consulting' name size on small phones */
+      .brand span { font-size: 14px !important; }
+
+      /* Fix Founder layout */
+      .founder-wrap {
+        display: flex !important;
+        flex-direction: column !important;
+        text-align: center;
       }
     }
   </style>
@@ -175,36 +177,32 @@
   <div class="container nav">
     <div class="brand">
       <img src="logo.jpg" alt="DDC Logo">
-      <span>Decisive Development</span>
+      <span style="font-size: clamp(14px, 4vw, 18px); white-space: nowrap;">Decisive Development Consulting</span>
     </div>
     
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('mobile-active')" style="display:none; background:none; border:none; font-size:24px; cursor:pointer;">☰</button>
 
     <nav class="nav-links" id="navLinks">
-      <a class="nav-link" href="#home" onclick="toggleMenu()">Home</a>
-      
+      <a class="nav-link" href="#home">Home</a>
       <div class="dropdown">
-        <a class="nav-link" href="#about">Company ▾</a>
+        <a class="nav-link">Company ▾</a>
         <div class="dropdown-menu">
-          <a href="#about" onclick="toggleMenu()">About DDC</a>
-          <a href="#founder" onclick="toggleMenu()">Meet The Founder</a>
-          <a href="#how" onclick="toggleMenu()">How We Work</a>
+          <a href="#about">About DDC</a>
+          <a href="#founder">Meet The Founder</a>
+          <a href="#how">How We Work</a>
         </div>
       </div>
-
-      <a class="nav-link" href="#bpo" onclick="toggleMenu()" style="color: var(--accent); font-weight: 700;">BPO Solutions</a>
-
+      <a class="nav-link" href="#bpo" style="color: var(--accent); font-weight: 700;">BPO Solutions</a>
       <div class="dropdown">
-        <a class="nav-link" href="#services">Services ▾</a>
+        <a class="nav-link">Services ▾</a>
         <div class="dropdown-menu">
-          <a href="#services" onclick="toggleMenu()">Stabilization Sprint</a>
-          <a href="#services" onclick="toggleMenu()">Systems Architecture</a>
-          <a href="#services" onclick="toggleMenu()">Leadership OS</a>
-          <a href="#outcomes" onclick="toggleMenu()">Expected Outcomes</a>
+          <a href="#services">Stabilization Sprint</a>
+          <a href="#services">Systems Architecture</a>
+          <a href="#services">Leadership OS</a>
+          <a href="#outcomes">Expected Outcomes</a>
         </div>
       </div>
-
-      <a class="nav-link nav-cta" href="#cta" onclick="toggleMenu()">Free Diagnostic</a>
+      <a class="nav-link nav-cta" href="#cta">Free Diagnostic</a>
     </nav>
   </div>
 </header>
@@ -227,7 +225,7 @@
 
 <section id="about" style="padding: 100px 0; background: #ffffff;">
   <div class="container">
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;">
+    <div class="responsive-grid">
       <div>
         <h4 style="color: var(--accent); text-transform: uppercase; letter-spacing: 2px; font-size: 13px; font-weight: 800; margin-bottom: 15px;">About Decisive Development</h4>
         <h2 style="font-size: 38px; color: #0f172a; line-height: 1.2; margin-bottom: 25px;">We don't sell recruitment services. We fix recruitment systems.</h2>
@@ -320,7 +318,7 @@
       </p>
     </div>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 60px;">
+    <div class="responsive-grid">
       <div style="background: #0f172a; color: white; padding: 40px; border-radius: 16px;">
         <span style="color: #60a5fa; font-weight: 800; font-size: 14px;">01 · DEFINE</span>
         <h3 style="margin: 15px 0; color: white;">Demand & Standards</h3>
@@ -417,33 +415,67 @@
   </div>
 </section>
 
-<section id="founder" style="padding: 120px 0; background: #ffffff;">
+<section id="founder" style="padding: 100px 0; background: #ffffff; overflow: hidden;">
   <div class="container">
-    <div class="founder-wrap">
-      <div style="position: relative;">
-        <img src="founder.jpg" alt="Muhibullah Sahibjan" style="width: 100%; max-width: 400px; border-radius: 24px;">
-        <div style="position: absolute; bottom: -20px; right: -20px; background: var(--accent); color: white; padding: 20px; border-radius: 12px; font-weight: 700; font-size: 14px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+    <div class="founder-grid-container">
+      
+      <div style="position: relative; text-align: center;">
+        <img src="founder.jpg" alt="Muhibullah Sahibjan" style="width: 100%; max-width: 400px; border-radius: 24px; display: block; margin: 0 auto;">
+        <div style="position: absolute; bottom: 20px; right: 10px; background: var(--accent); color: white; padding: 15px 20px; border-radius: 12px; font-weight: 700; font-size: 14px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); z-index: 10;">
           15+ Years Experience
         </div>
       </div>
-      <div>
+
+      <div style="text-align: left;">
         <h4 style="color: var(--accent); text-transform: uppercase; letter-spacing: 2px; font-size: 13px; font-weight: 800; margin-bottom: 15px;">Meet The Founder</h4>
-        <h2 style="font-size: 42px; color: #0f172a; margin-bottom: 25px;">Muhibullah Sahibjan</h2>
+        <h2 style="font-size: clamp(32px, 5vw, 42px); color: #0f172a; margin-bottom: 25px; line-height: 1.2;">Muhibullah Sahibjan</h2>
+        
         <p style="font-size: 18px; color: #475569; line-height: 1.8; margin-bottom: 20px;">
           Muhibullah works with growing staffing firms to stabilize recruitment delivery and improve recruiter productivity—remotely, as a <strong>fractional head</strong>. 
         </p>
+        
         <p style="font-size: 17px; color: #475569; line-height: 1.8; margin-bottom: 20px;">
           Over the last 15+ years, he has led regional recruitment delivery and key accounts in high-pressure environments—including <strong>Manpower Group</strong>—partnering with founders and sales leaders across multiple markets to stabilize operations and protect revenue.
         </p>
+        
         <p style="font-size: 17px; color: #475569; line-height: 1.8; margin-bottom: 30px;">
           He sits between founders, sales, and recruiters to turn your delivery function into a predictable engine rather than a heroic effort. This is <strong>embedded leadership</strong>, not training or motivational talks.
         </p>
-        <div style="border-left: 4px solid var(--accent); padding-left: 20px; font-style: italic; color: #1e293b; font-size: 20px;">
+        
+        <div style="border-left: 4px solid var(--accent); padding-left: 20px; font-style: italic; color: #1e293b; font-size: 19px; line-height: 1.6;">
           "Most staffing firms don’t fail because of a lack of demand. They stall because delivery becomes inconsistent and founders lose confidence in the team."
         </div>
       </div>
+
     </div>
   </div>
+
+  <style>
+    /* This handles the desktop layout and mobile stacking automatically */
+    .founder-grid-container {
+      display: grid;
+      grid-template-columns: 400px 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    @media (max-width: 992px) {
+      .founder-grid-container {
+        grid-template-columns: 1fr; /* Stacks image on top of text */
+        text-align: center !important;
+        gap: 40px;
+      }
+      .founder-grid-container div {
+        text-align: center !important;
+      }
+      /* Moves the badge to the center so it doesn't look weird on mobile */
+      .founder-grid-container div[style*="position: absolute"] {
+        right: 50% !important;
+        transform: translateX(50%);
+        bottom: -15px !important;
+      }
+    }
+  </style>
 </section>
 
 <footer id="cta" style="padding: 120px 0; background: #0f172a; color: white;">
