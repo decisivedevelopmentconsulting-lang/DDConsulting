@@ -29,44 +29,50 @@
 
     .container{ max-width:1140px; margin:0 auto; padding:0 24px; }
 
-    /* NAV */
+    /* NAV & DROPDOWN */
     .nav{ display:flex; align-items:center; justify-content:space-between; padding:20px 0; border-bottom: 1px solid var(--border); }
     .brand{ display:flex; align-items:center; gap:12px; font-weight:700; }
     .brand img{ height:42px; width:auto; border-radius: 4px; }
-    .nav-links{ display:flex; align-items:center; gap:10px; }
-    .nav-link{ padding:10px 15px; font-size:14px; font-weight:500; color:var(--text-muted); }
+    .nav-links{ display:flex; align-items:center; gap:5px; }
+    .nav-link{ padding:10px 15px; font-size:14px; font-weight:500; color:var(--text-muted); border-radius: 6px; }
+    .nav-link:hover{ background: var(--bg-soft); color: var(--accent); }
+    
+    .dropdown{ position:relative; display: inline-block; }
+    .dropdown-menu{
+      position:absolute; top:100%; right:0; background:#fff; border: 1px solid var(--border);
+      border-radius:8px; box-shadow:0 10px 25px rgba(0,0,0,0.1);
+      min-width:180px; display:none; z-index:1000; padding: 10px 0;
+    }
+    .dropdown:hover .dropdown-menu{ display:block; }
+    .dropdown-menu a{ display:block; padding:10px 20px; font-size:14px; color:var(--text-muted); }
+    .dropdown-menu a:hover{ background: var(--bg-soft); color: var(--accent); }
+
     .nav-cta{ background: #1e3a8a; color: white !important; padding: 10px 20px; border-radius: 6px; font-weight: 600; margin-left: 10px; }
 
-    /* HERO SECTION */
+    /* SECTIONS */
     section{ padding:100px 0; }
     .hero { background: #0f172a; color: white; padding: 120px 0; }
-    h1{ font-size:52px; line-height:1.1; margin-bottom:24px; letter-spacing:-0.02em; }
+    h1{ font-size:52px; line-height:1.1; margin-bottom:24px; letter-spacing:-0.02em; color: white; }
+    h2{ font-size:36px; margin-bottom:20px; color: #1e293b; }
     .hero p { font-size: 20px; color: #94a3b8; max-width: 800px; margin-bottom: 40px; }
-    .btn-white { background: white; color: #0f172a; padding: 16px 32px; border-radius: 6px; font-weight: 700; display: inline-block; }
-    .btn-outline { border: 1px solid #334155; color: white; padding: 16px 32px; border-radius: 6px; font-weight: 600; display: inline-block; margin-left: 15px; }
 
-    /* RESULTS */
-    .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin: 50px 0; border-left: 4px solid var(--accent); padding-left: 30px; }
-    .stat-box h3 { font-size: 42px; font-weight: 800; color: #0f172a; }
-    .case-study { background: white; border-left: 4px solid #10b981; padding: 30px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 0 12px 12px 0; }
-
-    /* CHALLENGES GRID */
+    /* GRID REUSABILITY */
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 40px; }
-    .card { background: #f8fafc; padding: 35px; border-radius: 12px; display: flex; gap: 20px; border: 1px solid #eef2f6; }
-    .icon { font-size: 24px; background: white; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-
-    /* METHODOLOGY */
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
-    .step { background: white; padding: 50px 30px; border-radius: 16px; border: 1px solid var(--border); text-align: center; }
-    .step-num { background: var(--accent); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px; font-weight: 700; }
+    
+    .card { background: #f8fafc; padding: 35px; border-radius: 12px; border: 1px solid #eef2f6; transition: 0.3s; }
+    .card:hover { border-color: var(--accent); transform: translateY(-3px); }
+
+    /* BPO SPECIFIC */
+    .bpo-band { background: #eff6ff; border-left: 5px solid var(--accent); padding: 40px; border-radius: 0 15px 15px 0; }
 
     /* FOUNDER */
     .founder-wrap{ display:grid; grid-template-columns: 300px 1fr; gap:60px; align-items: center; }
     .founder-wrap img{ width:100%; border-radius:20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
 
-    /* RESPONSIVE */
+    /* MOBILE */
     @media(max-width:900px){
-      .grid-2, .grid-3, .founder-wrap, .results-grid { grid-template-columns: 1fr !important; }
+      .grid-2, .grid-3, .founder-wrap { grid-template-columns: 1fr !important; }
       h1 { font-size: 36px; }
       .nav-links { display: none; }
     }
@@ -79,12 +85,20 @@
   <div class="container nav">
     <div class="brand">
       <img src="logo.jpg" alt="DDC Logo">
-      <span>Decisive Development Consulting</span>
+      <span>Decisive Development</span>
     </div>
     <nav class="nav-links">
       <a class="nav-link" href="#home">Home</a>
       <a class="nav-link" href="#challenges">Challenges</a>
-      <a class="nav-link" href="#how">How We Work</a>
+      <a class="nav-link" href="#bpo">BPO Solutions</a>
+      <div class="dropdown">
+        <a class="nav-link" href="javascript:void(0)">About ▾</a>
+        <div class="dropdown-menu">
+          <a href="#how">How We Work</a>
+          <a href="#founder">The Founder</a>
+          <a href="#cta">Contact</a>
+        </div>
+      </div>
       <a class="nav-link nav-cta" href="#cta">Free Diagnostic</a>
     </nav>
   </div>
@@ -94,47 +108,53 @@
   <div class="container">
     <span style="color: #60a5fa; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 13px;">Specialist Advisory & Embedded Leadership</span>
     <h1>When delivery becomes unpredictable, growth becomes dangerous.</h1>
-    <p>We help staffing, recruitment, and BPO firms install operating systems that make delivery reliable, capacity visible, and growth sustainable — without burnout.</p>
-    <div>
-      <a href="#cta" class="btn-white">Book Free 20-Min Diagnostic</a>
-      <a href="#how" class="btn-outline">Learn More</a>
-    </div>
+    <p>We help staffing, recruitment, and BPO firms install operating systems that make delivery reliable, capacity visible, and growth sustainable.</p>
+    <a href="#cta" style="background: white; color: #0f172a; padding: 16px 32px; border-radius: 6px; font-weight: 700; display: inline-block;">Book Free 20-Min Diagnostic</a>
   </div>
 </section>
 
-<section class="container">
-  <h2>Proven Results with 15+ Firms</h2>
-  <div class="results-grid">
-    <div class="stat-box"><h3>25-30%</h3><p>Average reduction in time-to-fill</p></div>
-    <div class="stat-box"><h3>40%+</h3><p>Improvement in delivery consistency</p></div>
-    <div class="stat-box"><h3>15+</h3><p>Staffing firms stabilized and scaled</p></div>
-  </div>
-  <div class="case-study">
-    <p style="font-style: italic; font-size: 18px;">"Our recruitment output was all over the place — some months great, others a disaster. After working with Decisive Development, we finally have a system that works consistently. No more firefighting."</p>
-    <p style="margin-top:15px; font-weight:600; color:var(--accent);">— Case Study: Mid-Sized Staffing Firm (60-Day Stabilization)</p>
+<section id="challenges" class="container">
+  <h2>Common Challenges We Fix</h2>
+  <div class="grid-2">
+    <div class="card"><h3>📊 Inconsistent Output</h3><p>Recruiter output varies 40% month-to-month with no clear cause.</p></div>
+    <div class="card"><h3>🚨 Delivery Surprises</h3><p>Last-minute cancellations and deal failures that shouldn't happen.</p></div>
+    <div class="card"><h3>🔥 Founder Firefighting</h3><p>Founders pulled into daily operations instead of strategic growth.</p></div>
+    <div class="card"><h3>😫 Team Burnout</h3><p>High-pressure environments leading to exhaustion and turnover.</p></div>
   </div>
 </section>
 
-<section id="challenges" style="background: #fff;">
+<section id="bpo" style="background: #f8fafc;">
   <div class="container">
-    <h2>Common Challenges We Fix</h2>
-    <p>If execution has become volatile or overly dependent on heroics, we install the systems to fix it.</p>
+    <h2>BPO Talent Solutions</h2>
+    <p style="margin-bottom: 40px; max-width: 800px;">For organizations that need more than just advice. We provide the architectural backbone for global talent delivery.</p>
+    
     <div class="grid-2">
-      <div class="card"><div class="icon">📊</div><div><h3>Inconsistent Recruiter Output</h3><p>Recruiter output varies 40% month-to-month with no clear visibility into the cause.</p></div></div>
-      <div class="card"><div class="icon">🚨</div><div><h3>Late-Stage Delivery Surprises</h3><p>Last-minute cancellations and deal failures that shouldn't have happened.</p></div></div>
-      <div class="card"><div class="icon">🔥</div><div><h3>Founder Firefighting Mode</h3><p>Founders pulled into daily operations instead of leading strategic growth.</p></div></div>
-      <div class="card"><div class="icon">😫</div><div><h3>Team Burnout & Turnover</h3><p>High-pressure environments leading to exhaustion and constant rehiring.</p></div></div>
+      <div class="bpo-band">
+        <h3>End-to-End Architecture</h3>
+        <p><strong>Strategic Redesign:</strong> We examine your entire recruitment infrastructure and rebuild it as an integrated operating system.</p>
+      </div>
+      <div class="bpo-band">
+        <h3>Leadership Operating System</h3>
+        <p><strong>Ongoing Partnership:</strong> We embed leadership coaching to ensure recruitment scales without founder dependency.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="how" style="background: #f8fafc;">
-  <div class="container" style="text-align: center;">
-    <h2>How We Fix It: Our 3-Step Approach</h2>
-    <div class="grid-3">
-      <div class="step"><div class="step-num">1</div><h3>Map Current State</h3><p>Diagnostic assessment of your recruitment system, identifying bottlenecks and failure points.</p></div>
-      <div class="step"><div class="step-num">2</div><h3>Design Operating System</h3><p>Build workflows, decision rights, and processes that work under pressure.</p></div>
-      <div class="step"><div class="step-num">3</div><h3>Embed & Stabilise</h3><p>60-90 day intensive engagement that fixes your recruitment system for good.</p></div>
+<section id="how" class="container">
+  <h2 style="text-align: center; margin-bottom: 50px;">Our 3-Step Approach</h2>
+  <div class="grid-3">
+    <div style="text-align:center;">
+      <div style="background:var(--accent); color:white; width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-weight:700;">1</div>
+      <h3>Map State</h3><p>Identify bottlenecks and failure points.</p>
+    </div>
+    <div style="text-align:center;">
+      <div style="background:var(--accent); color:white; width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-weight:700;">2</div>
+      <h3>Design OS</h3><p>Build workflows that work under pressure.</p>
+    </div>
+    <div style="text-align:center;">
+      <div style="background:var(--accent); color:white; width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-weight:700;">3</div>
+      <h3>Stabilise</h3><p>60-90 day intensive implementation.</p>
     </div>
   </div>
 </section>
@@ -143,10 +163,10 @@
   <div class="founder-wrap">
     <img src="founder.jpg" alt="Muhibullah Sahibjan">
     <div>
-      <h2 style="margin-bottom: 5px;">Muhibullah Sahibjan</h2>
-      <p style="color: #2563eb; font-weight: 700; margin-bottom: 20px;">FOUNDER & LEAD CONSULTANT</p>
-      <p style="font-size: 22px; font-style: italic; line-height: 1.6; color: #334155;">
-        “The core question is simple: can your firm consistently deliver what you sell? Most firms stall because their delivery systems cannot carry the weight of their growth.”
+      <p style="color: #2563eb; font-weight: 700; margin-bottom: 10px;">FOUNDER & LEAD CONSULTANT</p>
+      <h2>Muhibullah Sahibjan</h2>
+      <p style="font-size: 22px; font-style: italic; line-height: 1.6; color: #334155; margin-top: 20px;">
+        “Most firms stall because their delivery systems cannot carry the weight of their growth.”
       </p>
     </div>
   </div>
@@ -154,10 +174,9 @@
 
 <footer id="cta" style="background: #0f172a; color: white; padding: 100px 0; text-align: center;">
   <div class="container">
-    <h2 style="color: white; font-size: 42px; margin-bottom: 20px;">Ready to stabilize your delivery?</h2>
-    <p style="color: #94a3b8; font-size: 20px; margin-bottom: 40px;">Book a free 20-minute diagnostic call to identify your bottlenecks.</p>
+    <h2 style="color: white; margin-bottom: 20px;">Ready to stabilize your delivery?</h2>
     <p style="font-size: 24px; font-weight: 700;">✉️ <a href="mailto:DecisiveDevelopmentConsulting@gmail.com" style="color: #60a5fa;">DecisiveDevelopmentConsulting@gmail.com</a></p>
-    <p style="margin-top: 80px; font-size: 14px; color: #475569;">© 2026 Decisive Development Consulting. All rights reserved.</p>
+    <p style="margin-top: 60px; font-size: 14px; color: #475569;">© 2026 Decisive Development Consulting. All rights reserved.</p>
   </div>
 </footer>
 
