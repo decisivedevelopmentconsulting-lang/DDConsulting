@@ -33,56 +33,85 @@ a{text-decoration:none;color:inherit}
   padding:0 20px;
 }
 
-/* NAVIGATION */
-header{
-  position:sticky;
-  top:0;
-  background:#fff;
-  border-bottom:1px solid var(--border);
-  z-index:1000;
+/* BRAND */
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-weight:700;
+  font-size:15px;
+  letter-spacing:.3px;
 }
+.brand img{
+  height:34px;
+  width:auto;
+}
+
+/* NAV LAYOUT */
 .nav{
   display:flex;
   align-items:center;
   justify-content:space-between;
   padding:14px 0;
 }
-.logo{
-  font-weight:700;
-  letter-spacing:.4px;
-}
 .nav-links{
   display:flex;
-  gap:6px;
   align-items:center;
+  gap:6px;
 }
+
+/* SOFT BUTTON NAV */
 .nav-link{
   padding:8px 14px;
   border-radius:6px;
   font-size:14px;
   font-weight:500;
-  transition:background .18s ease;
+  color:var(--text-main);
+  background:transparent;
+  transition:background .18s ease, color .18s ease;
 }
 .nav-link:hover{
   background:rgba(31,58,95,.07);
 }
-.nav-cta{
-  border:1px solid rgba(31,58,95,.3);
+
+/* BPO emphasis without shouting */
+.nav-link.strong{
   font-weight:600;
 }
-.dropdown{position:relative}
+
+/* CTA */
+.nav-cta{
+  border:1px solid rgba(31,58,95,.35);
+  font-weight:600;
+}
+.nav-cta:hover{
+  background:rgba(31,58,95,.08);
+}
+
+/* DROPDOWN */
+.dropdown{
+  position:relative;
+}
+.dropdown-toggle{
+  background:none;
+  border:none;
+  cursor:pointer;
+}
 .dropdown-menu{
-  display:none;
   position:absolute;
   top:120%;
   left:0;
   background:#fff;
   border-radius:8px;
-  box-shadow:0 12px 30px rgba(0,0,0,.1);
+  box-shadow:0 12px 28px rgba(0,0,0,.12);
   min-width:220px;
   padding:8px 0;
+  display:none;
+  z-index:999;
 }
-.dropdown:hover .dropdown-menu{display:block}
+.dropdown:hover .dropdown-menu{
+  display:block;
+}
 .dropdown-menu a{
   display:block;
   padding:10px 16px;
@@ -92,6 +121,18 @@ header{
 .dropdown-menu a:hover{
   background:var(--bg-soft);
   color:var(--text-main);
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .nav{
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .nav-links{
+    flex-wrap:wrap;
+    justify-content:flex-start;
+  }
 }
 
 /* SECTIONS */
@@ -319,14 +360,25 @@ footer{
 
 <header>
   <div class="container nav">
-    <div class="logo">Decisive Development Consulting</div>
-    <div class="nav-links">
+    <!-- LOGO + NAME -->
+    <div class="brand">
+      <img src="logo.jpg" alt="Decisive Development Consulting Logo">
+      <span>Decisive Development Consulting</span>
+    </div>
+
+    <!-- NAV LINKS -->
+    <nav class="nav-links">
       <a class="nav-link" href="#home">Home</a>
       <a class="nav-link" href="#services">Services</a>
-      <a class="nav-link" href="#bpo">BPO Talent Solutions</a>
 
+      <!-- Standalone BPO -->
+      <a class="nav-link strong" href="#bpo">BPO Talent Solutions</a>
+
+      <!-- About Dropdown -->
       <div class="dropdown">
-        <span class="nav-link">About ▾</span>
+        <button class="nav-link dropdown-toggle">
+          About ▾
+        </button>
         <div class="dropdown-menu">
           <a href="#about">About DDC</a>
           <a href="#founder">Meet the Founder</a>
@@ -334,8 +386,9 @@ footer{
         </div>
       </div>
 
+      <!-- CTA -->
       <a class="nav-link nav-cta" href="#cta">Start Diagnostic</a>
-    </div>
+    </nav>
   </div>
 </header>
 
@@ -499,5 +552,6 @@ footer{
 
 </body>
 </html>
+
 
 
