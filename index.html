@@ -88,6 +88,44 @@
       box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
     }
 
+    /* NAV & DROPDOWN FIXES */
+    .nav-links { display: flex; align-items: center; gap: 5px; }
+    
+    .dropdown { position: relative; display: inline-block; }
+    
+    /* This makes the menu appear when hovering over the parent div */
+    .dropdown:hover .dropdown-menu { display: block; }
+
+    .dropdown-menu {
+      position: absolute; 
+      top: 100%; 
+      right: 0; 
+      background: #ffffff; 
+      border: 1px solid var(--border);
+      border-radius: 8px; 
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      min-width: 220px; 
+      display: none; 
+      z-index: 1000; 
+      padding: 10px 0;
+    }
+
+    .dropdown-menu a { 
+      display: block; 
+      padding: 12px 20px; 
+      font-size: 14px; 
+      color: #0f172a !important; /* Forces text to be visible */
+      text-align: left;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    
+    .dropdown-menu a:last-child { border-bottom: none; }
+    
+    .dropdown-menu a:hover { 
+      background: var(--bg-soft); 
+      color: var(--accent) !important; 
+    }
+
     /* MOBILE */
     @media(max-width:900px){
       .grid-2, .grid-3, .founder-wrap { grid-template-columns: 1fr !important; }
@@ -108,9 +146,20 @@
     </div>
     <nav class="nav-links">
       <a class="nav-link" href="#home">Home</a>
-      <a class="nav-link" href="#about">About</a>
+      
       <div class="dropdown">
-        <a class="nav-link" href="#services" style="color: var(--accent); font-weight: 700;">Services ▾</a>
+        <a class="nav-link" href="#about">Company ▾</a>
+        <div class="dropdown-menu">
+          <a href="#about">About DDC</a>
+          <a href="#founder">Meet The Founder</a>
+          <a href="#how">How We Work</a>
+        </div>
+      </div>
+
+      <a class="nav-link" href="#bpo" style="color: var(--accent); font-weight: 700;">BPO Solutions</a>
+
+      <div class="dropdown">
+        <a class="nav-link" href="#services">Services ▾</a>
         <div class="dropdown-menu">
           <a href="#services">1. Stabilization Sprint</a>
           <a href="#services">2. Systems Architecture</a>
@@ -118,6 +167,7 @@
           <a href="#outcomes">Expected Outcomes</a>
         </div>
       </div>
+
       <a class="nav-link nav-cta" href="#cta">Free Diagnostic</a>
     </nav>
   </div>
