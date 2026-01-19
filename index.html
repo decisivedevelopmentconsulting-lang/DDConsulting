@@ -29,158 +29,70 @@
 
     .container{ max-width:1140px; margin:0 auto; padding:0 24px; }
 
-    /* NAV & DROPDOWN */
-    .nav{ display:flex; align-items:center; justify-content:space-between; padding:20px 0; border-bottom: 1px solid var(--border); }
-    .brand{ display:flex; align-items:center; gap:12px; font-weight:700; }
-    .brand img{ height:42px; width:auto; border-radius: 4px; }
+    /* NAV BASE */
+    .nav{ display:flex; align-items:center; justify-content:space-between; padding:20px 0; border-bottom: 1px solid var(--border); position: relative; background: white; z-index: 2000; }
+    .brand{ display:flex; align-items:center; gap:12px; font-weight:700; z-index: 2001;}
+    .brand img{ height:38px; width:auto; border-radius: 4px; }
+    
     .nav-links{ display:flex; align-items:center; gap:5px; }
     .nav-link{ padding:10px 15px; font-size:14px; font-weight:500; color:var(--text-muted); border-radius: 6px; }
     .nav-link:hover{ background: var(--bg-soft); color: var(--accent); }
-    
-    .dropdown{ position:relative; display: inline-block; }
-    .dropdown-menu {
-      position: absolute; 
-      top: 100%; 
-      right: 0; 
-      background: #ffffff; /* Solid White */
-      border: 1px solid var(--border);
-      border-radius: 8px; 
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      min-width: 200px; 
-      display: none; 
-      z-index: 1000; 
-      padding: 10px 0;
-    }
-    .dropdown-menu a { 
-      display: block; 
-      padding: 12px 20px; 
-      font-size: 14px; 
-      color: #0f172a !important; /* Force Dark Text so it's visible */
-      border-bottom: 1px solid #f1f5f9;
-    }
-    .dropdown-menu a:last-child { border-bottom: none; }
-    .dropdown-menu a:hover { background: var(--bg-soft); color: var(--accent) !important; }
-
     .nav-cta{ background: #1e3a8a; color: white !important; padding: 10px 20px; border-radius: 6px; font-weight: 600; margin-left: 10px; }
+
+    /* DROPDOWNS */
+    .dropdown{ position:relative; display: inline-block; }
+    .dropdown:hover .dropdown-menu { display: block; }
+    .dropdown-menu {
+      position:absolute; top:100%; right:0; background:#fff; border: 1px solid var(--border);
+      border-radius:8px; box-shadow:0 10px 25px rgba(0,0,0,0.1);
+      min-width:200px; display:none; z-index:1000; padding: 10px 0;
+    }
+    .dropdown-menu a{ display:block; padding:12px 20px; font-size:14px; color:var(--text-main) !important; text-align: left; border-bottom: 1px solid #f1f5f9;}
+    .dropdown-menu a:last-child { border-bottom: none; }
+
+    /* MOBILE MENU TOGGLE */
+    .menu-toggle { display: none; font-size: 28px; cursor: pointer; background: none; border: none; color: var(--text-main); padding: 5px; }
 
     /* SECTIONS */
     section{ padding:100px 0; }
     .hero { background: #0f172a; color: white; padding: 120px 0; }
-    h1{ font-size:52px; line-height:1.1; margin-bottom:24px; letter-spacing:-0.02em; color: white; }
-    h2{ font-size:36px; margin-bottom:20px; color: #1e293b; }
+    h1{ font-size: clamp(32px, 5vw, 52px); line-height:1.1; margin-bottom:24px; letter-spacing:-0.02em; color: white; }
+    h2{ font-size: clamp(28px, 4vw, 38px); margin-bottom:20px; color: #1e293b; }
     .hero p { font-size: 20px; color: #94a3b8; max-width: 800px; margin-bottom: 40px; }
 
-    /* GRID REUSABILITY */
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 40px; }
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
-    
+    /* GRID SYSTEM */
+    .responsive-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .three-col-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
     .card { background: #f8fafc; padding: 35px; border-radius: 12px; border: 1px solid #eef2f6; transition: 0.3s; }
-    .card:hover { border-color: var(--accent); transform: translateY(-3px); }
 
-    /* FOUNDER IMAGE CROP */
-    .founder-wrap{ display:grid; grid-template-columns: 350px 1fr; gap:60px; align-items: center; }
-    .founder-wrap img{ 
-      width:350px; 
-      height:350px; 
-      object-fit: cover; 
-      object-position: top; 
-      border-radius:20px; 
-      box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
-    }
-
-    /* NAV & DROPDOWN FIXES */
-    .nav-links { display: flex; align-items: center; gap: 5px; }
-    
-    .dropdown { position: relative; display: inline-block; }
-    
-    /* This makes the menu appear when hovering over the parent div */
-    .dropdown:hover .dropdown-menu { display: block; }
-
-    .dropdown-menu {
-      position: absolute; 
-      top: 100%; 
-      right: 0; 
-      background: #ffffff; 
-      border: 1px solid var(--border);
-      border-radius: 8px; 
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      min-width: 220px; 
-      display: none; 
-      z-index: 1000; 
-      padding: 10px 0;
-    }
-
-    .dropdown-menu a { 
-      display: block; 
-      padding: 12px 20px; 
-      font-size: 14px; 
-      color: #0f172a !important; /* Forces text to be visible */
-      text-align: left;
-      border-bottom: 1px solid #f1f5f9;
-    }
-    
-    .dropdown-menu a:last-child { border-bottom: none; }
-    
-    .dropdown-menu a:hover { 
-      background: var(--bg-soft); 
-      color: var(--accent) !important; 
-    }
-
-    /* MOBILE */
-    @media(max-width:900px){
-      .grid-2, .grid-3, .founder-wrap { grid-template-columns: 1fr !important; }
-      .founder-wrap img { width: 100%; height: auto; }
-      h1 { font-size: 36px; }
-      .nav-links { display: none; }
-    }
-    /* Responsive Grid System */
-    .responsive-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr; /* 2 columns on desktop */
-      gap: 60px;
-      align-items: center;
-    }
-
-    .three-col-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop */
-      gap: 30px;
-    }
-
-    /* Tablet & Mobile Overrides */
-   @media (max-width: 992px) {
-      /* Force everything with 'grid' to stack */
-      [style*="display: grid"] {
-        grid-template-columns: 1fr !important;
-        gap: 30px !important;
+    /* MOBILE RESPONSIVENESS */
+    @media(max-width:992px){
+      .menu-toggle { display: block; }
+      .nav-links {
+        display: none;
+        position: absolute; top: 100%; left: 0; width: 100%;
+        background: white; flex-direction: column; padding: 20px;
+        border-bottom: 3px solid var(--accent); box-shadow: 0 10px 20px rgba(0,0,0,0.1);
       }
+      .nav-links.mobile-active { display: flex; }
+      .nav-link, .dropdown, .nav-cta { width: 100%; text-align: left; margin: 5px 0; }
+      .dropdown-menu { position: static; box-shadow: none; border: none; padding-left: 20px; display: block; }
       
-      .nav { flex-direction: row; justify-content: space-between; }
-      .nav-links { width: 100%; }
-      
-      /* Fix the 'Consulting' name size on small phones */
+      .responsive-grid, footer .container > div { grid-template-columns: 1fr !important; text-align: center; gap: 40px; }
       .brand span { font-size: 14px !important; }
-
-      /* Fix Founder layout */
-      .founder-wrap {
-        display: flex !important;
-        flex-direction: column !important;
-        text-align: center;
-      }
     }
   </style>
 </head>
-
 <body>
 
 <header>
   <div class="container nav">
     <div class="brand">
       <img src="logo.jpg" alt="DDC Logo">
-      <span style="font-size: clamp(14px, 4vw, 18px); white-space: nowrap;">Decisive Development Consulting</span>
+      <span style="font-size: clamp(13px, 3vw, 18px); white-space: nowrap;">Decisive Development Consulting</span>
     </div>
     
-    <button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('mobile-active')" style="display:none; background:none; border:none; font-size:24px; cursor:pointer;">☰</button>
+    <button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('mobile-active')">☰</button>
 
     <nav class="nav-links" id="navLinks">
       <a class="nav-link" href="#home">Home</a>
